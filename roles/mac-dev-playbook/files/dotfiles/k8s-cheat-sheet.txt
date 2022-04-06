@@ -1,0 +1,49 @@
+
+# Config
+kubectl config current-context
+kubectl config set-context $(kubectl config current-context) --namespace=<insert-namespace-name-here>
+
+# Checkup
+kubectl get nodes -o wide 
+kubectl get componentstatuses
+
+# Create a deployment 
+k create deployment my-nginx --image=nginx --replicas=2 --port=80
+
+# Create a pod : 
+k run my-nginxpod --image=nginx --generator=run-pod/v1
+
+# Service 
+# Expose a deployment 
+kubectl expose deployment hello-world --type=LoadBalancer --name=my-service
+
+# Start a single instance of hazelcast and let the container expose port 5701 
+kubectl run hazelcast --image=hazelcast --port=5701 (--env "DNS_DOMAIN=cluster")
+
+# scale a deploument  
+kubectl scale deployment/nginx --replicas=10 
+
+# Create secret  
+kubectl create secret generic kubernetes-the-hard-way \
+  --from-literal="mykey=mydata"
+
+# Tain 
+# Taint a node
+kubectl taint nodes nodename key=value:NoSchedule
+# Untaint 
+kubectl taint nodes nodename key:NoSchedule-
+
+# Tolerations to tainted node
+tolerations:
+- key: "key"
+  operator: "Equal"
+  value: "value"
+  effect: "NoSchedule"
+
+# Cloudflare ssl toolkit
+
+cfssl sign -ca     /etc/ssl/certs/cfssl.pem       \
+           -ca-key /etc/ssl/private/cfssl_key.pem \
+           -hostname cloudflare.com               \
+           ./cloudflare.pem
+

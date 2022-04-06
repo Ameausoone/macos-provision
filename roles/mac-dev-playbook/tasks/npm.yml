@@ -1,0 +1,6 @@
+- name: Install node.js packages.
+  npm:
+    name: "{{ item }}"
+    global: yes
+    path: "{{ansible_env.HOME}}/.npm-packages/bin"
+  with_items: "{{ npm_installed_packages }}"

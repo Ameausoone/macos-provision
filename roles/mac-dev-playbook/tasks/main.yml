@@ -1,0 +1,8 @@
+---
+
+- import_tasks: dotfiles.yml
+- import_tasks: brew.yml
+  tags:
+    - brew
+- import_tasks: npm.yml
+- import_tasks: packages.yml

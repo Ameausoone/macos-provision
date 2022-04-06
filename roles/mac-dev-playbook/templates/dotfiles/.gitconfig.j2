@@ -1,0 +1,52 @@
+[user]
+  name = Antoine Meausoone
+  email = {{github_email}}
+	signingkey = {{ gpg_key }}
+[core]
+  editor = code --wait
+  excludesfile = ~/.gitignore
+  autocrlf = input
+  hooksPath = .githooks
+[commit]
+  template = ~/.gitmessage
+	gpgsign = true
+[color]
+  ui = true
+[web]
+  browser = google-chrome
+[credential]
+  helper = osxkeychain
+[push]
+  default = simple
+[pull]
+  rebase = true
+[merge]
+  tool = kdiff3
+[difftool]
+  prompt = false
+[fetch]
+  prune = true
+[alias]
+  c = commit
+  ca = commit -a  ## Commit all Tell the command to automatically stage files that have been modified and deleted, but new files you have not told Git about are not affected.
+  cm = commit -m
+  cam = commit -am
+  d = diff  ## Show changes between commits, commit and working tree, etc
+  dc = diff --cached ## will only show changes to files in the "staged" area.
+  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit ## nice log
+  lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+  lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+  lg3 = git log --all --decorate --oneline --graph
+  lg = !"git lg1"
+  conflicts = diff --name-only --diff-filter=U
+  dog = log --all --decorate --oneline --graph
+  grog = log --graph --abbrev-commit --decorate --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)'
+[merge]
+  tool = intellij
+[mergetool "intellij"]
+  cmd = idea merge $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED")
+  trustExitCode = true
+[diff]
+  tool = intellij
+[difftool "intellij"]
+  cmd = idea diff $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE")

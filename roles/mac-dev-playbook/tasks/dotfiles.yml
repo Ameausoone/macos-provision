@@ -1,0 +1,65 @@
+---
+# tasks file for mac-dev-playbook
+
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0755
+  # become: true
+  with_items:
+    - "{{ansible_env.HOME}}/.ansible"
+    - "{{ansible_env.HOME}}/.zshrc.d"
+    - "{{ansible_env.HOME}}/.pyenv"
+    - "{{ansible_env.HOME}}/.terraform.d/plugin-cache"
+
+- name: Copy ansible files
+  copy:
+    src: "{{ item.file }}"
+    dest: "{{ansible_env.HOME}}/{{ item.dest }}"
+    mode: '{{ item.mode }}'
+  notify: execute source shell_dotfile
+  with_items:
+    - { file: 'ansible/ansible.cfg', dest: '.ansible.cfg', mode: "0644"}
+  tags:
+    - dotfiles
+
+- name: Copy dot files
+  copy:
+    src: "dotfiles/"
+    dest: "{{ansible_env.HOME}}/"
+    mode: 0744
+  notify: execute source shell_dotfile
+  tags:
+    - dotfiles
+
+- name: Copy templated dot files
+  template:
+    src: "dotfiles/{{ item.src }}"
+    dest: "{{ansible_env.HOME}}/{{ item.dest }}"
+    mode: 0744
+  loop:
+    - {src: ".gitconfig.j2", dest: ".gitconfig"}
+  notify: execute source shell_dotfile
+  tags:
+    - dotfiles
+
+- name: Copy sub dotfiles files
+  copy:
+    src: "{{ item }}"
+    dest: "{{ansible_env.HOME}}/{{ item }}"
+    mode: 0744
+  loop: 
+    - ".pyenv/version"
+  notify: execute source shell_dotfile
+  tags:
+    - dotfiles
+
+- name: Copy zsh files
+  copy:
+    src: ".zshrc.d/"
+    dest: "{{ansible_env.HOME}}/.zshrc.d/"
+    mode: 0744
+  notify: execute source shell_dotfile
+  tags:
+    - dotfiles

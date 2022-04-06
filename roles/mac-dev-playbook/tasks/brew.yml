@@ -1,0 +1,32 @@
+---
+
+# Tap.
+- name: Ensure configured taps are tapped.
+  community.general.homebrew_tap: 
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ homebrew_taps }}"
+
+- name: Uninstall homebrew package
+  community.general.homebrew:
+    name: "{{ homebrew_absent_packages }}"
+    state: absent
+
+- name: Install homebrew package
+  ignore_errors: yes
+  community.general.homebrew:
+    name: "{{ homebrew_installed_packages }}"
+    state: present
+    upgrade_all: yes
+
+- name: Install homebrew cask package
+  ignore_errors: yes
+  community.general.homebrew_cask:
+    name: "{{ homebrew_cask_apps }}"
+    state: present
+    update_homebrew: yes
+
+- name: Upgrade all homebrew packages (if configured).
+  ignore_errors: yes
+  community.general.homebrew: 
+    upgrade_all: yes

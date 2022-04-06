@@ -1,0 +1,18 @@
+# MacOS
+*.DS_Store
+*.LSOverride
+Thumbs.db
+.bundle
+
+# IntelliJ
+.idea/
+*.iml
+
+# VsCode
+.vscode/
+
+# Build Number Maven Plugin
+buildNumber.properties
+
+# Kubeconfig
+.kube/

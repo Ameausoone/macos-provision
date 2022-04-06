@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/
+
+### Java ###
+export JAVA_TOOL_OPTIONS="-Duser.language=en"
+
+### Groovy ###
+export GROOVY_HOME=/usr/local/opt/groovy/libexec

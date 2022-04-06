@@ -1,0 +1,83 @@
+---
+
+homebrew_taps:
+  - homebrew/core
+  - wagoodman/dive
+  - instrumenta/instrumenta
+  - hashicorp/tap
+
+homebrew_absent_packages: 
+  - tfenv
+  - kubernetes-cli
+  - conftest
+  - hub
+  - krew
+  - yq              # use python-yq instead
+
+homebrew_installed_packages:
+  # - ansible # Installed via Pip.
+  - adr-tools
+  - autoenv
+  - autojump
+  - antigen                 # package manager for zsh
+  - asdf                    # asdf is package manager 
+  - bash
+  - bash-completion
+  - bat                     # cat with wings
+  - bats                    # Bats is a Batch Test Suite
+  - k9s                     # k9s is a Kubernetes CLI
+  - dive                    # Tools to explore docker layers with an UI
+  - dos2unix
+  - fluxcd/tap/flux
+  - git
+  - github/gh/gh            # GitHub CLI
+  - go  
+  - gnu-sed                 # GNU version of sed
+  - gnupg                   # gnupg is a tool for managing GnuPG keys
+  - graphviz                # Graphviz is a graph visualization tool
+  - gpg-suite-no-mail       # For signing commits
+  - hashicorp/tap/terraform-ls # terraform-ls is a terraform plugin for vscode
+  - hashicorp/tap/waypoint
+  # There is a bug, install it manually 
+  #- homebrew/cask-fonts/font-hack-nerd-font
+  - highlight               # Syntax highlighting for your terminal
+  - npm
+  - node
+  - nvm
+  - openssl                 # OpenSSL is a toolkit for implementing SSL/TLS
+  - pigz                    # gzip with parallel support
+  - pyenv
+  - jq
+  - tree                    # tree is a directory listing utility
+  - vault                   # Vault is a tool for managing secrets
+  - wget
+  - python-yq               # CPE Team use python-yq
+  - zsh
+
+homebrew_cask_apps:
+  - firefox
+  - google-cloud-sdk
+  - iterm2
+  - intellij-idea
+  - keystore-explorer
+  - visual-studio-code
+  - vlc
+
+npm_installed_packages:
+  - tldr
+  - yarn
+
+# FIXME Use directly .tool-versions
+asdf_plugins: 
+  - { name: terraform }
+  - { name: kubectl }
+  - { name: terraform-docs }
+  - { name: conftest }
+  - { name: terraform-validator }
+  - { name: fluxctl }
+  - { name: hub }
+
+pip_packages: 
+  - aiven-client
+  - cookiecutter
+  - howdoi
