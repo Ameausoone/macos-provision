@@ -1,0 +1,68 @@
+Branch
+  $ git push -d <remote_name> <branch_name>       ~> delete remote branch
+  $ git branch -d <branch_name>                   ~> delete local branch
+  $ git branch -D <branch_name> (aka --force)     ~> force delete local branch
+  $ git branch -a (remote and local branches) [-r (only remote branches)] ~> list branches
+  $ git checkout -b <branch_name>                 ~> create and checkout branch
+  $ git [fetch|pull] --all                        ~>
+
+Reset
+  $ git reset --hard HEAD                         ~> throw away all unstaged, and staged files away
+  $ git rm --cached <filePath>                    ~> Unstaged file
+
+Cherry Pick
+  $ git checkout develop
+  $ git cherry-pick <commit-hash>                 ~> cherry pick specific commit
+
+Git rebase interactif
+  $ git rebase -i HEAD~3        ~> rewrite last 3 commits interactively
+  $ git push origin +master     ~> force update only specified branch
+  $ irebase                     ~> Interactive build a list of git commits from log and rebase from selected one
+
+Git alias
+  cam = commit -am
+  d = diff                      ~> Show changes between commits, commit and working tree, etc
+  dc = diff --cached            ~> will only show changes to files in the "staged" area.
+  l = log with graph
+  lg1 = nice log 1
+  lg2 = nice log 2
+  lg = !"git lg1"
+
+Git fix detached HEAD
+  $ git checkout -b temp        ~> Create new branch from detached HEAD
+  $ git diff master temp        ~> Compare master and temp
+  $ git checkout -B master temp ~> Update master with temp, and checkout master
+  $ git branch -d temp          ~> Delete temp branch
+  $ git push origin             ~> Push
+
+Merge
+  $ git diff --name-only --diff-filter=U        ~> During merge, see files in conflict
+
+Tag
+  $ git tag -d 12345                            ~> Remove local tag
+  $ git push origin :refs/tags/12345            ~> Remove remote tag
+  $ git tag -a 12345 commitid -m "Message here" ~> Tag specific commit
+
+Submodule
+  # Remove the submodule entry from .git/config
+  $ git submodule deinit -f path/to/submodule
+  # Remove the submodule directory from the superproject's .git/modules directory
+  $ rm -rf .git/modules/path/to/submodule
+  # Remove the entry in .gitmodules and remove the submodule directory located at path/to/submodule
+  $ git rm -f path/to/submodule
+
+Git|fzf
+  $ fshow                     ~> git commit browser
+  $ fshow_preview             ~> git commit browser with previews
+  $ fcs                       ~> get git commit sha, example usage: git rebase -i `fcs`
+  $ fcoc_preview              ~> checkout git commit with previews
+
+Git commit
+  Allowed <type>
+    feat (feature)
+    fix (bug fix)
+    docs (documentation)
+    style (formatting, missing semi colons, …)
+    refactor
+    test (when adding missing tests)
+    chore (maintain)
