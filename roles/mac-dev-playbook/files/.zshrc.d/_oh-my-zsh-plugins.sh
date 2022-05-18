@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # Plugins are listed here https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins
 plugins=(

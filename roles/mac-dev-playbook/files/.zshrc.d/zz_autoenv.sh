@@ -1,3 +1,3 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 source $(brew --prefix autoenv)/activate.sh

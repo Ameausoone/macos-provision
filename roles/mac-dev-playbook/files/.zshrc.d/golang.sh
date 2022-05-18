@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 export PATH=$PATH:~/go/bin
 export GOROOT=/usr/local/opt/go/libexec

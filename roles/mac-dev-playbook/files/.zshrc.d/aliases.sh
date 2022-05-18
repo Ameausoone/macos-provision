@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 ### FileSearch ###
 function f() { find . -iname "*$1*" ${@:2} }

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 alias mgu="meta git update"
 alias mgp="meta git pull"

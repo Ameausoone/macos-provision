@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 alias kst="kustomize"
 alias kstb="kst build"
