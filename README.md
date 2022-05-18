@@ -12,7 +12,7 @@ It will :
 
 ## How to install it ?
 
-* checkout project in `~/Projects/wk_perso/macos-setup/macos-ansible-pb`.
+* checkout project in `~/Projects/wk_perso/macos-setup/macos-provision`.
 * copy `roles/mac-dev-playbook/files/ansible/ansible.cfg` in ~/.ansible.cfg
 * init file `inventory` file in `~/.ansible/inventory` e.g.
 
@@ -20,7 +20,7 @@ It will :
 [localhost]
 mac-name gpg_key=${my-local-gpg-key}
 ```
-* then go to `~/Projects/wk_perso/macos-setup/macos-ansible-pb`.
+* then go to `~/Projects/wk_perso/macos-setup/macos-provision`.
 * run `ansible-playbook main.yml --diff --verbose --inventory ~/.inventory --limit $(hostname)`.
 
 ## How to use it ?

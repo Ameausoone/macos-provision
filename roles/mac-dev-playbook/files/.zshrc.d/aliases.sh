@@ -24,7 +24,7 @@ function gitandans() {
 }
 
 function macans() {
-  cd ~/Projects/wk_perso/macos-setup/macos-ansible-pb &&
+  cd ~/Projects/wk_perso/macos-setup/macos-provision &&
   gitandans $1
 }
 
