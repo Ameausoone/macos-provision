@@ -15,7 +15,8 @@ It will :
 * checkout project in `~/Projects/wk_perso/macos-setup/macos-ansible-pb`.
 * copy `roles/mac-dev-playbook/files/ansible/ansible.cfg` in ~/.ansible.cfg
 * init file `inventory` file in `~/.ansible/inventory` e.g.
-```
+
+```text
 [localhost]
 mac-name gpg_key=${my-local-gpg-key}
 ```
@@ -29,7 +30,7 @@ Two functions are provided :
 
 ## Manual configuration (I can't automate everything)
 
-* Configure iTerm2 https://apple.stackexchange.com/questions/136928/using-alt-cmd-right-left-arrow-in-iterm
+* Configure iTerm2 <https://apple.stackexchange.com/questions/136928/using-alt-cmd-right-left-arrow-in-iterm>
 
 ## Various
 

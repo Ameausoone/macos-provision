@@ -1,4 +1,4 @@
-# How to start a shell script 
+# How to start a shell script
 
 ```shell
 #!/usr/bin/env bash
