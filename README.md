@@ -1,10 +1,10 @@
-# MacOs Ansible Playbook
+# MacOS Ansible Playbook
 
-This an Ansible Playbook to provision my MacOS. 
+This an Ansible Playbook to provision my macOS.
 
 ## What this playbook provide ?
 
-It will : 
+It will :
 * create usefull directories.
 * install packages (brew(and taps), asdf, npm).
 * copy dotfiles which configure various applications(Git, npm, terraform, asdf) in home.
@@ -14,7 +14,7 @@ It will :
 
 * checkout project in `~/Projects/wk_perso/macos-setup/macos-ansible-pb`.
 * copy `roles/mac-dev-playbook/files/ansible/ansible.cfg` in ~/.ansible.cfg
-* init file `inventory` file in `~/.ansible/inventory` e.g. 
+* init file `inventory` file in `~/.ansible/inventory` e.g.
 ```
 [localhost]
 mac-name gpg_key=${my-local-gpg-key}
@@ -22,9 +22,9 @@ mac-name gpg_key=${my-local-gpg-key}
 * then go to `~/Projects/wk_perso/macos-setup/macos-ansible-pb`.
 * run `ansible-playbook main.yml --diff --verbose --inventory ~/.inventory --limit $(hostname)`.
 
-## How to use it ? 
+## How to use it ?
 
-Two functions are provided : 
+Two functions are provided :
 * `macconfig` will open project with code
 
 ## Manual configuration (I can't automate everything)
@@ -33,7 +33,7 @@ Two functions are provided :
 
 ## Various
 
-## Could I use it ? 
+## Could I use it ?
 
 At your own risk, this playbook doesn't aim to be used by someone else, it's just to share how I provision my computers.
 
