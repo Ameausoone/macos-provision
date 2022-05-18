@@ -10,7 +10,6 @@
   with_items:
     - "{{ansible_env.HOME}}/.ansible"
     - "{{ansible_env.HOME}}/.zshrc.d"
-    - "{{ansible_env.HOME}}/.pyenv"
     - "{{ansible_env.HOME}}/.terraform.d/plugin-cache"
 
 - name: Copy ansible files
@@ -40,17 +39,6 @@
     mode: 0744
   loop:
     - {src: ".gitconfig.j2", dest: ".gitconfig"}
-  notify: execute source shell_dotfile
-  tags:
-    - dotfiles
-
-- name: Copy sub dotfiles files
-  copy:
-    src: "{{ item }}"
-    dest: "{{ansible_env.HOME}}/{{ item }}"
-    mode: 0744
-  loop: 
-    - ".pyenv/version"
   notify: execute source shell_dotfile
   tags:
     - dotfiles

@@ -7,3 +7,5 @@ fluxctl 1.22.2
 flux2 0.14.1
 helm 3.6.0
 shfmt 3.0.2
+python 3.9.6
+poetry 1.1.13

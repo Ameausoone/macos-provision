@@ -27,9 +27,9 @@ homebrew_installed_packages:
   - bats                    # Bats is a Batch Test Suite
   - k9s                     # k9s is a Kubernetes CLI
   - dive                    # Tools to explore docker layers with an UI
-  - dos2unix
-  - fluxcd/tap/flux
-  - git
+  - dos2unix                # Convert files from DOS to Unix format
+  - fluxcd/tap/flux         # Flux is a Kubernetes Helm chart manager
+  - git                     # Git is a version control system
   - github/gh/gh            # GitHub CLI
   - go  
   - gnu-sed                 # GNU version of sed
@@ -37,31 +37,30 @@ homebrew_installed_packages:
   - graphviz                # Graphviz is a graph visualization tool
   - gpg-suite-no-mail       # For signing commits
   - hashicorp/tap/terraform-ls # terraform-ls is a terraform plugin for vscode
-  - hashicorp/tap/waypoint
+  - hashicorp/tap/waypoint     # waypoint 
   # There is a bug, install it manually 
   #- homebrew/cask-fonts/font-hack-nerd-font
   - highlight               # Syntax highlighting for your terminal
   - npm
   - node
-  - nvm
+  - nvm                     # Node Version Manager
   - openssl                 # OpenSSL is a toolkit for implementing SSL/TLS
   - pigz                    # gzip with parallel support
-  - pyenv
-  - jq
+  - jq                      # jq is a lightweight and flexible command-line JSON processor
   - tree                    # tree is a directory listing utility
   - vault                   # Vault is a tool for managing secrets
-  - wget
+  - wget                    # wget is a command line downloader
   - python-yq               # CPE Team use python-yq
-  - zsh
+  - zsh                     # zsh is a shell interpreter for interactive programs and scripts
 
 homebrew_cask_apps:
-  - firefox
-  - google-cloud-sdk
-  - iterm2
-  - intellij-idea
-  - keystore-explorer
-  - visual-studio-code
-  - vlc
+  - firefox                 # Firefox is a web browser
+  - google-cloud-sdk        # Google Cloud SDK  is a command-line interface for Google Cloud Platform
+  - iterm2                  # iTerm2 is a terminal replacement
+  - intellij-idea           # IntelliJ IDEA is a Java IDE
+  - keystore-explorer       # Keystore Explorer is a tool for managing Java keystores
+  - visual-studio-code      # Visual Studio Code is a code editor
+  - vlc                     # VLC is a free and open source cross-platform multimedia player and framework
 
 npm_installed_packages:
   - tldr
