@@ -28,7 +28,6 @@ homebrew_installed_packages:
   - k9s                     # k9s is a Kubernetes CLI
   - dive                    # Tools to explore docker layers with an UI
   - dos2unix                # Convert files from DOS to Unix format
-  - fluxcd/tap/flux         # Flux is a Kubernetes Helm chart manager
   - git                     # Git is a version control system
   - github/gh/gh            # GitHub CLI
   - go  
