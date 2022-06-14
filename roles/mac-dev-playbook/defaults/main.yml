@@ -25,31 +25,32 @@ homebrew_installed_packages:
   - bash-completion
   - bat                     # cat with wings
   - bats                    # Bats is a Batch Test Suite
-  - k9s                     # k9s is a Kubernetes CLI
   - dive                    # Tools to explore docker layers with an UI
   - dos2unix                # Convert files from DOS to Unix format
   - git                     # Git is a version control system
   - github/gh/gh            # GitHub CLI
-  - go  
   - gnu-sed                 # GNU version of sed
   - gnupg                   # gnupg is a tool for managing GnuPG keys
-  - graphviz                # Graphviz is a graph visualization tool
+  - go  
   - gpg-suite-no-mail       # For signing commits
+  - graphviz                # Graphviz is a graph visualization tool
   - hashicorp/tap/terraform-ls # terraform-ls is a terraform plugin for vscode
   - hashicorp/tap/waypoint     # waypoint 
   # There is a bug, install it manually 
   #- homebrew/cask-fonts/font-hack-nerd-font
   - highlight               # Syntax highlighting for your terminal
+  - jq                      # jq is a lightweight and flexible command-line JSON processor
+  - k9s                     # k9s is a Kubernetes CLI
   - npm
   - node
   - nvm                     # Node Version Manager
   - openssl                 # OpenSSL is a toolkit for implementing SSL/TLS
   - pigz                    # gzip with parallel support
-  - jq                      # jq is a lightweight and flexible command-line JSON processor
+  - pyenv                   # pyenv is a python version manager useful for asdf
+  - python-yq               # CPE Team use python-yq
   - tree                    # tree is a directory listing utility
   - vault                   # Vault is a tool for managing secrets
   - wget                    # wget is a command line downloader
-  - python-yq               # CPE Team use python-yq
   - zsh                     # zsh is a shell interpreter for interactive programs and scripts
 
 homebrew_cask_apps:
