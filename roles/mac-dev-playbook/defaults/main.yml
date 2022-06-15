@@ -55,7 +55,6 @@ homebrew_installed_packages:
 
 homebrew_cask_apps:
   - firefox                 # Firefox is a web browser
-  - google-cloud-sdk        # Google Cloud SDK  is a command-line interface for Google Cloud Platform
   - iterm2                  # iTerm2 is a terminal replacement
   - intellij-idea           # IntelliJ IDEA is a Java IDE
   - keystore-explorer       # Keystore Explorer is a tool for managing Java keystores
