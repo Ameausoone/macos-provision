@@ -16,7 +16,6 @@ plugins=(
     #git-remote-branch
     helm
     iterm2
-    kubectl
     last-working-dir
     macos
     terraform
