@@ -69,6 +69,6 @@ alias diff="grc diff"
 # highlight
 alias yaml="highlight --force --syntax yaml"
 
-# Notify 
+# Notify
 alias notify='osascript -e "display notification \"Script finished\" with title \"Over\""'
 alias n=notify

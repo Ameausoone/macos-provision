@@ -6,9 +6,9 @@
   loop: "{{ asdf_plugins }}"
   when: asdf_plugins|length > 0
   ignore_errors: True
-  tags: 
+  tags:
     - asdf
-    
+
 - name: Install pip packages
   pip:
     executable:  "{{ ansible_env.HOME }}/.pyenv/shims/pip"

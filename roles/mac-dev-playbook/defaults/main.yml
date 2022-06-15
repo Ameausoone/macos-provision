@@ -6,7 +6,7 @@ homebrew_taps:
   - instrumenta/instrumenta
   - hashicorp/tap
 
-homebrew_absent_packages: 
+homebrew_absent_packages:
   - tfenv
   - kubernetes-cli
   - conftest
@@ -20,7 +20,7 @@ homebrew_installed_packages:
   - autoenv
   - autojump
   - antigen                 # package manager for zsh
-  - asdf                    # asdf is package manager 
+  - asdf                    # asdf is package manager
   - bash
   - bash-completion
   - bat                     # cat with wings
@@ -31,12 +31,12 @@ homebrew_installed_packages:
   - github/gh/gh            # GitHub CLI
   - gnu-sed                 # GNU version of sed
   - gnupg                   # gnupg is a tool for managing GnuPG keys
-  - go  
+  - go
   - gpg-suite-no-mail       # For signing commits
   - graphviz                # Graphviz is a graph visualization tool
   - hashicorp/tap/terraform-ls # terraform-ls is a terraform plugin for vscode
-  - hashicorp/tap/waypoint     # waypoint 
-  # There is a bug, install it manually 
+  - hashicorp/tap/waypoint     # waypoint
+  # There is a bug, install it manually
   #- homebrew/cask-fonts/font-hack-nerd-font
   - highlight               # Syntax highlighting for your terminal
   - jq                      # jq is a lightweight and flexible command-line JSON processor
@@ -45,6 +45,7 @@ homebrew_installed_packages:
   - node
   - nvm                     # Node Version Manager
   - openssl                 # OpenSSL is a toolkit for implementing SSL/TLS
+  - pre-commit              # pre-commit is a git pre-commit hook framework
   - pigz                    # gzip with parallel support
   - pyenv                   # pyenv is a python version manager useful for asdf
   - python-yq               # CPE Team use python-yq
@@ -66,7 +67,7 @@ npm_installed_packages:
   - yarn
 
 # FIXME Use directly .tool-versions
-asdf_plugins: 
+asdf_plugins:
   - { name: terraform }
   - { name: kubectl }
   - { name: terraform-docs }
@@ -75,7 +76,7 @@ asdf_plugins:
   - { name: fluxctl }
   - { name: hub }
 
-pip_packages: 
+pip_packages:
   - aiven-client
   - cookiecutter
   - howdoi

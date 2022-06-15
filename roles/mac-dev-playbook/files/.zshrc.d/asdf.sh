@@ -4,7 +4,7 @@
 
 source $(brew --prefix asdf)/libexec/asdf.sh
 
-## some packages to install 
+## some packages to install
 # conftest
 # flux2
 # fluxctl

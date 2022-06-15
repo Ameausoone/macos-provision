@@ -2,7 +2,7 @@
 
 # Tap.
 - name: Ensure configured taps are tapped.
-  community.general.homebrew_tap: 
+  community.general.homebrew_tap:
     name: "{{ item }}"
     state: present
   with_items: "{{ homebrew_taps }}"
@@ -28,5 +28,5 @@
 
 - name: Upgrade all homebrew packages (if configured).
   ignore_errors: yes
-  community.general.homebrew: 
+  community.general.homebrew:
     upgrade_all: yes
