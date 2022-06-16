@@ -1,0 +1,2 @@
+# useful commands
+for i in $(terraform state list | grep 'null_resource.exec_pgsql'); do terraform state rm $i ; done
