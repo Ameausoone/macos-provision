@@ -9,8 +9,8 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 
 ### Lazygit ###
 function lazygit() {
-    git add . &&
-    git commit -a -m "$1" &&
+    git add . && \
+    git commit -a -m "$1" && \
     git push
 }
 
@@ -19,12 +19,12 @@ function runans() {
 }
 
 function gitandans() {
-    lazygit "$1"
+    lazygit "$1" && \
     runans
 }
 
 function macans() {
-  cd ~/Projects/wk_perso/macos-setup/macos-provision &&
+  cd ~/Projects/wk_perso/macos-setup/macos-provision && \
   gitandans $1
 }
 
