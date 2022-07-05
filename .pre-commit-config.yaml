@@ -10,3 +10,7 @@ repos:
     -   id: check-added-large-files
     -   id: check-shebang-scripts-are-executable
     -   id: check-executables-have-shebangs
+-   repo: https://github.com/Yelp/detect-secrets
+    rev: v1.2.0
+    hooks:
+    -  id: detect-secrets
