@@ -5,6 +5,7 @@ This an Ansible Playbook to provision my macOS.
 ## What this playbook provide ?
 
 It will :
+
 * create usefull directories.
 * install packages (brew(and taps), asdf, npm).
 * copy dotfiles which configure various applications(Git, npm, terraform, asdf) in home.
@@ -20,12 +21,14 @@ It will :
 [localhost]
 mac-name gpg_key=${my-local-gpg-key}
 ```
+
 * then go to `~/Projects/wk_perso/macos-setup/macos-provision`.
 * run `ansible-playbook main.yml --diff --verbose --inventory ~/.inventory --limit $(hostname)`.
 
 ## How to use it ?
 
 Two functions are provided :
+
 * `macconfig` will open project with code
 
 ## Manual configuration (I can't automate everything)

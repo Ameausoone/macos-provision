@@ -21,4 +21,7 @@ plugins=(
     terraform
     web-search
     zsh-interactive-cd
+    zsh-navigation-tools
 )
+
+source $ZSH/oh-my-zsh.sh
