@@ -2,7 +2,6 @@
 
 # Plugins are listed here https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins
 plugins=(
-    autoenv
     autojump
     asdf
     colored-man-pages
