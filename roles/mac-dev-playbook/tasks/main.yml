@@ -1,5 +1,7 @@
 ---
 
+
+- import_tasks: oh-my-zsh.yml
 - import_tasks: dotfiles.yml
 - import_tasks: brew.yml
   tags:
