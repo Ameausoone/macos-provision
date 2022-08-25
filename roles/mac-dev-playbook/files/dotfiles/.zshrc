@@ -7,7 +7,9 @@ antigen apply
 
 for file in ~/.zshrc.d/*.sh;
 do
+  #echo "~> load $file"
   source $file
+  #echo "~> loaded $file"
 done
 
 # Done.

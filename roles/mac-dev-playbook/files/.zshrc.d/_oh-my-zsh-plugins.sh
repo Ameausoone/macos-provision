@@ -17,7 +17,6 @@ plugins=(
     git-auto-fetch
     helm
     iterm2
-    last-working-dir
     macos
     terraform
     virtualenv
