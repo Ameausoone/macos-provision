@@ -4,4 +4,3 @@
   args:
     chdir: '~{{ user.username }}'
     creates: '~{{ user.username }}/.oh-my-zsh'
-  when: "((user.oh_my_zsh | default({})).install | default(oh_my_zsh_install)) | bool"
