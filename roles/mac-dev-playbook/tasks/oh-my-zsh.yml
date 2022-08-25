@@ -2,5 +2,5 @@
 - name: clone oh-my-zsh for users
   command: 'git clone -c core.autocrlf=input --depth=1 https://github.com/robbyrussell/oh-my-zsh.git .oh-my-zsh'
   args:
-    chdir: '~{{ user.username }}'
-    creates: '~{{ user.username }}/.oh-my-zsh'
+    chdir: '{{ansible_env.HOME}}'
+    creates: '{{ansible_env.HOME}}/.oh-my-zsh'
