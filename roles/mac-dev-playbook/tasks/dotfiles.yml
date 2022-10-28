@@ -11,6 +11,7 @@
     - "{{ansible_env.HOME}}/.ansible"
     - "{{ansible_env.HOME}}/.zshrc.d"
     - "{{ansible_env.HOME}}/.terraform.d/plugin-cache"
+    - "{{ansible_env.HOME}}/.config"
 
 - name: Copy ansible files
   copy:
