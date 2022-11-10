@@ -22,3 +22,10 @@ alias tfdr="terraform destroy"
 alias tfda="terraform destroy -refresh=false -auto-approve"
 
 alias tfdocs="terraform-docs markdown table . > README.md"
+
+alias tfv="tf validate"
+alias tfvq="tf validate -no-color"
+
+alias tf_state_rm="tf state list | fzf --preview 'terraform state show {}' | xargs terraform state rm"
+
+alias tf_workspace_select="tf workspace list| cut -c3- | fzf | xargs terraform workspace select"

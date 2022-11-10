@@ -4,7 +4,7 @@ gcloud 390.0.0
 helm 3.6.0
 kubectl 1.18.16
 poetry 1.1.13
-python 3.9.6
+python 3.10.7
 shfmt 3.0.2
 terraform 0.14.9
 terraform-docs 0.10.1
