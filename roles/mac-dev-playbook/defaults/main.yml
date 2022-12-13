@@ -21,8 +21,8 @@ homebrew_installed_packages:
   - autojump
   - antigen                 # package manager for zsh
   - asdf                    # asdf is package manager
-  - bash
-  - bash-completion
+  - bash                    # bash is a shell
+  - bash-completion         # bash-completion is a collection of bash completion scripts
   - bat                     # cat with wings
   - bats                    # Bats is a Batch Test Suite
   - dive                    # Tools to explore docker layers with an UI
@@ -31,7 +31,7 @@ homebrew_installed_packages:
   - github/gh/gh            # GitHub CLI
   - gnu-sed                 # GNU version of sed
   - gnupg                   # gnupg is a tool for managing GnuPG keys
-  - go
+  - go                      # Go is an open source programming language
   - gpg-suite-no-mail       # For signing commits
   - graphviz                # Graphviz is a graph visualization tool
   - hashicorp/tap/terraform-ls # terraform-ls is a terraform plugin for vscode
@@ -41,8 +41,8 @@ homebrew_installed_packages:
   - highlight               # Syntax highlighting for your terminal
   - jq                      # jq is a lightweight and flexible command-line JSON processor
   - k9s                     # k9s is a Kubernetes CLI
-  - npm
-  - node
+  - npm                     # npm is a package manager for JavaScript
+  - node                    # Node.js is a JavaScript runtime
   - nvm                     # Node Version Manager
   - openssl                 # OpenSSL is a toolkit for implementing SSL/TLS
   - pre-commit              # pre-commit is a git pre-commit hook framework
@@ -63,8 +63,8 @@ homebrew_cask_apps:
   - vlc                     # VLC is a free and open source cross-platform multimedia player and framework
 
 npm_installed_packages:
-  - tldr
-  - yarn
+  - tldr                    # tldr is a community driven documentation for the command line
+  - yarn                    # yarn is a package manager for JavaScript
 
 # FIXME Use directly .tool-versions
 asdf_plugins:

@@ -26,18 +26,22 @@ function git_cherry_pick_commit(){
   fi
   echo "What is the id of github issue for the cherry-pick ?"
   read issue_number
-  local issue_title=$(gh issue view ${issue_number} --json 'title' --jq '.title')
-  local issue_branch=$(echo "${issue_title}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | tr -d '[:punct:]')
-  local issue_branch="cherry-pick/${issue_number}/${issue_branch}"
+  issue_title=$(gh issue view ${issue_number} --json 'title' --jq '.title')
+
+  echo "What is the id of github pull-request to cherry-pick ? "
+  read pr_number
+
+  initial_issue_branch=$(gh pr view ${pr_number} --json 'headRefName' --jq '.headRefName')
+
+  issue_branch="cherry-pick/${issue_number}/${initial_issue_branch}"
   echo "Checkout on branch [${issue_branch}]"
-  git checkout -b "${issue_branch}"
+  git checkout -B "${issue_branch}"
 
   echo "Select the branch: [main,maintenance/v0.x.x] where to cherry-pick commit ?"
   read branch
   echo "Fetch git branch : [${branch}]."
   git fetch origin "${branch}" "${branch}"
 
-  pr_number=$(gh pr list --state closed --limit 100 | fzf --header='What PR do you want to copy ?' --preview 'gh pr view {1}' | awk '{print $1}')
   echo "Cherry-pick commit from PR : [${pr_number}]"
   commit_to_cherry_pick=$(gh pr view ${pr_number} --json 'mergeCommit' --jq '.mergeCommit.oid')
   echo "Cherry-pick commit : [${commit_to_cherry_pick}]"
