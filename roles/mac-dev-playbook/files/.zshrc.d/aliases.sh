@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+MACOS_SETUP_DIR=~/Projects/wk_perso/macos-setup
+
 ### FileSearch ###
 function f() { find . -iname "*$1*" ${@:2} }
 function r() { grep "$1" ${@:2} -R . }
@@ -24,7 +26,7 @@ function gitandans() {
 }
 
 function macans() {
-  cd ~/Projects/wk_perso/macos-setup/macos-provision && \
+  cd ${MACOS_SETUP_DIR}/macos-provision && \
   gitandans $1
 }
 
@@ -33,7 +35,7 @@ alias ..="cd .."
 
 alias uwk="cd ~/Projects/wk_perso/"
 
-alias macconfig="code ~/Projects/wk_perso/macos-setup"
+alias macconfig="idea ${MACOS_SETUP_DIR}"
 
 function cheat(){
   echo "gitcheat"
