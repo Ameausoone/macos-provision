@@ -1,14 +1,14 @@
 [user]
   name = Antoine Meausoone
   email = {{github_email}}
-	signingkey = {{ gpg_key }}
+  signingkey = {{ gpg_key }}
 [core]
   editor = code --wait
   excludesfile = ~/.gitignore
   autocrlf = input
 [commit]
   template = ~/.gitmessage
-	gpgsign = true
+  gpgsign = true
 [color]
   ui = true
 [web]
@@ -35,7 +35,7 @@
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit ## nice log
   lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
   lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-  lg3 = git log --all --decorate --oneline --graph
+  lg3 = log --all --decorate --oneline --graph
   lg = !"git lg1"
   conflicts = diff --name-only --diff-filter=U
   dog = log --all --decorate --oneline --graph
