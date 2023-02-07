@@ -11,6 +11,6 @@
 
 - name: Install pip packages
   pip:
-    executable:  "{{ ansible_env.HOME }}/.pyenv/shims/pip"
+    executable:  "{{ ansible_env.HOME }}/.asdf/shims/pip"
     name: "{{ item }}"
   loop: "{{ pip_packages }}"
