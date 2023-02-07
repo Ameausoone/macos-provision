@@ -1,6 +1,6 @@
 conftest v0.23.0
 flux2 0.22.1
-gcloud 390.0.0
+gcloud 415.0.0
 helm 3.6.0
 kubectl 1.18.16
 poetry 1.1.13
