@@ -28,17 +28,18 @@ function gh_copy_issue(){
 function git_cherry_pick_commit(){
   # First checkout on branch where to cherry-pick commit
   # choose branch main maintenance/v0.7.x of where to cherry-pick
-  echo "First checkout on branch where to cherry-pick commit, ok ? (y/n)"
+  echo "First checkout the destination branch of the cherry-pick, ok ? (y/n)"
   read answer
   if [ "${answer}" != "y" ]; then
     return
   fi
   current_branch=$(git rev-parse --abbrev-ref HEAD)
+  echo "Current branch is [${current_branch}]"
   echo "What is the id of github issue for the cherry-pick ?"
   read issue_number
   issue_title=$(gh issue view ${issue_number} --json 'title' --jq '.title')
 
-  echo "What is the id of github pull-request to cherry-pick ? "
+  echo "What is the id of merged github pull-request to cherry-pick ?"
   read pr_number
 
   initial_issue_branch=$(gh pr view ${pr_number} --json 'headRefName' --jq '.headRefName')
@@ -47,10 +48,10 @@ function git_cherry_pick_commit(){
   echo "Checkout on branch [${issue_branch}]"
   git checkout -B "${issue_branch}"
 
-  echo "Select the branch: [main, maintenance/v0.7.x, maintenance/v0.8.x, ...] where to cherry-pick commit ?"
-  read branch
-  echo "Fetch git branch : [${branch}]."
-  git fetch origin "${branch}" "${branch}"
+  #echo "Select the source branch : [main, maintenance/v0.7.x, maintenance/v0.8.x, ...] where to cherry-pick commit ?"
+  #read branch
+  #echo "Fetch git branch : [${branch}]."
+  #git fetch origin "${branch}" "${branch}"
 
   echo "Cherry-pick commit from PR : [${pr_number}]"
   commit_to_cherry_pick=$(gh pr view ${pr_number} --json 'mergeCommit' --jq '.mergeCommit.oid')
@@ -59,5 +60,5 @@ function git_cherry_pick_commit(){
 
   git push --set-upstream origin "${issue_branch}"
   pr_title="[Cherry-pick] $(gh pr view ${pr_number} --json 'title' --jq '.title') (target ${current_branch})"
-  echo -e "- Copy of #${pr_number} \n - Fix #${issue_number} \n\n $(gh pr view ${pr_number} --json 'body' --jq '.body')" | gh pr create --title "${pr_title}" --web --body-file=-
+  echo -e "- Copy of #${pr_number} \n - fixes #${issue_number} \n\n $(gh pr view ${pr_number} --json 'body' --jq '.body')" | gh pr create --title "${pr_title}" --base "${current_branch}" --web --body-file=-
 }
