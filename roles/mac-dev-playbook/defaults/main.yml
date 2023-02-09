@@ -60,6 +60,7 @@ homebrew_cask_apps:
   - iterm2                  # iTerm2 is a terminal replacement
   - intellij-idea           # IntelliJ IDEA is a Java IDE
   - keystore-explorer       # Keystore Explorer is a tool for managing Java keystores
+  - rancher                 # Rancher Desktop is a Kubernetes distribution for Mac and Windows
   - visual-studio-code      # Visual Studio Code is a code editor
   - vlc                     # VLC is a free and open source cross-platform multimedia player and framework
 
