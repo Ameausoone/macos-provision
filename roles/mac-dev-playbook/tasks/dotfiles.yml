@@ -53,14 +53,6 @@
   tags:
     - dotfiles
 
-# copy config files in ~/.config directory recursively
-- name: Copy config files
-  copy:
-    src: "config/"
-    dest: "{{ansible_env.HOME}}/.config/"
-  tags:
-    - dotfiles
-
 - name: Copy autoenv file in ~/Projects directory
   copy:
     src: "autoenv/.env"
