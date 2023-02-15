@@ -25,7 +25,10 @@ homebrew_installed_packages:
   - bash-completion         # bash-completion is a collection of bash completion scripts
   - bat                     # cat with wings
   - bats                    # Bats is a Batch Test Suite
+  - colima                  # colima is a lightweight VM for running Kubernetes on macOS
   - dive                    # Tools to explore docker layers with an UI
+  - docker                  # Docker is a tool designed to make it easier to create, deploy, and run applications by using containers
+  - docker-compose          # Docker Compose is a tool for defining and running multi-container Docker applications
   - dos2unix                # Convert files from DOS to Unix format
   - git                     # Git is a version control system
   - github/gh/gh            # GitHub CLI
@@ -60,7 +63,7 @@ homebrew_cask_apps:
   - iterm2                  # iTerm2 is a terminal replacement
   - intellij-idea           # IntelliJ IDEA is a Java IDE
   - keystore-explorer       # Keystore Explorer is a tool for managing Java keystores
-  - rancher                 # Rancher Desktop is a Kubernetes distribution for Mac and Windows
+  #- rancher                 # Rancher Desktop is a Kubernetes distribution for Mac and Windows
   - visual-studio-code      # Visual Studio Code is a code editor
   - vlc                     # VLC is a free and open source cross-platform multimedia player and framework
 
