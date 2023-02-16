@@ -53,6 +53,14 @@
   tags:
     - dotfiles
 
+- name: Copy scripts files
+  copy:
+    src: "scripts/"
+    dest: "{{ansible_env.HOME}}/scripts/"
+    mode: 0744
+  tags:
+    - dotfiles
+
 - name: Copy autoenv file in ~/Projects directory
   copy:
     src: "autoenv/.env"
