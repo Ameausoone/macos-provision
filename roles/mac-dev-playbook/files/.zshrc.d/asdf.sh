@@ -32,7 +32,3 @@ function asdf_install_version() {
     asdf install ${plugin} ${version}; \
   done
 }
-
-## Enable poetry
-
-export PATH="$HOME/.asdf/installs/poetry/1.1.13/bin:$PATH"
