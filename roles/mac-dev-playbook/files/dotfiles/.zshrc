@@ -12,5 +12,11 @@ do
   #echo "~> loaded $file"
 done
 
+for file in ~/.zshrc-clients.d/*.zsh;
+do
+  #echo "~> load $file"
+  source $file
+  #echo "~> loaded $file"
+done
 # Done.
 antigen apply
