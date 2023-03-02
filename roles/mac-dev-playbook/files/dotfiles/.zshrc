@@ -12,7 +12,7 @@ do
   #echo "~> loaded $file"
 done
 
-for file in ~/.zshrc-clients.d/*.zsh;
+for file in ~/.zshrc-clients.d/*.sh;
 do
   #echo "~> load $file"
   source $file
