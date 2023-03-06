@@ -71,6 +71,7 @@ homebrew_cask_apps:
 npm_installed_packages:
   - tldr                    # tldr is a community driven documentation for the command line
   - yarn                    # yarn is a package manager for JavaScript
+  - "@githubnext/github-copilot-cli" # Copilot is a tool that helps you write code faster
 
 # FIXME Use directly .tool-versions
 asdf_plugins:

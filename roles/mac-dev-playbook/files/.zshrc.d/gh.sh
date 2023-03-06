@@ -3,6 +3,8 @@
 # TODO gh extension install :
 # https://github.com/davidraviv/gh-clean-branches
 
+# enable github copilot cli
+eval "$(github-copilot-cli alias -- "$0")"
 
 function gh_copy_issue(){
   if [[ -z "${1}" ]]; then
