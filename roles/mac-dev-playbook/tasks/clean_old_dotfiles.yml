@@ -1,0 +1,36 @@
+---
+
+- name: PATCH List files in .zshrc.d directory to remove
+  find:
+    paths: "{{ansible_env.HOME}}/.zshrc.d"
+    patterns: "*.sh"
+  register: zshrc_files
+
+- name: PATCH Remove files in .zshrc.d directory
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  with_items: "{{ zshrc_files.files }}"
+
+# Remove old files in .zshrc.d/core directory
+# list files in .zshrc.d/core directory
+# list files in files/.zshrc.d/core directory
+# remove files in .zshrc.d/core directory that are not in files/.zshrc.d/core directory
+- name: List files in files/.zshrc.d/core directory
+  find:
+    paths: "files/.zshrc.d/core"
+    patterns: "*.zsh"
+  register: zshrc_files
+
+- name: List files in .zshrc.d/core directory
+  find:
+    paths: "{{ansible_env.HOME}}/.zshrc.d/core"
+    patterns: "*.zsh"
+  register: zshrc_files_old
+
+- name: Remove files in .zshrc.d/core directory that are not in files/.zshrc.d/core directory
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  with_items: "{{ zshrc_files_old.files }}"
+  when: item.path not in zshrc_files.files | map(attribute='path') | list
