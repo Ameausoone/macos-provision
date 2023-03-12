@@ -6,6 +6,8 @@
 # enable github copilot cli
 eval "$(github-copilot-cli alias -- "$0")"
 
+eval "$(gh completion --shell zsh)"
+
 function gh_copy_issue(){
   if [[ -z "${1}" ]]; then
     #issue=$(gh issue list --state closed --limit 100 | fzf --header='What is the issue that you want to copy ?' --preview 'gh issue view {1}' | awk '{print $1}')
