@@ -47,8 +47,8 @@
 
 - name: Copy zsh files
   copy:
-    src: ".zshrc.d/"
-    dest: "{{ansible_env.HOME}}/.zshrc.d/"
+    src: ".zshrc.d/core/"
+    dest: "{{ansible_env.HOME}}/.zshrc.d/core/"
     mode: 0744
   notify: execute source shell_dotfile
   tags:

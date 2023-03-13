@@ -18,19 +18,35 @@
 # remove files in .zshrc.d/core directory that are not in files/.zshrc.d/core directory
 - name: List files in files/.zshrc.d/core directory
   find:
-    paths: "files/.zshrc.d/core"
+    paths: "{{role_path}}/files/.zshrc.d/core/"
     patterns: "*.zsh"
   register: zshrc_files
 
 - name: List files in .zshrc.d/core directory
   find:
-    paths: "{{ansible_env.HOME}}/.zshrc.d/core"
+    paths: "{{ansible_env.HOME}}/.zshrc.d/core/"
     patterns: "*.zsh"
   register: zshrc_files_old
 
-- name: Remove files in .zshrc.d/core directory that are not in files/.zshrc.d/core directory
+# convert /Users/antoinemeausoone/Projects/wk_perso/macos-setup/macos-provision/roles/mac-dev-playbook/files/.zshrc.d/core/80_autoenv.zsh to 80_autoenv.zsh
+- name: Set the list of files in files/.zshrc.d/core directory
+  set_fact:
+    zshrc_files: "{{ zshrc_files.files | map(attribute='path') | list | map('regex_replace', '^.*\/files\/.zshrc.d\/core\/', '') | list }}"
+    zshrc_files_old: "{{ zshrc_files_old.files | map(attribute='path') | list | map('regex_replace', '^.*\/.zshrc.d\/core\/', '') | list }}"
+
+- name: Set the list of files to remove in .zshrc.d/core directory
+  set_fact:
+    zshrc_files_to_remove: "{{ zshrc_files_old | difference(zshrc_files) }}"
+
+- name: Print variables
+  ansible.builtin.debug:
+    msg:
+      - "zshrc_files list of files [{{ zshrc_files }}]"
+      - "zshrc_files_old list of files [{{ zshrc_files_old }}]"
+      - "zshrc_files_to_remove list of files [{{ zshrc_files_to_remove }}]"
+
+- name: Remove files in .zshrc.d/core directory
   file:
-    path: "{{ item.path }}"
+    path: "{{ansible_env.HOME}}/.zshrc.d/core/{{ item }}"
     state: absent
-  with_items: "{{ zshrc_files_old.files }}"
-  when: item.path not in zshrc_files.files | map(attribute='path') | list
+  with_items: "{{ zshrc_files_to_remove }}"
