@@ -1268,17 +1268,19 @@
   #
   # You can define different colors, icons and content expansions for different classes:
   #
-  #   typeset -g POWERLEVEL9K_TERRAFORM_TEST_FOREGROUND=2
-  #   typeset -g POWERLEVEL9K_TERRAFORM_TEST_BACKGROUND=0
-  #   typeset -g POWERLEVEL9K_TERRAFORM_TEST_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  #   typeset -g POWERLEVEL9K_TERRAFORM_TEST_CONTENT_EXPANSION='> ${P9K_CONTENT} <'
+  typeset -g POWERLEVEL9K_TERRAFORM_TEST_FOREGROUND=2
+  typeset -g POWERLEVEL9K_TERRAFORM_TEST_BACKGROUND=0
+  typeset -g POWERLEVEL9K_TERRAFORM_TEST_VISUAL_IDENTIFIER_EXPANSION='⭐'
+  typeset -g POWERLEVEL9K_TERRAFORM_TEST_CONTENT_EXPANSION='> ${P9K_CONTENT} <'
   typeset -g POWERLEVEL9K_TERRAFORM_CLASSES=(
-      # '*prod*'  PROD    # These values are examples that are unlikely
-      # '*test*'  TEST    # to match your needs. Customize them as needed.
+       '*prod*'  PROD    # These values are examples that are unlikely
+       '*test*'  TEST    # to match your needs. Customize them as needed.
+       '*sbox*'  SBOX
+       '*stg*'   STG
       '*'         OTHER)
   typeset -g POWERLEVEL9K_TERRAFORM_OTHER_FOREGROUND=4
   typeset -g POWERLEVEL9K_TERRAFORM_OTHER_BACKGROUND=0
-  # typeset -g POWERLEVEL9K_TERRAFORM_OTHER_VISUAL_IDENTIFIER_EXPANSION='⭐'
+  typeset -g POWERLEVEL9K_TERRAFORM_OTHER_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   #############[ terraform_version: terraform version (https://www.terraform.io) ]##############
   # Terraform version color.
@@ -1293,7 +1295,7 @@
   #############[ kubecontext: current kubernetes context (https://kubernetes.io/) ]#############
   # Show kubecontext only when the the command you are typing invokes one of these tools.
   # Tip: Remove the next line to always show kubecontext.
-  typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|helm|kubens|kubectx|oc|istioctl|kogito|k9s|helmfile|flux|stern'
+  # typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|helm|kubens|kubectx|oc|istioctl|kogito|k9s|helmfile|flux|stern'
 
   # Kubernetes context classes for the purpose of using different colors, icons and expansions with
   # different contexts.
@@ -1323,8 +1325,10 @@
   #   typeset -g POWERLEVEL9K_KUBECONTEXT_TEST_VISUAL_IDENTIFIER_EXPANSION='⭐'
   #   typeset -g POWERLEVEL9K_KUBECONTEXT_TEST_CONTENT_EXPANSION='> ${P9K_CONTENT} <'
   typeset -g POWERLEVEL9K_KUBECONTEXT_CLASSES=(
-      '*prod*'  PROD    # These values are examples that are unlikely
-      '*test*'  TEST    # to match your needs. Customize them as needed.
+       '*prod*'  PROD    # These values are examples that are unlikely
+       '*test*'  TEST    # to match your needs. Customize them as needed.
+       '*sbox*'  SBOX
+       '*stg*'   STG
       '*'       DEFAULT)
   typeset -g POWERLEVEL9K_KUBECONTEXT_DEFAULT_FOREGROUND=7
   typeset -g POWERLEVEL9K_KUBECONTEXT_DEFAULT_BACKGROUND=5
@@ -1441,7 +1445,7 @@
   ##########[ gcloud: google cloud account and project (https://cloud.google.com/) ]###########
   # Show gcloud only when the the command you are typing invokes one of these tools.
   # Tip: Remove the next line to always show gcloud.
-  typeset -g POWERLEVEL9K_GCLOUD_SHOW_ON_COMMAND='gcloud|gcs'
+  # typeset -g POWERLEVEL9K_GCLOUD_SHOW_ON_COMMAND='gcloud|gcs'
   # Google cloud color.
   typeset -g POWERLEVEL9K_GCLOUD_FOREGROUND=7
   typeset -g POWERLEVEL9K_GCLOUD_BACKGROUND=4
