@@ -14,22 +14,10 @@
     - "{{ansible_env.HOME}}/.config"
     - "{{ansible_env.HOME}}/.zshrc.d/core"
 
-- name: Copy ansible files
+- name: Copy recursively files in HOME directory to $HOME
   copy:
-    src: "{{ item.file }}"
-    dest: "{{ansible_env.HOME}}/{{ item.dest }}"
-    mode: '{{ item.mode }}'
-  notify: execute source shell_dotfile
-  with_items:
-    - { file: 'ansible/ansible.cfg', dest: '.ansible.cfg', mode: "0644"}
-  tags:
-    - dotfiles
-
-- name: Copy dot files
-  copy:
-    src: "dotfiles/"
+    src: "HOME/"
     dest: "{{ansible_env.HOME}}/"
-    mode: 0744
   notify: execute source shell_dotfile
   tags:
     - dotfiles
