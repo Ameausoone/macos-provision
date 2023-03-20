@@ -49,10 +49,3 @@
     mode: 0744
   tags:
     - dotfiles
-
-- name: Copy autoenv file in ~/Projects directory
-  copy:
-    src: "autoenv/.env"
-    dest: "{{ansible_env.HOME}}/Projects/"
-  tags:
-    - dotfiles
