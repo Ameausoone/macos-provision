@@ -1,6 +1,5 @@
 ---
 
-
 - import_tasks: oh-my-zsh.yml
 - import_tasks: dotfiles.yml
 - import_tasks: clean_old_dotfiles.yml

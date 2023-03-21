@@ -41,7 +41,7 @@ function git_cherry_pick_commit(){
   echo "Current branch is [${current_branch}]"
   echo "What is the id of github issue for the cherry-pick ?"
   read issue_number
-  issue_title=$(gh issue view ${issue_number} --json 'title' --jq '.title')
+  issue_title=$(gh issue view "${issue_number}" --json 'title' --jq '.title')
 
   echo "What is the id of merged github pull-request to cherry-pick ?"
   read pr_number
