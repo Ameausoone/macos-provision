@@ -42,6 +42,21 @@
   tags:
     - dotfiles
 
+- name: Calculate sha1sum of .env file
+  ansible.builtin.stat:
+    # Get file in roles directory
+    path: "{{ role_path }}/files/HOME/.env"
+    checksum_algorithm: sha1
+    get_checksum: yes
+  register: autoenv_sha1sum
+
+- name: Add line in autoenv_authorized
+  ansible.builtin.lineinfile:
+    path: "{{ansible_env.HOME}}/.autoenv_authorized"
+    line: "{{ansible_env.HOME}}/.env:{{autoenv_sha1sum.stat.checksum}}"
+    state: present
+    regexp: '{{ansible_env.HOME}}/\.env:.*'
+
 - name: Copy scripts files
   copy:
     src: "scripts/"
