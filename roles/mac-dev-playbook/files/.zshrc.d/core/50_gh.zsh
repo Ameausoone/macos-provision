@@ -100,5 +100,5 @@ function gh_checks_status(){
   #  "state": "OPEN"
   #}
 function gh_is_pr_merged_with_icon(){
-  gh pr view --json 'state' --template '{{if eq .state "OPEN"}}⛏{{else}}✅{{end}}'
+  gh pr view && gh pr view --json 'state' --template '{{if eq .state "OPEN"}}⛏{{else }}✅{{end}}'
 }

@@ -22,9 +22,10 @@ homebrew_installed_packages:
   - antigen                 # package manager for zsh
   - asdf                    # asdf is package manager
   - bash                    # bash is a shell
-  - bash-completion         # bash-completion is a collection of bash completion scripts
+  - bash-completion         # bash-cbwompletion is a collection of bash completion scripts
   - bat                     # cat with wings
   - bats                    # Bats is a Batch Test Suite
+  - bitwarden-cli           # Bitwarden is a password manager
   - colima                  # colima is a lightweight VM for running Kubernetes on macOS
   - dive                    # Tools to explore docker layers with an UI
   - docker                  # Docker is a tool designed to make it easier to create, deploy, and run applications by using containers
