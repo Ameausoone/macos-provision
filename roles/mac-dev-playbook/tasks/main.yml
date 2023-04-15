@@ -8,3 +8,4 @@
     - brew
 - import_tasks: npm.yml
 - import_tasks: packages.yml
+- import_tasks: ghpc.yml
