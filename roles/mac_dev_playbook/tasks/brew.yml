@@ -4,7 +4,7 @@
 - name: "Install community.general ansible modules with ansible-galaxy"
   ansible.builtin.command: "ansible-galaxy collection install community.general"
   args:
-    creates: /home/{{ ansible_env.HOME }}/ansible_collections/community/general
+    creates: "{{ ansible_env.HOME }}/ansible_collections/community/general"
 
 # Tap.
 - name: Ensure configured taps are tapped.

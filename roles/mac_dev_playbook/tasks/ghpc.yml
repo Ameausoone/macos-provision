@@ -1,9 +1,9 @@
 ---
 
-- name: "Clone repo github.com/GoogleCloudPlatform/hpc-toolkit.git"
+- name: "Clone repo github.com/GoogleCloudPlatform/hpc-toolkit"
   ansible.builtin.git:
     repo: "https://github.com/GoogleCloudPlatform/hpc-toolkit"
-    dest: "{{ ansible.env.HOME }}/hpc-toolkit"
+    dest: "{{ ansible_env.HOME }}/hpc-toolkit"
     single_branch: true
     depth: 1
     version: main
@@ -11,5 +11,5 @@
 - name: "Install hpc-toolkit"
   ansible.builtin.command: make
   args:
-    chdir: "{{ ansible.env.HOME }}/hpc-toolkit"
-    creates: "{{ ansible.env.HOME }}/hpc-toolkit/ghpc"
+    chdir: "{{ ansible_env.HOME }}/hpc-toolkit"
+    creates: "{{ ansible_env.HOME }}/hpc-toolkit/ghpc"
