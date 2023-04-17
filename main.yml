@@ -1,5 +1,7 @@
 ---
-- hosts: localhost
+- name: Install mac dev tools
+  hosts: localhost
   connection: local
   roles:
-    - mac-dev-playbook
+    - name: Install mac dev tools
+      role: mac_dev_playbook

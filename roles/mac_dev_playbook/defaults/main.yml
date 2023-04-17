@@ -42,7 +42,7 @@ homebrew_installed_packages:
   - hashicorp/tap/terraform-ls # terraform-ls is a terraform plugin for vscode
   - hashicorp/tap/waypoint     # waypoint
   # There is a bug, install it manually
-  #- homebrew/cask-fonts/font-hack-nerd-font
+  # - homebrew/cask-fonts/font-hack-nerd-font
   - highlight               # Syntax highlighting for your terminal
   - jq                      # jq is a lightweight and flexible command-line JSON processor
   - k9s                     # k9s is a Kubernetes CLI
@@ -65,7 +65,7 @@ homebrew_cask_apps:
   - iterm2                  # iTerm2 is a terminal replacement
   - intellij-idea           # IntelliJ IDEA is a Java IDE
   - keystore-explorer       # Keystore Explorer is a tool for managing Java keystores
-  #- rancher                 # Rancher Desktop is a Kubernetes distribution for Mac and Windows
+  # - rancher                 # Rancher Desktop is a Kubernetes distribution for Mac and Windows
   - visual-studio-code      # Visual Studio Code is a code editor
   - vlc                     # VLC is a free and open source cross-platform multimedia player and framework
 

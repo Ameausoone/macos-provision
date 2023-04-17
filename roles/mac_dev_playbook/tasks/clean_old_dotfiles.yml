@@ -1,13 +1,13 @@
 ---
 
 - name: PATCH List files in .zshrc.d directory to remove
-  find:
-    paths: "{{ansible_env.HOME}}/.zshrc.d"
+  ansible.builtin.find:
+    paths: "{{ ansible_env.HOME }}/.zshrc.d"
     patterns: "*.sh"
   register: zshrc_files
 
 - name: PATCH Remove files in .zshrc.d directory
-  file:
+  ansible.builtin.file:
     path: "{{ item.path }}"
     state: absent
   with_items: "{{ zshrc_files.files }}"
@@ -17,25 +17,25 @@
 # list files in files/.zshrc.d/core directory
 # remove files in .zshrc.d/core directory that are not in files/.zshrc.d/core directory
 - name: List files in files/.zshrc.d/core directory
-  find:
-    paths: "{{role_path}}/files/.zshrc.d/core/"
+  ansible.builtin.find:
+    paths: "{{ role_path }}/files/.zshrc.d/core/"
     patterns: "*.zsh"
   register: zshrc_files
 
 - name: List files in .zshrc.d/core directory
-  find:
-    paths: "{{ansible_env.HOME}}/.zshrc.d/core/"
+  ansible.builtin.find:
+    paths: "{{ ansible_env.HOME }}/.zshrc.d/core/"
     patterns: "*.zsh"
   register: zshrc_files_old
 
 # convert /Users/antoinemeausoone/Projects/wk_perso/macos-setup/macos-provision/roles/mac-dev-playbook/files/.zshrc.d/core/80_autoenv.zsh to 80_autoenv.zsh
 - name: Set the list of files in files/.zshrc.d/core directory
-  set_fact:
+  ansible.builtin.set_fact:
     zshrc_files: "{{ zshrc_files.files | map(attribute='path') | list | map('regex_replace', '^.*\/files\/.zshrc.d\/core\/', '') | list }}"
     zshrc_files_old: "{{ zshrc_files_old.files | map(attribute='path') | list | map('regex_replace', '^.*\/.zshrc.d\/core\/', '') | list }}"
 
 - name: Set the list of files to remove in .zshrc.d/core directory
-  set_fact:
+  ansible.builtin.set_fact:
     zshrc_files_to_remove: "{{ zshrc_files_old | difference(zshrc_files) }}"
 
 - name: Print variables
@@ -46,7 +46,7 @@
       - "zshrc_files_to_remove list of files [{{ zshrc_files_to_remove }}]"
 
 - name: Remove files in .zshrc.d/core directory
-  file:
-    path: "{{ansible_env.HOME}}/.zshrc.d/core/{{ item }}"
+  ansible.builtin.file:
+    path: " {{ ansible_env.HOME }}/.zshrc.d/core/{{ item }}"
     state: absent
   with_items: "{{ zshrc_files_to_remove }}"

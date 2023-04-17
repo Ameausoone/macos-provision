@@ -1,16 +1,20 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
     hooks:
-    -   id: trailing-whitespace
-    -   id: end-of-file-fixer
-    -   id: check-yaml
-    -   id: check-added-large-files
-    -   id: check-shebang-scripts-are-executable
-    -   id: check-executables-have-shebangs
--   repo: https://github.com/Yelp/detect-secrets
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: check-shebang-scripts-are-executable
+      - id: check-executables-have-shebangs
+  - repo: https://github.com/Yelp/detect-secrets
     rev: v1.2.0
     hooks:
-    -  id: detect-secrets
+      - id: detect-secrets
+  - repo: https://github.com/ansible-community/ansible-lint
+    rev: v6.14.6
+    hooks:
+      - id: ansible-lint

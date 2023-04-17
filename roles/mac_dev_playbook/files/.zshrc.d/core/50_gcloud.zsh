@@ -16,7 +16,7 @@ source "$(asdf where gcloud)/path.zsh.inc"
 source "$(asdf where gcloud)/completion.zsh.inc"
 
 # Add hpc toolkit to path
-export PATH="${HOME}/hpc-toolkit:$PATH"
+export PATH="${HOME}/hpc-toolkit:${PATH}"
 
 # enable hpc autocompletion
 eval "$(ghpc completion zsh)"

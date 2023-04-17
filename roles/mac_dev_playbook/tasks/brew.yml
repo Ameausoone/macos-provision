@@ -1,5 +1,11 @@
 ---
 
+# requirements
+- name: "Install community.general ansible modules with ansible-galaxy"
+  ansible.builtin.command: "ansible-galaxy collection install community.general"
+  args:
+    creates: /home/{{ ansible_env.HOME }}/ansible_collections/community/general
+
 # Tap.
 - name: Ensure configured taps are tapped.
   community.general.homebrew_tap:
@@ -13,20 +19,20 @@
     state: absent
 
 - name: Install homebrew package
-  ignore_errors: yes
+  failed_when: false
   community.general.homebrew:
     name: "{{ homebrew_installed_packages }}"
     state: present
-    upgrade_all: yes
+    upgrade_all: true
 
 - name: Install homebrew cask package
-  ignore_errors: yes
+  failed_when: false
   community.general.homebrew_cask:
     name: "{{ homebrew_cask_apps }}"
     state: present
-    update_homebrew: yes
+    update_homebrew: true
 
 - name: Upgrade all homebrew packages (if configured).
-  ignore_errors: yes
+  failed_when: false
   community.general.homebrew:
-    upgrade_all: yes
+    upgrade_all: true

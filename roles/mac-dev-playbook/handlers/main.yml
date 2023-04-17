@@ -1,6 +1,0 @@
----
-# handlers file for mac-dev-playbook
-
-- name: execute source shell_dotfile
-  shell: zsh -c "source ~/.zshrc"
-  failed_when: no

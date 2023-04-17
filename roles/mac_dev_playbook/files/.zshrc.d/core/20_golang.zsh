@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-export PATH=$PATH:~/go/bin
+export PATH="${HOME}/go/bin:${PATH}"
 export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=~/go/
 export GO111MODULE=on

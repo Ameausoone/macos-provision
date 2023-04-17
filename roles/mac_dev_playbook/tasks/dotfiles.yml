@@ -2,31 +2,32 @@
 # tasks file for mac-dev-playbook
 
 - name: Create directories
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
-    mode: 0755
+    mode: "0755"
   # become: true
   with_items:
-    - "{{ansible_env.HOME}}/.ansible"
-    - "{{ansible_env.HOME}}/.zshrc.d"
-    - "{{ansible_env.HOME}}/.terraform.d/plugin-cache"
-    - "{{ansible_env.HOME}}/.config"
-    - "{{ansible_env.HOME}}/.zshrc.d/core"
+    - "{{ ansible_env.HOME }}/.ansible"
+    - "{{ ansible_env.HOME }}/.zshrc.d"
+    - "{{ ansible_env.HOME }}/.terraform.d/plugin-cache"
+    - "{{ ansible_env.HOME }}/.config"
+    - "{{ ansible_env.HOME }}/.zshrc.d/core"
 
 - name: Copy recursively files in HOME directory to $HOME
-  copy:
+  ansible.builtin.copy:
     src: "HOME/"
-    dest: "{{ansible_env.HOME}}/"
+    dest: "{{ ansible_env.HOME }}/"
+    mode: preserve
   notify: execute source shell_dotfile
   tags:
     - dotfiles
 
 - name: Copy templated dot files
-  template:
+  ansible.builtin.template:
     src: "dotfiles/{{ item.src }}"
-    dest: "{{ansible_env.HOME}}/{{ item.dest }}"
-    mode: 0744
+    dest: "{{ ansible_env.HOME }}/{{ item.dest }}"
+    mode: preserve
   loop:
     - {src: ".gitconfig.j2", dest: ".gitconfig"}
   notify: execute source shell_dotfile
@@ -34,10 +35,10 @@
     - dotfiles
 
 - name: Copy zsh files
-  copy:
+  ansible.builtin.copy:
     src: ".zshrc.d/core/"
-    dest: "{{ansible_env.HOME}}/.zshrc.d/core/"
-    mode: 0744
+    dest: "{{ ansible_env.HOME }}/.zshrc.d/core/"
+    mode: preserve
   notify: execute source shell_dotfile
   tags:
     - dotfiles
@@ -47,20 +48,20 @@
     # Get file in roles directory
     path: "{{ role_path }}/files/HOME/.env"
     checksum_algorithm: sha1
-    get_checksum: yes
+    get_checksum: true
   register: autoenv_sha1sum
 
 - name: Add line in autoenv_authorized
   ansible.builtin.lineinfile:
-    path: "{{ansible_env.HOME}}/.autoenv_authorized"
-    line: "{{ansible_env.HOME}}/.env:{{autoenv_sha1sum.stat.checksum}}"
+    path: "{{ ansible_env.HOME }}/.autoenv_authorized"
+    line: "{{ ansible_env.HOME }}/.env:{{ autoenv_sha1sum.stat.checksum }}"
     state: present
-    regexp: '{{ansible_env.HOME}}/\.env:.*'
+    regexp: '{{ ansible_env.HOME }}/\.env:.*'
 
 - name: Copy scripts files
-  copy:
+  ansible.builtin.copy:
     src: "scripts/"
-    dest: "{{ansible_env.HOME}}/scripts/"
-    mode: 0744
+    dest: "{{ ansible_env.HOME }}/scripts/"
+    mode: preserve
   tags:
     - dotfiles
