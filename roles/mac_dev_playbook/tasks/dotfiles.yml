@@ -19,7 +19,6 @@
     src: "HOME/"
     dest: "{{ ansible_env.HOME }}/"
     mode: preserve
-  notify: execute source shell_dotfile
   tags:
     - dotfiles
 
@@ -30,7 +29,6 @@
     mode: preserve
   loop:
     - {src: ".gitconfig.j2", dest: ".gitconfig"}
-  notify: execute source shell_dotfile
   tags:
     - dotfiles
 
@@ -39,7 +37,6 @@
     src: ".zshrc.d/core/"
     dest: "{{ ansible_env.HOME }}/.zshrc.d/core/"
     mode: preserve
-  notify: execute source shell_dotfile
   tags:
     - dotfiles
 
