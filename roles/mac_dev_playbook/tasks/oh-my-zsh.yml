@@ -3,5 +3,6 @@
   ansible.builtin.git:
     repo: "https://github.com/robbyrussell/oh-my-zsh"
     dest: "{{ ansible_env.HOME }}/.oh-my-zsh"
+    single_branch: true
     version: master
     depth: 1
