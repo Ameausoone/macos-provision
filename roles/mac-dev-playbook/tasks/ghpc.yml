@@ -1,5 +1,5 @@
 ---
-- name: Git clone https://github.com/GoogleCloudPlatform/hpc-toolkit.git
+- name: "Git clone https://github.com/GoogleCloudPlatform/hpc-toolkit.git"
   ansible.builtin.git:
     repo: "https://github.com/GoogleCloudPlatform/hpc-toolkit.git"
     dest: "{{ansible.env.HOME}}/hpc-toolkit"
