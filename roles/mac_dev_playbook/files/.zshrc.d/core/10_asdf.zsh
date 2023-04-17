@@ -4,19 +4,6 @@
 
 source $(brew --prefix asdf)/libexec/asdf.sh
 
-## some packages to install
-# conftest
-# flux2
-# fluxctl
-# helm
-# hub
-# kubectl
-# shellcheck
-# shfmt
-# terraform
-# terraform-docs
-# terraform-validator
-
 ## Some functions to help
 function _asdf_install_plugin() {
   local ASDF_TOOLS_VERSIONS_FILENAME="$HOME/.tool-versions"

@@ -2,4 +2,4 @@
 
 ## Enable poetry
 
-export PATH="$(asdf where poetry)/bin:$PATH"
+export PATH="$(asdf where poetry)/bin:${PATH}"

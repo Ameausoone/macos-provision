@@ -76,13 +76,15 @@ npm_installed_packages:
 
 # FIXME Use directly .tool-versions
 asdf_plugins:
-  - { name: terraform }
-  - { name: kubectl }
-  - { name: terraform-docs }
-  - { name: conftest }
-  - { name: terraform-validator }
-  - { name: fluxctl }
-  - { name: hub }
+  - name: terraform
+  - name: kubectl
+  - name: terraform-docs
+  - name: conftest
+  - name: terraform-validator
+  - name: fluxctl
+  - name: hub
+  - name: packer
+    repository: https://github.com/asdf-community/asdf-hashicorp.git
 
 pip_packages:
   - aiven-client
