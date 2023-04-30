@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+
 # Aliases for gcloud
 # Authenticate
 alias g='gcloud'
