@@ -50,6 +50,7 @@ homebrew_installed_packages:
   - node                    # Node.js is a JavaScript runtime
   - nvm                     # Node Version Manager
   - openssl                 # OpenSSL is a toolkit for implementing SSL/TLS
+  - parallel                # GNU parallel is a shell tool for executing jobs in parallel
   - pre-commit              # pre-commit is a git pre-commit hook framework
   - pigz                    # gzip with parallel support
   - pyenv                   # pyenv is a python version manager useful for asdf
