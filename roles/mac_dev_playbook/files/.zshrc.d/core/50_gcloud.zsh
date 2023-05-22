@@ -19,5 +19,6 @@ source "$(asdf where gcloud)/completion.zsh.inc"
 # Add hpc toolkit to path
 export PATH="${HOME}/hpc-toolkit:${PATH}"
 
+# WARNING: ghpc binary was built from a different commit (main/8bac6ec) than the current git branch in /Users/ANTOINE/hpc-toolkit (main/f7abfbe). You can rebuild the binary by running 'make'
 # enable hpc autocompletion
-eval "$(ghpc completion zsh)"
+eval "$(ghpc completion zsh 2> /dev/null)"
