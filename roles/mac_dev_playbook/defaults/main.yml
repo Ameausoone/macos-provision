@@ -44,6 +44,7 @@ homebrew_installed_packages:
   # There is a bug, install it manually
   # - homebrew/cask-fonts/font-hack-nerd-font
   - highlight               # Syntax highlighting for your terminal
+  - htop                    # htop is an interactive process viewer
   - jq                      # jq is a lightweight and flexible command-line JSON processor
   - k9s                     # k9s is a Kubernetes CLI
   - npm                     # npm is a package manager for JavaScript
