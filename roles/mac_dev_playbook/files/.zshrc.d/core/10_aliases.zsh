@@ -3,7 +3,9 @@
 MACOS_SETUP_DIR=~/Projects/wk_perso/macos-setup
 
 ### FileSearch ###
+# usage : f <pattern> <grep options> eg. f "foo" -i
 function f() { find . -iname "*$1*" ${@:2} }
+# usage : r <pattern> <grep options> eg. r "foo" -l
 function r() { grep "$1" ${@:2} -R . }
 
 ### mkdir and cd ###

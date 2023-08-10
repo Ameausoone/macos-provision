@@ -16,9 +16,9 @@ homebrew_absent_packages:
 
 homebrew_installed_packages:
   # - ansible # Installed via Pip.
-  - adr-tools
-  - autoenv
-  - autojump
+  - adr-tools              # adr-tools is a command line tool for working with Architecture Decision Records
+  - autoenv                 # autoenv execute .env file when you cd into a directory
+  - autojump                # autojump is a faster way to navigate your filesystem
   - antigen                 # package manager for zsh
   - asdf                    # asdf is package manager
   - bash                    # bash is a shell
@@ -63,11 +63,9 @@ homebrew_installed_packages:
   - zsh                     # zsh is a shell interpreter for interactive programs and scripts
 
 homebrew_cask_apps:
-  - firefox                 # Firefox is a web browser
   - iterm2                  # iTerm2 is a terminal replacement
   - intellij-idea           # IntelliJ IDEA is a Java IDE
   - keystore-explorer       # Keystore Explorer is a tool for managing Java keystores
-  # - rancher                 # Rancher Desktop is a Kubernetes distribution for Mac and Windows
   - visual-studio-code      # Visual Studio Code is a code editor
   - vlc                     # VLC is a free and open source cross-platform multimedia player and framework
 
