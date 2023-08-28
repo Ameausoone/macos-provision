@@ -21,6 +21,7 @@ homebrew_installed_packages:
   - autojump                # autojump is a faster way to navigate your filesystem
   - antigen                 # package manager for zsh
   - asdf                    # asdf is package manager
+  - awscli                  # awscli is a command-line interface for AWS
   - bash                    # bash is a shell
   - bash-completion         # bash-cbwompletion is a collection of bash completion scripts
   - bat                     # cat with wings
