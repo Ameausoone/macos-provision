@@ -7,4 +7,4 @@ function colima_up(){
 }
 
 # Start colima if not started
-alias docker="colima_up docker"
+# alias docker="colima_up docker"

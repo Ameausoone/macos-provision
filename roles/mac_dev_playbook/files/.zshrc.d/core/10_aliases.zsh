@@ -27,9 +27,13 @@ function gitandans() {
     runans
 }
 
+# This script will go to the macos-provision directory,
+# then it will run git add,
+# commit, push,
+# and it will run the ansible playbook
 function macans() {
-  cd ${MACOS_SETUP_DIR}/macos-provision && \
-  gitandans $1
+  cd "${MACOS_SETUP_DIR}/macos-provision" && \
+  gitandans "${1}"
 }
 
 alias cd..="cd .."

@@ -16,7 +16,7 @@ function googlecloud_enable_gcp_apis(){
     iam.googleapis.com \
     storage-api.googleapis.com \
     cloudresourcemanager.googleapis.com \
-    compute.googleapis.com \
+    compufte.googleapis.com \
     serviceusage.googleapis.com \
     --project "${GCP_PROJECT_ID}"
 }
