@@ -96,8 +96,6 @@ forwardAgent: false
 #     buildkit: false
 #
 # EXAMPLE - add insecure registries
-# docker:
-#   insecure-registries:
 #     - myregistry.com:5000
 #     - host.docker.internal:5000
 #
@@ -106,7 +104,9 @@ forwardAgent: false
 docker:
   registry-mirrors:
     - https://mirror.gcr.io
-
+  insecure-registries:
+    # due to zscaler which override the tls config
+    - gcr.io
 # Virtual Machine type (qemu, vz)
 # NOTE: this is macOS 13 only. For Linux and macOS <13.0, qemu is always used.
 #
