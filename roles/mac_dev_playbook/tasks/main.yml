@@ -16,3 +16,5 @@
   ansible.builtin.import_tasks: packages.yml
 - name: Install custom Google tool
   ansible.builtin.import_tasks: ghpc.yml
+- name: Install docker
+  ansible.builtin.import_tasks: docker.yml

@@ -1,0 +1,23 @@
+# docker-buildx is a Docker plugin. For Docker to find this plugin, symlink it:
+#  mkdir -p ~/.docker/cli-plugins
+#  ln -sfn /usr/local/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
+
+- name: Create directory for buildx
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.docker/cli-plugins"
+    mode: '0600'
+    state: directory
+
+- name: Create symbolic link for buildx
+  ansible.builtin.file:
+    src: /usr/local/opt/docker-buildx/bin/docker-buildx
+    dest: "{{ ansible_env.HOME }}/.docker/cli-plugins/docker-buildx"
+    state: link
+
+# colima
+# for testcontainers-go I need to link Colima sock to docker.sock
+- name: Create symbolic link for Colima
+  ansible.builtin.file:
+    src: /Users/ANTOINE/.colima/default/docker.sock
+    dest: /var/run/docker.sock
+    state: link
