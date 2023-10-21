@@ -5,21 +5,20 @@
 - name: Create directory for buildx
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.docker/cli-plugins"
-    mode: '0600'
+    mode: '0777'
     state: directory
 
 - name: Create symbolic link for buildx
   ansible.builtin.file:
-    sudo: true
     src: /usr/local/opt/docker-buildx/bin/docker-buildx
     dest: "{{ ansible_env.HOME }}/.docker/cli-plugins/docker-buildx"
     state: link
 
 # colima
 # for testcontainers-go I need to link Colima sock to docker.sock
-- name: Create symbolic link for Colima
-  ansible.builtin.file:
-    sudo: true
-    src: /Users/ANTOINE/.colima/default/docker.sock
-    dest: /var/run/docker.sock
-    state: link
+# - name: Create symbolic link for Colima
+#   become: true
+#   ansible.builtin.file:
+#     src: /Users/ANTOINE/.colima/default/docker.sock
+#     dest: /var/run/docker.sock
+#     state: link

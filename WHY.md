@@ -332,7 +332,7 @@ Et j'ai surtout de la configuration pour `git`, en commençant par le `.gitconfi
 
 `default = simple` permet de faire un push simple, c'est à dire que vous n'avez pas besoin de spécifier la branche à chaque fois que vous faites un push.
 `rebase = true` permet de faire un rebase au lieu d'un merge quand vous faites un pull(et c'est infiniment plus pratique).
-`prune = true` permet de supprimer les branches distantes qui n'existent plus en local.
+`prune = true` permet de supprimer les branches locales qui n'existent plus à distance.
 
 ```text
 [core]
