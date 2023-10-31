@@ -16,3 +16,6 @@ buildNumber.properties
 
 # Kubeconfig
 .kube/
+
+# Dumb files
+zz_*
