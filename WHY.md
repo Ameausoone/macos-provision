@@ -1,33 +1,16 @@
-# Prompt
-
-Les thèmes sont :
-* l'historique
-  * comment j'ai commencé
-  * pourquoi
-  * on commence par quoi  ?
-  * quelques scripts utiles
-* mes outils préférés
-  * zsh et oh-my-zsh
-  * asdf
-  * autoenv
-* structure du projet
-  * .zshrc
-  * scripts
-  * priorité
-  * dotfiles
-  * .gitconfig/.gitmessage
-  * secret management
-* Conclusion
-  * Qu'est-ce que ça m'a apporté
-  * Bonne pratique
-
-# Comment provisionner son poste ?
+# Développeur: prenez le contrôle de votre poste, et commencez à provisionner vos "dotfiles" !
 
 ## Comment j'ai commencé ?
 
 J'ai commencé à provisionner mon poste lorsque j'ai commencé à travailler sur MacOS il y a plus de 6 ans.
 
 J'ai utilisé Ansible parce que c'est un outil que j'utilisais au quotidien et que je connaissais bien, sachant que je n'allais probablement moins l'utiliser dans mon travail, c'était une occasion de garder la main. Ansible est d'ailleurs un peu overkill pour ce besoin, je ne sais si je le conseillerais si vous partez de 0.
+
+## Concrètement ?
+
+2 commandes:
+* `macconfig` pour ouvrir mon projet dans IntelliJ
+* `macans` pour appliquer ma configuration
 
 ## Pourquoi ?
 
@@ -73,8 +56,10 @@ Ensuite, j'ai provisionné quelques alias bien pratique comme:
 # Un facilitateur pour find et grep
 function f() { find . -iname "*$1*" ${@:2} }
 function r() { grep "$1" ${@:2} -R . }
+
 # Un racourci pour mkdir et cd
 function mkcd() { mkdir -p "$@" && cd "$_"; }
+
 # Quelques alias pour gagner du temps
 alias ..="cd .."
 alias m="make"

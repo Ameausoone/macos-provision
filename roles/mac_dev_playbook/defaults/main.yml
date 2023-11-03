@@ -20,6 +20,7 @@ homebrew_installed_packages:
   - autoenv                 # autoenv execute .env file when you cd into a directory
   - autojump                # autojump is a faster way to navigate your filesystem
   - antigen                 # package manager for zsh
+  - asciinema               # asciinema is a terminal session recorder
   - asdf                    # asdf is package manager
   - awscli                  # awscli is a command-line interface for AWS
   - bash                    # bash is a shell
