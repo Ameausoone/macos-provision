@@ -16,7 +16,8 @@ homebrew_absent_packages:
 
 homebrew_installed_packages:
   # - ansible # Installed via Pip.
-  - adr-tools              # adr-tools is a command line tool for working with Architecture Decision Records
+  - adr-tools               # adr-tools is a command line tool for working with Architecture Decision Records
+  - agg                     # Asciicast to GIF converter
   - autoenv                 # autoenv execute .env file when you cd into a directory
   - autojump                # autojump is a faster way to navigate your filesystem
   - antigen                 # package manager for zsh

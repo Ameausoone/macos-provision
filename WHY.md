@@ -123,6 +123,8 @@ Vous pouvez donc travailler sur 2 projets en même temps avec 2 versions différ
 
 ### security
 
+`security` est un outil qui permet de gérer les credentials dans le trousseau d'accès de MacOS. C'est très pratique, vos secrets sont chiffrés en local, et accessible via la commande `security`.
+
 ### autoenv
 
 `autoenv` est un outil qui va permettre de lancer des scripts, comme charger des variables d'environnements, lancer une script, lorsque vous allez dans un répertoire (ou quand vous le quittez).

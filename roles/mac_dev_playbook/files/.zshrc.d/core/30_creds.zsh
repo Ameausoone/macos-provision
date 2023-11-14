@@ -15,14 +15,19 @@ function check_cli_requirements () {
 
 # Upsert a secret in the keychain
 function creds_upsert_local_secret(){
-  if [[ $# -ne 3 ]]; then
-    echo "Usage : creds_upsert_local_secret <domain> <secret> <entry>, will create or update a secret in the keychain"
-    echo "⛈️ ERROR ⛈️: creds_upsert_local_secret requires 3 arguments, arguments : $@"
+  if [[ "$#" -lt 2 ]]; then
+    echo "Usage : creds_upsert_local_secret <domain> <secret> [entry], will create or update a secret in the keychain"
+    echo "⛈️ ERROR ⛈️: creds_upsert_local_secret requires 3 arguments, arguments : ${@}"
     return 1
   fi
   local domain=$1
   local secret=$2
-  local entry=$3
+  if [[ "$#" -eq 3 ]]; then
+    local entry="$3"
+  else
+    echo "  ~> Enter $domain.$secret"
+    read -r entry
+  fi
   local keychain_entry="$domain.$secret"
   # security find-generic-password -a $LOGNAME -s $keychain_entry return 0 if found, 44 if not found
   if security find-generic-password -a "${LOGNAME}" -s "${keychain_entry}" > /dev/null 2>&1; then
