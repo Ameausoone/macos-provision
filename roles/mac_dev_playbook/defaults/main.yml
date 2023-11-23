@@ -96,3 +96,6 @@ pip_packages:
   - aiven-client
   - cookiecutter
   - howdoi
+
+gh_cli_extensions:
+  - github/gh-copilot

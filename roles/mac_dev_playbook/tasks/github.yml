@@ -1,0 +1,6 @@
+- name: Install gh cli extensions
+  ansible.builtin.command: gh extension install {{ item }}
+  loop: "{{ gh_cli_extensions }}"
+  args:
+    creates: "{{ ansible_user_dir }}/.config/gh/extensions/{{ item }}"
+  when: gh_cli_extensions is defined

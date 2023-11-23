@@ -2,19 +2,29 @@
 
 - name: Install oh my zsh
   ansible.builtin.import_tasks: oh-my-zsh.yml
+
 - name: Install dotfiles
   ansible.builtin.import_tasks: dotfiles.yml
+
 - name: Cleanup old dotfiles
   ansible.builtin.import_tasks: clean_old_dotfiles.yml
+
 - name: Install brew packages
   ansible.builtin.import_tasks: brew.yml
   tags:
     - brew
+
 - name: Install npm packages
   ansible.builtin.import_tasks: npm.yml
+
 - name: Install pip packages
   ansible.builtin.import_tasks: packages.yml
+
 - name: Install custom Google tool
   ansible.builtin.import_tasks: ghpc.yml
+
 - name: Install docker
   ansible.builtin.import_tasks: docker.yml
+
+- name: Install Github stuff
+  ansible.builtin.import_tasks: github.yml
