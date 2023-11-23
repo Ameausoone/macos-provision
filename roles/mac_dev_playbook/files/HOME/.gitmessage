@@ -1,8 +1,10 @@
-<type>(<scope>): <subject>
+<type>(<scope>)(!): <subject>
 
 <body>
 
 <footer>
+
+# BREAKING CHANGE: <description>
 
 # Allowed <type>
 #   feat (feature)
