@@ -85,7 +85,6 @@ npm_installed_packages:
   - yarn                    # yarn is a package manager for JavaScript
   - editorconfig            # editorconfig is a plugin for your code editor that helps enforce consistent coding styles
 
-
 # FIXME Use directly .tool-versions
 asdf_plugins:
   - name: terraform
