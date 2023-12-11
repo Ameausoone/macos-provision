@@ -40,6 +40,9 @@ homebrew_installed_packages:
   - git                     # Git is a version control system
   - github/gh/gh            # GitHub CLI
   - gnu-sed                 # GNU version of sed
+  # Need to remove original gpg once installed
+  # rm '/usr/local/bin/gpg'
+  # brew link gnupg
   - gnupg                   # gnupg is a tool for managing GnuPG keys
   - go                      # Go is an open source programming language
   - gpg-suite-no-mail       # For signing commits
@@ -60,6 +63,7 @@ homebrew_installed_packages:
   - parallel                # GNU parallel is a shell tool for executing jobs in parallel
   - pre-commit              # pre-commit is a git pre-commit hook framework
   - pigz                    # gzip with parallel support
+  - pinentry-mac            # pinentry-mac is a pinentry for GPG on Mac
   - pyenv                   # pyenv is a python version manager useful for asdf
   - python-yq               # CPE Team use python-yq
   - slides                  # Slides is a terminal based presentation tool
