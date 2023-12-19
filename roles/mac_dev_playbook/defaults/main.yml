@@ -44,7 +44,6 @@ homebrew_installed_packages:
   # rm '/usr/local/bin/gpg'
   # brew link gnupg
   - gnupg                   # gnupg is a tool for managing GnuPG keys
-  - go                      # Go is an open source programming language
   - gpg-suite-no-mail       # For signing commits
   - graphviz                # Graphviz is a graph visualization tool
   - hashicorp/tap/terraform-ls # terraform-ls is a terraform plugin for vscode
@@ -96,6 +95,7 @@ asdf_plugins:
   - name: hub
   - name: packer
     repository: https://github.com/asdf-community/asdf-hashicorp.git
+  - name: golang
 
 pip_packages:
   - aiven-client
