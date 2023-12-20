@@ -19,6 +19,7 @@ buildNumber.properties
 
 # Dumb files
 zz_*
+generated/*
 
 # Golang
 *.exe
