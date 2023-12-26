@@ -37,7 +37,7 @@ Two functions are provided :
 
 ## Various
 
-## Could I use it ?
+### Could I use it ?
 
 At your own risk, this playbook doesn't aim to be used by someone else, it's just to share how I provision my computers.
 
@@ -46,3 +46,19 @@ At your own risk, this playbook doesn't aim to be used by someone else, it's jus
 ```shell
  cut -d ' ' -f1 .tool-versions | xargs -I _ asdf plugin-add _
  ```
+
+### Set up GPG commit signing
+
+- Look at https://www.jetbrains.com/help/idea/set-up-GPG-commit-signing.html#enable-commit-signing for Setup GPG keys.
+
+- Copy public key to GitHub
+
+- Install with brew:
+  - gnupg
+  - pinentry-mac
+
+- Set up gpg : https://gist.github.com/Ruben-E/9306a0666a1d9c3a3ffe710383551112
+
+### Load SSH key in ssh-agent
+
+- Look at https://apple.stackexchange.com/a/250572/222951
