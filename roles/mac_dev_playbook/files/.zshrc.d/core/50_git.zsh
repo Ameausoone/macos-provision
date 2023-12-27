@@ -3,4 +3,4 @@
 alias gcml="gcm && gl"
 
 ### Editor ###
-export EDITOR='idea --wait'
+export EDITOR='idea -e --wait'
