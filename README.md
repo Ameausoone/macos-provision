@@ -49,16 +49,14 @@ At your own risk, this playbook doesn't aim to be used by someone else, it's jus
 
 ### Set up GPG commit signing
 
+- Look at the excellent article here by https://github.com/Thomgrus: https://www.sfeir.dev/securite/securite-signer-ses-commits/
+
 - Look at https://www.jetbrains.com/help/idea/set-up-GPG-commit-signing.html#enable-commit-signing for Setup GPG keys.
-
-- Copy public key to GitHub
-
-- Install with brew:
-  - gnupg
-  - pinentry-mac
-
-- Set up gpg : https://gist.github.com/Ruben-E/9306a0666a1d9c3a3ffe710383551112
 
 ### Load SSH key in ssh-agent
 
 - Look at https://apple.stackexchange.com/a/250572/222951
+
+### Setup Commit message template
+
+- Look at https://efren45marin.medium.com/how-to-take-your-git-commit-messages-to-the-next-level-with-a-commit-template-cd3a608b1ac9
