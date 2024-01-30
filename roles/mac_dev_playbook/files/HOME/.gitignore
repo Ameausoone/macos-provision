@@ -26,5 +26,5 @@ generated/*
 vendor/
 
 # autoenv
-.env
-.env.leave
+**/.env
+**/.env.leave

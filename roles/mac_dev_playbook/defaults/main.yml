@@ -1,7 +1,6 @@
 ---
 
 homebrew_taps:
-  - homebrew/core
   - wagoodman/dive
   - instrumenta/instrumenta
   - hashicorp/tap
