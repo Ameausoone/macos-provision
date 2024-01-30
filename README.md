@@ -6,7 +6,7 @@ This an Ansible Playbook to provision my macOS.
 
 It will :
 
-* create usefull directories.
+* create useful directories.
 * install packages (brew(and taps), asdf, npm).
 * copy dotfiles which configure various applications(Git, npm, terraform, asdf) in home.
 * copy some zsh script, mainly for configuration and some helper functions and aliases.
@@ -36,6 +36,10 @@ Two functions are provided :
 * Configure iTerm2 <https://apple.stackexchange.com/questions/136928/using-alt-cmd-right-left-arrow-in-iterm>
 
 ## Various
+
+### Conf
+
+- I talked about this project at DevFest Strasbourg 2023: <https://www.youtube.com/watch?v=3EVxJo2A5a8>
 
 ### Could I use it ?
 

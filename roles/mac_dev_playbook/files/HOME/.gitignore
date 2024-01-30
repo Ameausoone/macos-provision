@@ -24,3 +24,7 @@ generated/*
 # Golang
 *.exe
 vendor/
+
+# autoenv
+.env
+.env.leave
