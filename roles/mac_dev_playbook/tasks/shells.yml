@@ -1,0 +1,11 @@
+---
+- name: Ensure /bin/zsh and /usr/local/bin/bash are present in /etc/shells on macOS in root mode
+  ansible.builtin.lineinfile:
+    path: /etc/shells
+    line: "{{ item }}"
+    state: present
+  become: true
+  with_items:
+    - "/bin/zsh"
+    - "/usr/local/bin/bash"
+  when: ansible_os_family == 'Darwin'
