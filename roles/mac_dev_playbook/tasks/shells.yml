@@ -9,3 +9,9 @@
     - "/bin/zsh"
     - "/usr/local/bin/bash"
   when: ansible_os_family == 'Darwin'
+
+- name: Setup zsh as defaults shell
+  ansible.builtin.command: chsh -s /bin/zsh
+  become: true
+  changed_when: false
+  when: ansible_os_family == 'Darwin'
