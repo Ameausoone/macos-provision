@@ -15,14 +15,16 @@ plugins=(
     gcloud                  # add gcloud autocomplete
     git                     # Git aliases and auto-completion
     gh                      # Github cli tool
-    #git-remote-branch
+    git-remote-branch
     git-auto-fetch
     gpg-agent               # enable GPG agent if not already enabled
     helm
     iterm2
     macos
+    poetry-env              # Poetry env load venv automatically
+    poetry                  # Poetry aliases and auto-completion
     terraform               # Terraform aliases and auto-completion
-    virtualenv
+    virtualenv              # Virtualenv aliases and auto-completion
     web-search
     zsh-interactive-cd
     zsh-navigation-tools

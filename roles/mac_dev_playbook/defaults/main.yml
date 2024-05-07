@@ -24,7 +24,7 @@ homebrew_installed_packages:
   - asdf                    # asdf is package manager
   - awscli                  # awscli is a command-line interface for AWS
   - bash                    # bash is a shell
-  - bash-completion         # bash-cbwompletion is a collection of bash completion scripts
+  - bash-completion         # bash-completion is a collection of bash completion scripts
   - bat                     # cat with wings
   - bats                    # Bats is a Batch Test Suite
   - bitwarden-cli           # Bitwarden is a password manager
