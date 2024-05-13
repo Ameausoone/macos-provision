@@ -3,32 +3,33 @@
   email = {{github_email}}
   signingkey = {{ gpg_key }}
 [init]
-  defaultBranch = main
-  templateDir = ~/.git-template
+  defaultBranch = main              # Set the default branch name to main.
+  templateDir = ~/.git-template     # Use a custom template directory, (for configure pre-commit hooks).
 [core]
-  excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore       # Use a global .gitignore file.
   autocrlf = input
 [commit]
-  template = ~/.gitmessage
-  gpgsign = true
+  template = ~/.gitmessage          # Conventionnal commit message template.
+  gpgsign = true                    # Sign commits using GPG.
 [color]
   ui = true
 [web]
   browser = google-chrome
 [credential]
-  helper = osxkeychain
+  helper = osxkeychain              # Use the OSX keychain to store credentials.
 [gpg]
-  program = gpg
+  program = gpg                     # Use GPG to sign commits.
 [push]
-  default = simple
+  default = simple                  # It will push the current branch to the same branch on the remote repository.
+  autoSetupRemote = true            # When pushing a new branch, set it up to track the corresponding remote branch.
 [pull]
-  rebase = true
+  rebase = true                     # When pulling, use rebase instead of merge.
 [merge]
   tool = kdiff3
 [difftool]
   prompt = false
 [fetch]
-  prune = true
+  prune = true                      # Remove remote tracking branches that no longer exist on the remote.
 [url "ssh://git@github.com/"]
   insteadOf = https://github.com/
 [alias]
