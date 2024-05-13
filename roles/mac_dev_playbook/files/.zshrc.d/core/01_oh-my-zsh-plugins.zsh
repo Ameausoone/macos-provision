@@ -15,7 +15,6 @@ plugins=(
     gcloud                  # add gcloud autocomplete
     git                     # Git aliases and auto-completion
     gh                      # Github cli tool
-    git-remote-branch
     git-auto-fetch
     gpg-agent               # enable GPG agent if not already enabled
     helm
