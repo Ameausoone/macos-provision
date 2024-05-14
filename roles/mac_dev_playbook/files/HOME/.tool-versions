@@ -1,7 +1,7 @@
 # Don't forget to add custom plugins to the list in macos-provision/roles/mac_dev_playbook/defaults/main.yml
 conftest v0.23.0
 flux2 2.2.2
-gcloud 415.0.0
+gcloud 475.0.0
 golang 1.21.5
 hugo 0.107.0
 helm 3.14.0
