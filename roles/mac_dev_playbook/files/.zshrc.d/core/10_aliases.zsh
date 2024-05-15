@@ -13,18 +13,19 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 
 ### Lazygit ###
 function lazygit() {
-    git add . && \
-    git commit -a -m "$1" && \
-    git push
+  git add . && \
+  git commit -a -m "$1" && \
+  git push
 }
 
 function runans() {
+  ansible-galaxy install -r requirements.yml && \
   ansible-playbook main.yml --diff --verbose --limit $(hostname)
 }
 
 function gitandans() {
-    lazygit "$1" && \
-    runans
+  lazygit "$1" && \
+  runans
 }
 
 # This script will go to the macos-provision directory,

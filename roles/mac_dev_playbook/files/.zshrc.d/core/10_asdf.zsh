@@ -19,5 +19,3 @@ function asdf_install_version() {
     asdf install "${plugin}" "${version}"; \
   done
 }
-
-export PATH="$HOME/.asdf/shims/:$PATH"

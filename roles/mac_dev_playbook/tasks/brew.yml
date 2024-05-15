@@ -1,11 +1,4 @@
 ---
-
-# requirements
-- name: "Install community.general ansible modules with ansible-galaxy"
-  ansible.builtin.command: "ansible-galaxy collection install community.general"
-  args:
-    creates: "{{ ansible_env.HOME }}/ansible_collections/community/general"
-
 # Tap.
 - name: Ensure configured taps are tapped.
   community.general.homebrew_tap:

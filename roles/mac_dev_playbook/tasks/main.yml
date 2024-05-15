@@ -1,13 +1,9 @@
 ---
-
 - name: Install oh my zsh
   ansible.builtin.import_tasks: oh-my-zsh.yml
 
 - name: Install dotfiles
   ansible.builtin.import_tasks: dotfiles.yml
-
-- name: Cleanup old dotfiles
-  ansible.builtin.import_tasks: clean_old_dotfiles.yml
 
 - name: Install brew packages
   ansible.builtin.import_tasks: brew.yml

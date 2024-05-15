@@ -33,10 +33,10 @@
     - dotfiles
 
 - name: Copy zsh files
-  ansible.builtin.copy:
+  ansible.posix.synchronize:
     src: ".zshrc.d/core/"
     dest: "{{ ansible_env.HOME }}/.zshrc.d/core/"
-    mode: preserve
+    delete: true
   tags:
     - dotfiles
 
