@@ -110,3 +110,4 @@ pip_packages:
 
 gh_cli_extensions:
   - github/gh-copilot
+  - mislav/gh-branch
