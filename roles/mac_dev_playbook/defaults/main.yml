@@ -70,6 +70,7 @@ homebrew_installed_packages:
   - tree                    # tree is a directory listing utility
   - vault                   # Vault is a tool for managing secrets
   - via                     # via is an application to manage keyboard mappings
+  - warp                    # warp is a modern terminal
   - wget                    # wget is a command line downloader
   - zsh                     # zsh is a shell interpreter for interactive programs and scripts
 
