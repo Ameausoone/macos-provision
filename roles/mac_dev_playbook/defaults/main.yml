@@ -36,6 +36,7 @@ homebrew_installed_packages:
   - docker-compose          # Docker Compose is a tool for defining and running multi-container Docker applications
   - docker-credential-helper # Docker Credential Helper
   - dos2unix                # Convert files from DOS to Unix format
+  - font-meslo-for-powerlevel10k # Meslo Nerd Font patched for Powerlevel10k
   - git                     # Git is a version control system
   - github/gh/gh            # GitHub CLI
   - gnu-sed                 # GNU version of sed
@@ -48,7 +49,6 @@ homebrew_installed_packages:
   - hashicorp/tap/terraform-ls # terraform-ls is a terraform plugin for vscode
   - hashicorp/tap/waypoint     # waypoint
   # There is a bug, install it manually
-  # - homebrew/cask-fonts/font-hack-nerd-font
   - highlight               # Syntax highlighting for your terminal
   - htop                    # htop is an interactive process viewer
   - jq                      # jq is a lightweight and flexible command-line JSON processor
