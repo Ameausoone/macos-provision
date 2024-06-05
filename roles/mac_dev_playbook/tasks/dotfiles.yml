@@ -54,11 +54,3 @@
     line: "{{ ansible_env.HOME }}/.env:{{ autoenv_sha1sum.stat.checksum }}"
     state: present
     regexp: '{{ ansible_env.HOME }}/\.env:.*'
-
-- name: Copy scripts files
-  ansible.builtin.copy:
-    src: "scripts/"
-    dest: "{{ ansible_env.HOME }}/scripts/"
-    mode: preserve
-  tags:
-    - dotfiles

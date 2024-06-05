@@ -1,0 +1,9 @@
+[warnings]
+export = false
+
+
+
+Consider moving TOML configuration files to /Users/ANTOINE/Library/Application Support/pypoetry, as support for the legacy directory will be removed in an upcoming release.
+Configuration file exists at /Users/ANTOINE/Library/Preferences/pypoetry, reusing this directory.
+
+Consider moving TOML configuration files to /Users/ANTOINE/Library/Application Support/pypoetry, as support for the legacy directory will be removed in an upcoming release.
