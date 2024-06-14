@@ -22,6 +22,7 @@ homebrew_installed_packages:
   - antigen                 # package manager for zsh
   - asciinema               # asciinema is a terminal session recorder
   - asdf                    # asdf is package manager
+  - atuin                   # atuin is a modern history command
   - awscli                  # awscli is a command-line interface for AWS
   - bash                    # bash is a shell
   - bash-completion         # bash-completion is a collection of bash completion scripts

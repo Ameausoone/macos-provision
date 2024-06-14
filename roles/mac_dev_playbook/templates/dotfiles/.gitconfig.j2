@@ -7,14 +7,12 @@
   templateDir = ~/.git-template     # Use a custom template directory, (for configure pre-commit hooks).
 [core]
   excludesfile = ~/.gitignore       # Use a global .gitignore file.
-  autocrlf = input
+  autocrlf = input                  # Convert CRLF to LF on commit, possible values: input, true, false.
 [commit]
   template = ~/.gitmessage          # Conventionnal commit message template.
   gpgsign = true                    # Sign commits using GPG.
 [color]
   ui = true
-[web]
-  browser = google-chrome
 [credential]
   helper = osxkeychain              # Use the OSX keychain to store credentials.
 [gpg]
