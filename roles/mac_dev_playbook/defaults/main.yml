@@ -54,6 +54,7 @@ homebrew_installed_packages:
   - htop                    # htop is an interactive process viewer
   - jq                      # jq is a lightweight and flexible command-line JSON processor
   - k9s                     # k9s is a Kubernetes CLI
+  - lf                      # lf is a terminal file manager
   - markdownlint-cli        # markdownlint-cli is a Node.js style checker and lint tool for Markdown/CommonMark files
   - npm                     # npm is a package manager for JavaScript
   - node                    # Node.js is a JavaScript runtime
