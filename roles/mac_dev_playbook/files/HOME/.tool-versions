@@ -10,7 +10,7 @@ kubectl 1.26.13
 kustomize 5.3.0
 packer 1.8.6
 poetry 1.4.0
-python 3.10.7
+python 3.11.7
 shfmt 3.7.0
 terraform 1.5.7
 terraform-docs 0.17.0
