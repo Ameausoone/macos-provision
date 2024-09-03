@@ -2,12 +2,13 @@
 
 alias tf="terraform"
 
-alias tfi="tf init -get=true -upgrade=true"
+alias tfi="tf init"
 alias tfp="tf plan"
-alias tfv="tfi && tf validate"
-alias tfa="tf apply -refresh=false"
-alias tfaa="tf apply -refresh=false -auto-approve"
-alias tfar="tf apply"
+alias tfv="tf validate"
+alias tfa="tf apply"
+alias tfaa="tf apply -auto-approve"
+alias tfanr="tf apply -refresh=false"
+alias tfaanr="tf apply -auto-approve -refresh=false"
 alias tfg="tf get -update=true"
 
 alias tfip="tfi && tfp"
@@ -20,9 +21,6 @@ alias tfim="tf import"
 alias tfd="terraform destroy -refresh=false"
 alias tfdr="terraform destroy"
 alias tfda="terraform destroy -refresh=false -auto-approve"
-
-alias tfdocs="terraform-docs markdown table . > README.md"
-
 alias tfv="tf validate"
 alias tfvq="tf validate -no-color"
 
