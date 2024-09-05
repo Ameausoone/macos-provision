@@ -4,6 +4,7 @@ alias tf="terraform"
 
 alias tfi="tf init"
 alias tfp="tf plan"
+alias tfpnr="tf plan -refresh=false"
 alias tfv="tf validate"
 alias tfa="tf apply"
 alias tfaa="tf apply -auto-approve"
