@@ -35,6 +35,10 @@ Two functions are provided :
 
 * Configure iTerm2 <https://apple.stackexchange.com/questions/136928/using-alt-cmd-right-left-arrow-in-iterm>
 
+## Docs
+
+Terraform tools are documented in [terraform-family.md](docs/terraform-family.md).
+
 ## Various
 
 ### Conf
