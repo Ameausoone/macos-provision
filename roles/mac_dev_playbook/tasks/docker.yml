@@ -2,14 +2,17 @@
 #  mkdir -p ~/.docker/cli-plugins
 #  ln -sfn /usr/local/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
 
-- name: Create directory for buildx
+- name: Create directory for docker plugins
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.docker/cli-plugins"
     mode: '0777'
     state: directory
 
-- name: Create symbolic link for buildx
+- name: Create symbolic links for docker plugins
   ansible.builtin.file:
-    src: /usr/local/opt/docker-buildx/bin/docker-buildx
-    dest: "{{ ansible_env.HOME }}/.docker/cli-plugins/docker-buildx"
+    src: "{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.docker/cli-plugins/{{ item | basename }}"
     state: link
+  with_fileglob:
+    - /usr/local/opt/docker-buildx/bin/docker-buildx
+    - /usr/local/opt/docker-compose/bin/docker-compose

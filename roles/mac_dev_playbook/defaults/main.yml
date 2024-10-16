@@ -87,6 +87,7 @@ npm_installed_packages:
   - tldr                    # tldr is a community driven documentation for the command line
   - yarn                    # yarn is a package manager for JavaScript
   - editorconfig            # editorconfig is a plugin for your code editor that helps enforce consistent coding styles
+  - "@devcontainers/cli"      # devcontainers is a command line tool for managing devcontainers
 
 # FIXME Use directly .tool-versions
 asdf_plugins:
