@@ -8,8 +8,8 @@ alias tfpnr="tf plan -refresh=false"
 alias tfv="tf validate"
 alias tfa="tf apply"
 alias tfaa="tf apply -auto-approve"
-alias tfanr="tf apply -refresh=false"
-alias tfaanr="tf apply -auto-approve -refresh=false"
+alias tfarf="tf apply -refresh=false"
+alias tfaarf="tf apply -auto-approve -refresh=false"
 alias tfg="tf get -update=true"
 
 alias tfip="tfi && tfp"
@@ -19,11 +19,11 @@ alias tfiar="tfi && tfar"
 
 alias tfim="tf import"
 
-alias tfd="terraform destroy -refresh=false"
-alias tfdr="terraform destroy"
-alias tfda="terraform destroy -refresh=false -auto-approve"
 alias tfv="tf validate"
 alias tfvq="tf validate -no-color"
+
+alias tfd="terraform destroy"
+alias tfdrf="terraform destroy -refresh=false"
 
 alias tf_state_rm="tf state list | fzf --preview 'terraform state show {}' | xargs terraform state rm"
 
