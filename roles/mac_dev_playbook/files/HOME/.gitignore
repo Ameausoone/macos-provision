@@ -28,3 +28,11 @@ vendor/
 # autoenv
 **/.env
 **/.env.leave
+
+# credentials
+# vault
+**/.vault-token
+# GCP
+**/credentials.json
+# AWS
+**/credentials
