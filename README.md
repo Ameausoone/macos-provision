@@ -57,6 +57,12 @@ At your own risk, this playbook doesn't aim to be used by someone else, it's jus
 
 ### Set up GPG commit signing
 
+- Generate a GPG key
+  ```shell
+  gpg --full-generate-key
+  ```
+
+
 - Look at the excellent article here by https://github.com/Thomgrus: https://www.sfeir.dev/securite/securite-signer-ses-commits/
 
 - Look at https://www.jetbrains.com/help/idea/set-up-GPG-commit-signing.html#enable-commit-signing for Setup GPG keys.
