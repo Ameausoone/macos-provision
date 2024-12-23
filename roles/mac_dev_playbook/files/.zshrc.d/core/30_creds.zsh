@@ -25,7 +25,7 @@ function creds_upsert_local_secret(){
   if [[ "$#" -eq 3 ]]; then
     local entry="$3"
   else
-    echo "  ~> Enter $domain.$secret"
+    echo "  ~> Specify secret for $domain.$secret"
     read -r entry
   fi
   local keychain_entry="$domain.$secret"
@@ -38,6 +38,7 @@ function creds_upsert_local_secret(){
     echo "  ~> Create $keychain_entry"
     security add-generic-password -a "${LOGNAME}" -w "${entry}" -s "${keychain_entry}"
   fi
+  echo "Now call creds_get_local_secret(\"\$domain\",\"\$secret\") to get the secret."
 }
 
 # Get a secret from the keychain

@@ -1,0 +1,9 @@
+{
+  "extends": ["config:recommended"],
+  "packageRules": [
+    {
+      "managers": ["asdf"],
+      "automerge": true
+    }
+  ]
+}

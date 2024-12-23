@@ -64,6 +64,7 @@ homebrew_installed_packages:
   - pre-commit              # pre-commit is a git pre-commit hook framework
   - pigz                    # gzip with parallel support
   - pinentry-mac            # pinentry-mac is a pinentry for GPG on Mac
+  - powerlevel10k           # famous theme
   - pyenv                   # pyenv is a python version manager useful for asdf
   - pygmentize              # Pygments is a generic syntax highlighter
   - python-yq               # CPE Team use python-yq
