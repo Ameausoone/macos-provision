@@ -3,7 +3,7 @@ flux2 2.4.0
 gcloud 493.0.0
 golang 1.23.4
 hugo 0.107.0
-helm 3.14.0
+helm 3.16.4
 java openjdk-21
 kubectl 1.26.13
 packer 1.8.6
