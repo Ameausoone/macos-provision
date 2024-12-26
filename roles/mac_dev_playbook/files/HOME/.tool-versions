@@ -9,7 +9,7 @@ kubectl 1.32.0
 packer 1.11.2
 poetry 1.8.5
 python 3.13.1
-shfmt 3.7.0
+shfmt 3.10.0
 terraform 1.10.3
 terraform-docs 0.17.0
 terragrunt 0.54.20
