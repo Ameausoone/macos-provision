@@ -5,7 +5,7 @@ golang 1.23.4
 hugo 0.140.2
 helm 3.16.4
 java openjdk-21
-kubectl 1.32.0
+kubectl 1.32.1
 packer 1.11.2
 poetry 2.0.1
 python 3.13.1
