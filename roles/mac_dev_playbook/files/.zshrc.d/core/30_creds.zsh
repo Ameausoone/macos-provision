@@ -56,3 +56,15 @@ function creds_get_local_secret(){
     return 1
   fi
 }
+
+# Get a secret from the keychain
+function creds_delete_local_secret(){
+  if [[ $# -ne 2 ]]; then
+    echo "⛈️ ERROR ⛈️: creds_delete_local_secret requires 2 arguments, got $#"
+    return 1
+  fi
+  local domain=$1
+  local secret=$2
+  local keychain_entry="$domain.$secret"
+  security delete-generic-password -a "${LOGNAME}" -s "${keychain_entry}"
+}

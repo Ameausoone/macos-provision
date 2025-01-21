@@ -11,8 +11,6 @@ set -o pipefail
 # Turn on traces, useful while debugging but commented out by default
 # set -o xtrace
 
-
-
 # This script automates the generation and management of a GPG key.
 # It generates a secure password, creates a GPG key, and performs the following tasks:
 # 1. Exports the public key to a file.
@@ -40,35 +38,27 @@ echo "Remember to securely back up your public and private keys if needed."
 # Extract the Key ID of the generated GPG key
 KEY_ID=$(gpg --list-keys --with-colons | grep '^pub' | tail -n 1 | cut -d':' -f5)
 
+# Write KEY_ID in home file
+echo "${KEY_ID}" > ~/.git-gpg-key-id
+
+# Replace the signingkey in ~/.gitconfig with the newly generated GPG key
+gsed -i.bak "/signingkey/c\  signingkey = ${KEY_ID}" ~/.gitconfig
+
 # Export the public key to a file
 PUBLIC_KEY_FILE="key.pub"
 gpg --armor --export "$KEY_ID" > "$PUBLIC_KEY_FILE"
 
-# Save the generated password to Bitwarden
-echo "Saving the password to Bitwarden..."
 # Define variables for improved readability
 ITEM_NAME="GPG-Key-$KEY_ID"
-NOTES="Password for the generated GPG key. Date: $(date)"
+NOTES="Password for the generated GPG key. Date: $(date). Host: $(hostname)."
 
-# Use the template pattern for creating the item
-LOGIN_TEMPLATE=$(bw get template item.login | jq '.username=null | .password=null')
-bw get template item | jq \
-  --arg name "$ITEM_NAME" \
-  --arg notes "$NOTES" \
-  --argjson login "$LOGIN_TEMPLATE" \
-  '.name=$name | .notes=$notes | .login=$login' \
-  | bw encode | bw create item
-if [ $? -eq 0 ]; then
-    echo "Password successfully saved to Bitwarden."
-else
-    echo "Failed to save the password to Bitwarden. Please check for errors."
-fi
+echo "First login to bitwarden with bw login antoine.meausoone@gmail.com, then run this to save the key"
+
+echo "echo '{\"passwordHistory\":null,\"revisionDate\":null,\"creationDate\":null,\"deletedDate\":null,\"object\":\"item\",\"organizationId\":null,\"folderId\":null,\"type\":1,\"reprompt\":0,\"name\":\"${ITEM_NAME}\",\"notes\":\"${NOTES}\",\"favorite\":false,\"login\":{\"fido2Credentials\":[],\"uris\":[{\"match\":null,\"uri\":\"\"}],\"username\":\"\",\"password\":\"${PASSWORD}\",\"totp\":null,\"passwordRevisionDate\":null},\"collectionIds\":[]} ' | bw encode | bw create item"
+
 # Add the public key to GitHub using the GitHub CLI
 echo "Adding the GPG key to your GitHub account..."
-gh gpg-key add "$PUBLIC_KEY_FILE" -t "$KEY_ID"
-
-# Confirm success
-if [ $? -eq 0 ]; then
+if gh gpg-key add "${PUBLIC_KEY_FILE}" -t "${KEY_ID}"; then
     echo "GPG key successfully added to your GitHub account!"
 else
     echo "Failed to add the GPG key to your GitHub account. Please check for errors."

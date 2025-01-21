@@ -47,6 +47,7 @@ homebrew_installed_packages:
   - gnupg                   # gnupg is a tool for managing GnuPG keys
   - gpg-suite-no-mail       # For signing commits
   - graphviz                # Graphviz is a graph visualization tool
+  - hashicorp/tap/hcp       #
   - hashicorp/tap/terraform-ls # terraform-ls is a terraform plugin for vscode
   - hashicorp/tap/waypoint     # waypoint
   # There is a bug, install it manually
