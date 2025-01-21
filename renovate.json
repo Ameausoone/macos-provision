@@ -3,7 +3,7 @@
   "packageRules": [
     {
       "managers": ["asdf"],
-      "automerge": true
+      "automerge": false
     }
   ]
 }
