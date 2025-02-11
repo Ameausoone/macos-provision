@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+export PATH="${HOME}/.asdf/shims/:${PATH}"
+
 ## Some functions to help
 function _asdf_install_plugin() {
   local ASDF_TOOLS_VERSIONS_FILENAME="${HOME}/.tool-versions"
