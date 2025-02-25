@@ -5,16 +5,30 @@
 [init]
   defaultBranch = main              # Set the default branch name to main.
   templateDir = ~/.git-template     # Use a custom template directory, (for configure pre-commit hooks).
+[help]
+  autocorrect = prompt              # Suggests corrections when you mistype a Git command.
 [core]
   excludesfile = ~/.gitignore       # Use a global .gitignore file.
   autocrlf = input                  # Convert CRLF to LF on commit, possible values: input, true, false.
+[column]
+  ui = auto                         # Enable column display.
 [commit]
   template = ~/.gitmessage          # Conventionnal commit message template.
   gpgsign = true                    # Sign commits using GPG.
+  verbose = true                    # Show the diff of the commit.
+[rerere]                            # Reuse recorded resolution of conflicted merges.
+  enabled = true                    # Enable the reuse recorded resolution.
+  autoupdate = true                 # Update the index with the resolution.
 [tag]
   gpgsign = true                    # Sign tags using GPG.
 [color]
-  ui = true
+  ui = true                         # Enable colored output.
+[branch]
+  sort = -committerdate             # Sort branches by committer date.
+[tag]
+  sort = version:refname            # Sort tags by version.
+[feature]
+  experimental = true               # Enable experimental features.
 [credential]
   helper = osxkeychain              # Use the OSX keychain to store credentials.
 [gpg]
@@ -22,14 +36,19 @@
 [push]
   default = simple                  # It will push the current branch to the same branch on the remote repository.
   autoSetupRemote = true            # When pushing a new branch, set it up to track the corresponding remote branch.
-[pull]
-  rebase = true                     # When pulling, use rebase instead of merge.
-[merge]
-  tool = kdiff3
-[difftool]
-  prompt = false
+  followTags = true                 # Push all tags.
 [fetch]
   prune = true                      # Remove remote tracking branches that no longer exist on the remote.
+  pruneTags = true                  # Remove remote tags that no longer exist on the remote.
+  all = true                        # Fetch all remotes.
+[pull]
+  rebase = true                     # When pulling, use rebase instead of merge.
+[rebase]
+  autoSquash = true                 # Automatically squash commits.
+  autoStash = true                  # Automatically stash changes before rebasing.
+  updateRefs = true                 # Update the reflog.
+[merge]
+  tool = kdiff3
 [url "ssh://git@github.com/"]
   insteadOf = https://github.com/
 [alias]
@@ -39,20 +58,12 @@
   cam = commit -am
   d = diff  ## Show changes between commits, commit and working tree, etc
   dc = diff --cached ## will only show changes to files in the "staged" area.
-  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit ## nice log
-  lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-  lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-  lg3 = log --all --decorate --oneline --graph
-  lg = !"git lg1"
-  conflicts = diff --name-only --diff-filter=U
-  dog = log --all --decorate --oneline --graph
-  grog = log --graph --abbrev-commit --decorate --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)'
 [merge]
-  tool = intellij
-[mergetool "intellij"]
-  cmd = idea merge $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED")
-  trustExitCode = true
+  conflictstyle = zdiff3
 [diff]
-  tool = intellij
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
 [difftool "intellij"]
   cmd = idea diff $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE")
