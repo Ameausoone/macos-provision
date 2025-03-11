@@ -22,26 +22,6 @@
   tags:
     - dotfiles
 
-# Generated from ~/scripts/gpg-generate-key.sh
-- name: Read GPG key ID from file
-  ansible.builtin.slurp:
-    src: "{{ ansible_env.HOME }}/.git-gpg-key-id"
-  register: gpg_key_file
-
-- name: Set GPG key variable
-  set_fact:
-    gpg_key: "{{ gpg_key_file['content'] | b64decode }}"
-
-- name: Copy templated dot files
-  ansible.builtin.template:
-    src: "dotfiles/{{ item.src }}"
-    dest: "{{ ansible_env.HOME }}/{{ item.dest }}"
-    mode: preserve
-  loop:
-    - {src: ".gitconfig.j2", dest: ".gitconfig"}
-  tags:
-    - dotfiles
-
 - name: Copy zsh files
   ansible.posix.synchronize:
     src: ".zshrc.d/core/"
