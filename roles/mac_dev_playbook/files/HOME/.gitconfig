@@ -1,7 +1,5 @@
-[user]
-  name = Antoine Meausoone
-  email = {{ github_email }}
-  signingkey = {{ gpg_key }}
+[include]
+  path = ~/.gitconfig.local          # Include a local configuration file.
 [init]
   defaultBranch = main              # Set the default branch name to main.
   templateDir = ~/.git-template     # Use a custom template directory, (for configure pre-commit hooks).
@@ -47,8 +45,6 @@
   autoSquash = true                 # Automatically squash commits.
   autoStash = true                  # Automatically stash changes before rebasing.
   updateRefs = true                 # Update the reflog.
-[merge]
-  tool = kdiff3
 [url "ssh://git@github.com/"]
   insteadOf = https://github.com/
 [alias]
@@ -60,10 +56,9 @@
   dc = diff --cached ## will only show changes to files in the "staged" area.
 [merge]
   conflictstyle = zdiff3
+  tool = kdiff3
 [diff]
   algorithm = histogram
   colorMoved = plain
   mnemonicPrefix = true
   renames = true
-[difftool "intellij"]
-  cmd = idea diff $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE")

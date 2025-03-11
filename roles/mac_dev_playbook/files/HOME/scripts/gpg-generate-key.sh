@@ -39,10 +39,10 @@ echo "Remember to securely back up your public and private keys if needed."
 KEY_ID=$(gpg --list-keys --with-colons | grep '^pub' | tail -n 1 | cut -d':' -f5)
 
 # Write KEY_ID in home file
-echo "${KEY_ID}" > ~/.git-gpg-key-id
+#echo "${KEY_ID}" > ~/.git-gpg-key-id
 
 # Replace the signingkey in ~/.gitconfig with the newly generated GPG key
-gsed -i.bak "/signingkey/c\  signingkey = ${KEY_ID}" ~/.gitconfig
+gsed -i.bak "/signingkey/c\  signingkey = ${KEY_ID}" ~/.gitconfig.local
 
 # Export the public key to a file
 PUBLIC_KEY_FILE="key.pub"

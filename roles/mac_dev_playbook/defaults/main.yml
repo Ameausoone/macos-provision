@@ -38,6 +38,7 @@ homebrew_installed_packages:
   - docker-credential-helper # Docker Credential Helper
   - dos2unix                # Convert files from DOS to Unix format
   - font-meslo-for-powerlevel10k # Meslo Nerd Font patched for Powerlevel10k
+  - ghostty                 # GhostTy is a fast and lightweight terminal emulator
   - git                     # Git is a version control system
   - github/gh/gh            # GitHub CLI
   - gnu-sed                 # GNU version of sed
