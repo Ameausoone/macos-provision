@@ -35,6 +35,7 @@ else
   while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 fi
 
+#set -x
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
@@ -49,7 +50,7 @@ fi
 ###############################################################################
 
 # Save screenshots to Downloads folder.
-defaults write com.apple.screencapture location -string "~/Pictures"
+defaults write com.apple.screencapture location -string "${HOME}/Downloads"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
@@ -78,57 +79,67 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
-###############################################################################
-# Keyboard                                                                    #
-###############################################################################
+# Restart automatically if the computer freezes
+if [[ "$RUN_AS_ROOT" = true ]]; then
+  systemsetup -setrestartfreeze on
+fi
 
-# By default, when a key is held down, the accents menu is displayed.
-defaults write NSGlobalDomain "ApplePressAndHoldEnabled" -bool "true"
+#################################################################################
+# Dock & Mission Control                                                    #
+#################################################################################
 
-# Opens the Character Viewer for entering emoji, symbols, and more.
-defaults write com.apple.HIToolbox AppleFnUsageType -int "2"
+#
+defaults write com.apple.dock "orientation" -string "bottom"
 
-# F1, F2, etc. behave as standard function keys. Press the fn key to use the special features printed on the key.
-defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
+# Set the icon size of Dock items to 36 pixels
+defaults write com.apple.dock "tilesize" -int 36
 
-###############################################################################
-# Finder                                                                    #
-###############################################################################
+# Set the magnification size of Dock items to 64 pixels
+defaults write com.apple.dock "magnification" -int 48
 
-# Show all file extensions inside the Finder
+# Enable magnification
+defaults write com.apple.dock "magnification" -bool true
+
+# Automatically hide and show the Dock
+defaults write com.apple.dock "autohide" -bool "true"
+
+# Set the autohide delay to 0.2 seconds
+defaults write com.apple.dock "autohide-time-modifier" -float "0.2"
+
+# Set the autohide animation duration to 0.1 seconds
+defaults write com.apple.dock "autohide-delay" -float "0.1"
+
+# Set the Dock to show only open applications
+defaults write com.apple.dock "show-recents" -bool "false"
+
+# Show how applications are running in the Dock
+defaults write com.apple.dock "mineffect" -string "scale"
+
+killall Dock
+
+###################################################################################
+# Finder                                                                      #
+###################################################################################
+
+# Show extensions in Finder
 defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"
 
-# Show hidden files inside the Finder
+# Show hidden files in Finder
 defaults write com.apple.finder "AppleShowAllFiles" -bool "true"
 
-# Show path bar inside the Finder
+# Show path bar in Finder
 defaults write com.apple.finder "ShowPathbar" -bool "true"
 
-# Keep folders on top
+# Keep folders on top when sorting by name
 defaults write com.apple.finder "_FXSortFoldersFirst" -bool "true"
 
 # Automatically empty bin after 30 days
 defaults write com.apple.finder "FXRemoveOldTrashItems" -bool "true"
 
-# Do not display the warning when changing a file extension
+# Don't display a warning when changing a file extension in the Finder
 defaults write com.apple.finder "FXEnableExtensionChangeWarning" -bool "false"
-
-# Show hard drives on the desktop
-defaults write com.apple.finder "ShowHardDrivesOnDesktop" -bool "true"
-
-# Desktop: Keep folders on top
-defaults write com.apple.finder "_FXSortFoldersFirstOnDesktop" -bool "true"
-
-###############################################################################
-# Menu bar                                                                    #
-###############################################################################
-
-# Thu 18 Aug 21:46:18
-defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM HH:mm:ss\""
 
 killall Finder
 
-# Restart automatically if the computer freezes
-#if [[ "$RUN_AS_ROOT" = true ]]; then
-#  systemsetup -setrestartfreeze on
-#fi
+#set +x
+

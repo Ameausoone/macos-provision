@@ -13,6 +13,8 @@ It will :
 
 ## How to install it the first time ?
 
+* install brew : [brew.sh/](https://brew.sh/)
+* install ansible : `brew install ansible`
 * checkout project in `~/Projects/wk_perso/macos-setup/macos-provision`.
 * copy `roles/mac-dev-playbook/files/ansible/ansible.cfg` in ~/.ansible.cfg
 * init file `inventory` file in `~/.ansible/inventory` e.g.
