@@ -22,7 +22,6 @@ homebrew_installed_packages:
   - autojump                # autojump is a faster way to navigate your filesystem
   - antigen                 # package manager for zsh
   - asciinema               # asciinema is a terminal session recorder
-
   - atuin                   # atuin is a modern history command
   - awscli                  # awscli is a command-line interface for AWS
   - bash                    # bash is a shell
@@ -40,7 +39,7 @@ homebrew_installed_packages:
   - docker-credential-helper # Docker Credential Helper
   - dos2unix                # Convert files from DOS to Unix format
   - font-meslo-for-powerlevel10k # Meslo Nerd Font patched for Powerlevel10k
-  - fzf
+  - fzf                     # fzf is a command-line fuzzy finder
   - ghostty                 # GhostTy is a fast and lightweight terminal emulator
   - git                     # Git is a version control system
   - gh            # GitHub CLI
@@ -52,18 +51,18 @@ homebrew_installed_packages:
   # FIXME Install it manually
   #- gpg-suite-no-mail       # For signing commits
   - graphviz                # Graphviz is a graph visualization tool
-  - hashicorp/tap/hcp       #
+  - grc                     # Generic Colouriser is a tool for colorizing the output of commands
+  - hashicorp/tap/hcp       # HCP is a HashiCorp Cloud Platform
   - hashicorp/tap/terraform-ls # terraform-ls is a terraform plugin for vscode
-  - hashicorp/tap/waypoint  # waypoint
-  # There is a bug, install it manually
+  - hashicorp/tap/waypoint  # Waypoint is a tool for managing the lifecycle of applications
   - highlight               # Syntax highlighting for your terminal
   - htop                    # htop is an interactive process viewer
   - jq                      # jq is a lightweight and flexible command-line JSON processor
   - k9s                     # k9s is a Kubernetes CLI
   - lf                      # lf is a terminal file manager
   - markdownlint-cli        # markdownlint-cli is a Node.js style checker and lint tool for Markdown/CommonMark files
-  - mise
-  #- npm                     # npm is a package manager for JavaScript
+  - mise                    # mise is a tool to manage application versioning
+  #- npm                    # npm is a package manager for JavaScript
   - node                    # Node.js is a JavaScript runtime
   #- nvm                     # Node Version Manager
   - openssl                 # OpenSSL is a toolkit for implementing SSL/TLS
@@ -81,7 +80,7 @@ homebrew_installed_packages:
   - via                     # via is an application to manage keyboard mappings
   - warp                    # warp is a modern terminal
   - wget                    # wget is a command line downloader
-  - zen
+  - zen                     # zen is a browser based on Firefox with Arc features
   - zsh                     # zsh is a shell interpreter for interactive programs and scripts
 
 homebrew_cask_apps:

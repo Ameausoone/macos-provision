@@ -74,12 +74,8 @@ alias goo="google"
 # Howdoi
 alias hdi="howdoi -c -n 2"
 
-# Diff
+# Improve default diff
 alias diff="grc diff"
 
 # highlight
 alias yaml="highlight --force --syntax yaml"
-
-# Notify
-alias notify='osascript -e "display notification \"Script finished\" with title \"Over\""'
-alias n=notify
