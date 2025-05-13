@@ -14,12 +14,12 @@ plugins=(
     gcloud                  # add gcloud autocomplete
     git                     # Git aliases and auto-completion
     gh                      # Github cli tool
-    git-auto-fetch
+    git-auto-fetch          # Automatically fetch git remotes
     gpg-agent               # enable GPG agent if not already enabled
-    helm
+    helm                    # Helm aliases and auto-completion
     iterm2
     macos
-    mise
+    mise                    # Mise en place (asdf alternative)
     poetry-env              # Poetry env load venv automatically
     poetry                  # Poetry aliases and auto-completion
     terraform               # Terraform aliases and auto-completion

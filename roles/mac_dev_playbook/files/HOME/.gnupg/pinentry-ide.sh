@@ -7,4 +7,4 @@ if [ -n "$PINENTRY_USER_DATA" ]; then
     ;;
   esac
 fi
-exec /usr/local/bin/pinentry-mac "$@"
+exec /opt/homebrew/bin/pinentry-mac "$@"
