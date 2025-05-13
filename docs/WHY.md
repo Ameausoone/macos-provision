@@ -242,7 +242,7 @@ Alors, un problème qui est survenu assez rapidement concerne la dépendance ent
 │       ├── 01_oh-my-zsh-plugins.zsh
 ...
 │       ├── 10_ansible.zsh
-│       ├── 10_asdf.zsh
+│       ├── 10_mise.zsh
 │       ├── 10_autojump.zsh
 │       ├── 10_coreutils.zsh
 │       ├── 10_npm.zsh

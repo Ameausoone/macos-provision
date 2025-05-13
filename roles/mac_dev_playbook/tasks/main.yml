@@ -10,14 +10,11 @@
   tags:
     - brew
 
-- name: Install npm packages
-  ansible.builtin.import_tasks: npm.yml
+#- name: Install npm packages
+#  ansible.builtin.import_tasks: npm.yml
 
-- name: Install pip packages
-  ansible.builtin.import_tasks: packages.yml
-
-- name: Install custom Google tool
-  ansible.builtin.import_tasks: ghpc.yml
+# - name: Install pip packages
+#   ansible.builtin.import_tasks: packages.yml
 
 - name: Install docker
   ansible.builtin.import_tasks: docker.yml

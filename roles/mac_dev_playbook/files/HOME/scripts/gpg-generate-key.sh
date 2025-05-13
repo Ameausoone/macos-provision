@@ -22,7 +22,6 @@ set -o pipefail
 PASSWORD=$(openssl rand -base64 32)
 echo "Generated password: $PASSWORD"
 echo "Please store this password securely, as it is required to use the GPG key."
-echo "Update also the ansible/inventory file with the gpg key id (after 'sec   rsa4096/...')."
 echo "Maybe you'll need to comment 'no-tty' in the gpg.conf file."
 
 # Set the GPG_TTY environment variable

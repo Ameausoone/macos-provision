@@ -1,0 +1,19 @@
+[tools]
+# Versions précises (outils critiques pour CI/CD ou déploiement)
+#terraform = "1.10.4"
+#terragrunt = "0.72.2"
+#tflint = "0.55.0"
+#tf-summarize = "v0.3.10"
+#gcloud = "517.0.0"
+#kubectl = "1.32.1"
+#poetry = "1.4.0"
+
+# Versions flexibles (tls = version majeure ou mineure seulement)
+flux2 = "2"
+golang = "1"
+hugo = "0"
+helm = "3"
+java = "openjdk-21"
+packer = "1"
+shfmt = "3"
+terraform-docs = "0"

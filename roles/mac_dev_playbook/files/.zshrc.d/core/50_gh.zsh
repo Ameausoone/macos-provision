@@ -4,7 +4,7 @@
 # https://github.com/davidraviv/gh-clean-branches
 
 # enable github copilot cli
-eval "$(github-copilot-cli alias -- "$0")"
+#eval "$(github-copilot-cli alias -- "$0")"
 
 eval "$(gh completion --shell zsh)"
 

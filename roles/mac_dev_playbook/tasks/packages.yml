@@ -1,16 +1,8 @@
 ---
-- name: ADSF install plugins
-  ansible.builtin.command: "asdf plugin add {{ item.name }} {{ item.repository | default() }}"
-  args:
-    creates: "{{ ansible_env.HOME }}/.asdf/plugins/{{ item.name }}"
-  loop: "{{ asdf_plugins }}"
-  when: asdf_plugins|length > 0
-  failed_when: false
-  tags:
-    - asdf
 
 - name: Install pip packages
   ansible.builtin.pip:
+    # FIXME
     executable: "{{ ansible_env.HOME }}/.asdf/shims/pip"
     name: "{{ item }}"
     state: present

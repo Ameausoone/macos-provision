@@ -11,7 +11,7 @@
 [column]
   ui = auto                         # Enable column display.
 [commit]
-  template = ~/.gitmessage          # Conventionnal commit message template.
+  template = ~/.gitmessage          # Conventional commit message template.
   gpgsign = true                    # Sign commits using GPG.
   verbose = true                    # Show the diff of the commit.
 [rerere]                            # Reuse recorded resolution of conflicted merges.

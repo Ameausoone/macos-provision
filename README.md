@@ -11,7 +11,7 @@ It will :
 * copy dotfiles which configure various applications(Git, npm, terraform, asdf) in home.
 * copy some zsh script, mainly for configuration and some helper functions and aliases.
 
-## How to install it ?
+## How to install it the first time ?
 
 * checkout project in `~/Projects/wk_perso/macos-setup/macos-provision`.
 * copy `roles/mac-dev-playbook/files/ansible/ansible.cfg` in ~/.ansible.cfg
@@ -19,11 +19,19 @@ It will :
 
 ```text
 [localhost]
-mac-name gpg_key=${my-local-gpg-key}
+${HOSTNAME}
 ```
 
 * then go to `~/Projects/wk_perso/macos-setup/macos-provision`.
 * run `ansible-playbook main.yml --diff --verbose --inventory ~/.inventory --limit $(hostname)`.
+* authenticate to GitHub
+  ```shell
+  gh auth login
+  ```
+* change default shell
+  ```shell
+  chsh -s $(which zsh)
+  ```
 
 ## How to use it ?
 
@@ -49,11 +57,11 @@ Terraform tools are documented in [terraform-family.md](docs/terraform-family.md
 
 At your own risk, this playbook doesn't aim to be used by someone else, it's just to share how I provision my computers.
 
-### asdf : install all plugins in once
+### mise: install tools
 
-```shell
- cut -d ' ' -f1 .tool-versions | xargs -I _ asdf plugin-add _
- ```
+  ```shell
+  mise install
+  ```
 
 ### Set up GPG commit signing
 
@@ -61,7 +69,6 @@ At your own risk, this playbook doesn't aim to be used by someone else, it's jus
   ```shell
   gpg --full-generate-key
   ```
-
 
 - Look at the excellent article here by https://github.com/Thomgrus: https://www.sfeir.dev/securite/securite-signer-ses-commits/
 

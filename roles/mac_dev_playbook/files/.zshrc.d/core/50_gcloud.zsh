@@ -11,10 +11,10 @@ alias gke-credentials='gcloud container clusters get-credentials'
 
 # Autocompletion
 # The next line updates PATH for the Google Cloud SDK.
-source "$(asdf where gcloud)/path.zsh.inc"
+source "$(mise where gcloud)/path.zsh.inc"
 
 # The next line enables zsh completion for gcloud.
-source "$(asdf where gcloud)/completion.zsh.inc"
+source "$(mise where gcloud)/completion.zsh.inc"
 
 # Add hpc toolkit to path
 export PATH="${HOME}/hpc-toolkit:${PATH}"

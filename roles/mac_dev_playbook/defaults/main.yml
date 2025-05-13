@@ -6,6 +6,7 @@ homebrew_taps:
   - hashicorp/tap
 
 homebrew_absent_packages:
+  - asdf
   - tfenv
   - kubernetes-cli
   - conftest
@@ -21,7 +22,7 @@ homebrew_installed_packages:
   - autojump                # autojump is a faster way to navigate your filesystem
   - antigen                 # package manager for zsh
   - asciinema               # asciinema is a terminal session recorder
-  - asdf                    # asdf is package manager
+
   - atuin                   # atuin is a modern history command
   - awscli                  # awscli is a command-line interface for AWS
   - bash                    # bash is a shell
@@ -31,26 +32,29 @@ homebrew_installed_packages:
   - bitwarden-cli           # Bitwarden is a password manager
   - colima                  # colima is a lightweight VM for running Kubernetes on macOS
   - dive                    # Tools to explore docker layers with an UI
-  - docker                  # Docker is a tool designed to make it easier to create, deploy, and run applications by using containers
+  # FIXME install docker manually
+  #- docker                  # Docker is a tool designed to make it easier to create, deploy, and run applications by using containers
   - docker-buildx           # Docker Buildx is a CLI plugin that extends the docker command
                             # with the full support of the features provided by Moby BuildKit builder toolkit
   - docker-compose          # Docker Compose is a tool for defining and running multi-container Docker applications
   - docker-credential-helper # Docker Credential Helper
   - dos2unix                # Convert files from DOS to Unix format
   - font-meslo-for-powerlevel10k # Meslo Nerd Font patched for Powerlevel10k
+  - fzf
   - ghostty                 # GhostTy is a fast and lightweight terminal emulator
   - git                     # Git is a version control system
-  - github/gh/gh            # GitHub CLI
+  - gh            # GitHub CLI
   - gnu-sed                 # GNU version of sed
   # Need to remove original gpg once installed
   # rm '/usr/local/bin/gpg'
   # brew link gnupg
   - gnupg                   # gnupg is a tool for managing GnuPG keys
-  - gpg-suite-no-mail       # For signing commits
+  # FIXME Install it manually
+  #- gpg-suite-no-mail       # For signing commits
   - graphviz                # Graphviz is a graph visualization tool
   - hashicorp/tap/hcp       #
   - hashicorp/tap/terraform-ls # terraform-ls is a terraform plugin for vscode
-  - hashicorp/tap/waypoint     # waypoint
+  - hashicorp/tap/waypoint  # waypoint
   # There is a bug, install it manually
   - highlight               # Syntax highlighting for your terminal
   - htop                    # htop is an interactive process viewer
@@ -58,25 +62,26 @@ homebrew_installed_packages:
   - k9s                     # k9s is a Kubernetes CLI
   - lf                      # lf is a terminal file manager
   - markdownlint-cli        # markdownlint-cli is a Node.js style checker and lint tool for Markdown/CommonMark files
-  - npm                     # npm is a package manager for JavaScript
+  - mise
+  #- npm                     # npm is a package manager for JavaScript
   - node                    # Node.js is a JavaScript runtime
-  - nvm                     # Node Version Manager
+  #- nvm                     # Node Version Manager
   - openssl                 # OpenSSL is a toolkit for implementing SSL/TLS
   - parallel                # GNU parallel is a shell tool for executing jobs in parallel
   - pre-commit              # pre-commit is a git pre-commit hook framework
   - pigz                    # gzip with parallel support
   - pinentry-mac            # pinentry-mac is a pinentry for GPG on Mac
   - powerlevel10k           # famous theme
-  - pyenv                   # pyenv is a python version manager useful for asdf
-  - pygmentize              # Pygments is a generic syntax highlighter
+  - pygments                # Pygments is a generic syntax highlighter
   - python-yq               # CPE Team use python-yq
   - rust                    # Rust is a systems programming language
   - slides                  # Slides is a terminal based presentation tool
   - tree                    # tree is a directory listing utility
-  - vault                   # Vault is a tool for managing secrets
+  - hashicorp/tap/vault     # Vault is a tool for managing secrets
   - via                     # via is an application to manage keyboard mappings
   - warp                    # warp is a modern terminal
   - wget                    # wget is a command line downloader
+  - zen
   - zsh                     # zsh is a shell interpreter for interactive programs and scripts
 
 homebrew_cask_apps:
@@ -91,20 +96,6 @@ npm_installed_packages:
   - yarn                    # yarn is a package manager for JavaScript
   - editorconfig            # editorconfig is a plugin for your code editor that helps enforce consistent coding styles
   - "@devcontainers/cli"      # devcontainers is a command line tool for managing devcontainers
-
-# FIXME Use directly .tool-versions
-asdf_plugins:
-  - name: terraform
-  - name: kubectl
-  - name: terraform-docs
-  - name: conftest
-  - name: terraform-validator
-  - name: fluxctl
-  - name: hub
-  - name: packer
-    repository: https://github.com/asdf-community/asdf-hashicorp.git
-  - name: golang
-  - name: java
 
 pip_packages:
   - aiven-client
