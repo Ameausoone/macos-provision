@@ -1,4 +1,5 @@
 #!/bin/sh
+# This script is provided by the IntelliJ IDEA IDE and is used to handle GPG pinentry requests.
 if [ -n "$PINENTRY_USER_DATA" ]; then
   case "$PINENTRY_USER_DATA" in
     IJ_PINENTRY=*)
