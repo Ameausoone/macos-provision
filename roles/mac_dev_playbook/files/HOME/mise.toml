@@ -1,8 +1,6 @@
 [tools]
- Versions précises (outils critiques pour CI/CD ou déploiement)
-terraform = "1.10.4"
+terraform = "1.11"
 
-# Versions flexibles (tls = version majeure ou mineure seulement)
 terragrunt = "0"
 tflint = "0"
 tf-summarize = "v0"
