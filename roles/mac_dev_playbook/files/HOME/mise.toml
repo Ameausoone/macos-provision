@@ -1,6 +1,5 @@
 [tools]
 terraform = "1.11"
-
 terragrunt = "0"
 tflint = "0"
 tf-summarize = "v0"

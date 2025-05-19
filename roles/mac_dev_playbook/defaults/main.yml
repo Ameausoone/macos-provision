@@ -58,6 +58,7 @@ homebrew_installed_packages:
   - highlight               # Syntax highlighting for your terminal
   - htop                    # htop is an interactive process viewer
   - jq                      # jq is a lightweight and flexible command-line JSON processor
+  - just                    # just is a command runner, a simpler alternative to make
   - k9s                     # k9s is a Kubernetes CLI
   - lf                      # lf is a terminal file manager
   - markdownlint-cli        # markdownlint-cli is a Node.js style checker and lint tool for Markdown/CommonMark files
