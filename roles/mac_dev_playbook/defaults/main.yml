@@ -12,6 +12,7 @@ homebrew_absent_packages:
   - conftest
   - hub
   - krew
+  - pre-commit              # pre-commit is a git pre-commit hook framework, install it from mise instead
   - yq              # use python-yq instead
 
 homebrew_installed_packages:
@@ -62,18 +63,19 @@ homebrew_installed_packages:
   - k9s                     # k9s is a Kubernetes CLI
   - lf                      # lf is a terminal file manager
   - markdownlint-cli        # markdownlint-cli is a Node.js style checker and lint tool for Markdown/CommonMark files
+  - markdownlint-cli2       # is a slightly unconventional command-line interface for markdownlint.
   - mise                    # mise is a tool to manage application versioning
   #- npm                    # npm is a package manager for JavaScript
   - node                    # Node.js is a JavaScript runtime
   #- nvm                     # Node Version Manager
   - openssl                 # OpenSSL is a toolkit for implementing SSL/TLS
   - parallel                # GNU parallel is a shell tool for executing jobs in parallel
-  - pre-commit              # pre-commit is a git pre-commit hook framework
   - pigz                    # gzip with parallel support
   - pinentry-mac            # pinentry-mac is a pinentry for GPG on Mac
   - powerlevel10k           # famous theme
   - pygments                # Pygments is a generic syntax highlighter
   - python-yq               # CPE Team use python-yq
+  - qemu                    # QEMU is a generic and open source machine emulator and virtualizer, used for running containers with colima
   - rust                    # Rust is a systems programming language
   - slides                  # Slides is a terminal based presentation tool
   - tree                    # tree is a directory listing utility
