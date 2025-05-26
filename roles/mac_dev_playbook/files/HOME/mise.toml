@@ -1,11 +1,9 @@
 [settings]
 experimental = true
 
-[hooks.enter]
-script = "mise install"
-
-[hooks.cd]
-script = "mise install"
+[hooks]
+cd = "mise install"
+enter = "mise install"
 
 [tools]
 flux2 = "2"
