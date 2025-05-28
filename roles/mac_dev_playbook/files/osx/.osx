@@ -19,10 +19,12 @@
 #
 # @see: http://secrets.blacktree.com/?showapp=com.apple.finder
 # @see: https://github.com/herrbischoff/awesome-macos-command-line
+# @see: https://macos-defaults.com/
 #
 # @author Antoine Meausoone
 # @from Jeff Geerling
 
+set +x
 # Warn that some commands will not be run if the script is not run as root.
 if [[ $EUID -ne 0 ]]; then
   RUN_AS_ROOT=false
@@ -47,13 +49,18 @@ fi
 ###############################################################################
 
 # Save screenshots to Downloads folder.
-defaults write com.apple.screencapture location -string "${HOME}/Downloads"
+defaults write com.apple.screencapture location -string "~/Pictures"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
 
 # Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
+
+# Display the thumbnail after taking a screenshot
+defaults write com.apple.screencapture "show-thumbnail" -bool "true"
+
+killall SystemUIServer
 
 ###############################################################################
 # General UI/UX                                                               #
@@ -71,7 +78,57 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
+###############################################################################
+# Keyboard                                                                    #
+###############################################################################
+
+# By default, when a key is held down, the accents menu is displayed.
+defaults write NSGlobalDomain "ApplePressAndHoldEnabled" -bool "true"
+
+# Opens the Character Viewer for entering emoji, symbols, and more.
+defaults write com.apple.HIToolbox AppleFnUsageType -int "2"
+
+# F1, F2, etc. behave as standard function keys. Press the fn key to use the special features printed on the key.
+defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
+
+###############################################################################
+# Finder                                                                    #
+###############################################################################
+
+# Show all file extensions inside the Finder
+defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"
+
+# Show hidden files inside the Finder
+defaults write com.apple.finder "AppleShowAllFiles" -bool "true"
+
+# Show path bar inside the Finder
+defaults write com.apple.finder "ShowPathbar" -bool "true"
+
+# Keep folders on top
+defaults write com.apple.finder "_FXSortFoldersFirst" -bool "true"
+
+# Automatically empty bin after 30 days
+defaults write com.apple.finder "FXRemoveOldTrashItems" -bool "true"
+
+# Do not display the warning when changing a file extension
+defaults write com.apple.finder "FXEnableExtensionChangeWarning" -bool "false"
+
+# Show hard drives on the desktop
+defaults write com.apple.finder "ShowHardDrivesOnDesktop" -bool "true"
+
+# Desktop: Keep folders on top
+defaults write com.apple.finder "_FXSortFoldersFirstOnDesktop" -bool "true"
+
+###############################################################################
+# Menu bar                                                                    #
+###############################################################################
+
+# Thu 18 Aug 21:46:18
+defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM HH:mm:ss\""
+
+killall Finder
+
 # Restart automatically if the computer freezes
-if [[ "$RUN_AS_ROOT" = true ]]; then
-  systemsetup -setrestartfreeze on
-fi
+#if [[ "$RUN_AS_ROOT" = true ]]; then
+#  systemsetup -setrestartfreeze on
+#fi
