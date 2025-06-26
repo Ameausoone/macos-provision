@@ -62,6 +62,7 @@ homebrew_installed_packages:
   - just                    # just is a command runner, a simpler alternative to make
   - k9s                     # k9s is a Kubernetes CLI
   - lf                      # lf is a terminal file manager
+  - lima-additional-guestagents # Lima guest agents for additional VM support, necessary for colima
   - markdownlint-cli        # markdownlint-cli is a Node.js style checker and lint tool for Markdown/CommonMark files
   - markdownlint-cli2       # is a slightly unconventional command-line interface for markdownlint.
   - mise                    # mise is a tool to manage application versioning
