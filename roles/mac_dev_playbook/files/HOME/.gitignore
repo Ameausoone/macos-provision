@@ -36,3 +36,6 @@ vendor/
 **/credentials.json
 # AWS
 **/credentials
+
+# Claude
+**/.claude
