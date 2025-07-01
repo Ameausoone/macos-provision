@@ -10,7 +10,7 @@
   tags:
     - brew
 
-#- name: Install npm packages
+# - name: Install npm packages
 #  ansible.builtin.import_tasks: npm.yml
 
 # - name: Install pip packages

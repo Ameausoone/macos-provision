@@ -12,14 +12,14 @@
     state: absent
 
 - name: Install homebrew package
-  #failed_when: false
+  # failed_when: false
   community.general.homebrew:
     name: "{{ homebrew_installed_packages }}"
     state: present
     upgrade_all: true
 
 - name: Install homebrew cask package
-  #failed_when: false
+  # failed_when: false
   community.general.homebrew_cask:
     name: "{{ homebrew_cask_apps }}"
     state: present
