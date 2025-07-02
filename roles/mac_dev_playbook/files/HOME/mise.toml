@@ -8,7 +8,7 @@ enter = "mise install"
 [tools]
 flux2 = "2"
 gcloud = "517"
-golang = "1"
+golang = "1.24.4"
 helm = "3"
 hugo = "0"
 java = "openjdk-21"
