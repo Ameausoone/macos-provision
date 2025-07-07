@@ -1,3 +1,3 @@
 #!/usr/bin/env zsh
 
-#source <(flux completion bash)
+source <(flux completion zsh)
