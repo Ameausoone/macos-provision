@@ -32,7 +32,7 @@ function gitandans() {
 # then it will run git add,
 # commit, push,
 # and it will run the ansible playbook
-function macans() {
+function push() {
   cd "${MACOS_SETUP_DIR}/macos-provision" && \
   gitandans "${1}"
 }
@@ -42,7 +42,7 @@ alias ..="cd .."
 
 alias uwk="cd ~/Projects/wk_perso/"
 
-alias macconfig="idea ${MACOS_SETUP_DIR}"
+alias config="idea ${MACOS_SETUP_DIR}"
 
 function cheat(){
   echo "gitcheat"
