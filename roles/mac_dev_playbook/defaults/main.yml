@@ -83,6 +83,7 @@ homebrew_installed_packages:
   - hashicorp/tap/vault     # Vault is a tool for managing secrets
   - via                     # via is an application to manage keyboard mappings
   - warp                    # warp is a modern terminal
+  - watch                   # watch is a command that runs a program periodically, showing output fullscreen
   - wget                    # wget is a command line downloader
   - zen                     # zen is a browser based on Firefox with Arc features
   - zsh                     # zsh is a shell interpreter for interactive programs and scripts
