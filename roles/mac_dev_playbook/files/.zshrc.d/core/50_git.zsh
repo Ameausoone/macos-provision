@@ -1,8 +1,5 @@
 #!/usr/bin/env zsh
 
-
-alias gcml="gcm && gl"
-
 ### Editor ###
 export EDITOR='idea -e --wait'
 
@@ -23,6 +20,6 @@ alias status='git status && echo "---" && git log --oneline -3'
 alias changes='git diff HEAD~1'
 
 # Quick branch management
-alias main='git checkout main && git pull'
+alias main="gcm && gl"
 alias newbranch='git checkout -b'
 alias deletebranch='git branch -d'
