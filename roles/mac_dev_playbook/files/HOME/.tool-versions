@@ -12,6 +12,6 @@ shfmt 3.10.0
 terraform 1.10.4
 terraform-docs 0.19.0
 terragrunt 0.72.2
-tflint 0.55.0
+tflint 0.59.1
 tf-summarize v0.3.10
 poetry 1.4.0
