@@ -6,6 +6,7 @@ cd = "mise install"
 enter = "mise install"
 
 [tools]
+claude-code = "latest"
 flux2 = "2"
 gcloud = "517"
 golang = "1"
