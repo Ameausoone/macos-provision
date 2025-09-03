@@ -1,7 +1,7 @@
 # Don't forget to add custom plugins to the list in macos-provision/roles/mac_dev_playbook/defaults/main.yml
 flux2 2.4.0
 gcloud 517.0.0
-golang 1.23.5
+golang 1.25.1
 hugo 0.141.0
 helm 3.17.0
 java openjdk-21
