@@ -1,6 +1,10 @@
 # Strict
 Be strict on proposed code.
 
+# Pull-request
+Respect semantic release for commit messages and PR titles.
+Do not sign Pull Requests, or commits.
+
 # bash-command-fix
 When using a regular unix command in bash tool, always use /usr/bin/ path instead of regular `cd` command to avoid zsh config issues like "__autoenv_cd" errors.
 
