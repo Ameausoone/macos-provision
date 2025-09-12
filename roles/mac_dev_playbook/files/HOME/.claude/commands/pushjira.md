@@ -5,8 +5,6 @@ Open a GitHub pull request with a relevant title and detailed description of wha
 
 Where `type` is one of semantic release types (feat, fix, docs, style, refactor, perf, test, chore), `scope` is a brief description of the area affected (optional), and `$JIRA_ID` is the Jira ticket ID created earlier.
 
-
-
 - **Config changes**: `feat/add-github-java-workflows-testbed` → "feat: add github-java-project-workflows-testbed repository"
 - **Bug fixes**: `fix/resolve-auth-timeout` → "fix: resolve authentication timeout in login flow"
 - **Documentation**: `docs/update-api-examples` → "docs: update API usage examples with new endpoints"
