@@ -89,8 +89,6 @@ homebrew_installed_packages:
   - wget                    # wget is a command line downloader
   - zen                     # zen is a browser based on Firefox with Arc features
   - zsh                     # zsh is a shell interpreter for interactive programs and scripts
-
-homebrew_cask_apps:
   - iterm2                  # iTerm2 is a terminal replacement
   - intellij-idea           # IntelliJ IDEA is a Java IDE
   - keystore-explorer       # Keystore Explorer is a tool for managing Java keystores
