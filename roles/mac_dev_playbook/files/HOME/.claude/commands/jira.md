@@ -1,1 +1,0 @@
-According to current branch or git diff, or actual PR opened, create a Jira ticket with the same title and description as the PR, try to search to matching assigned epic tickets, link it to the epic if found and link the PR to the ticket.
