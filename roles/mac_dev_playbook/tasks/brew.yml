@@ -18,13 +18,6 @@
     state: present
     upgrade_all: true
 
-- name: Install homebrew cask package
-  # failed_when: false
-  community.general.homebrew_cask:
-    name: "{{ homebrew_cask_apps }}"
-    state: present
-    update_homebrew: true
-
 - name: Upgrade all homebrew packages (if configured).
   failed_when: false
   community.general.homebrew:

@@ -38,7 +38,7 @@ function creds_upsert_local_secret(){
     echo "  ~> Create $keychain_entry"
     security add-generic-password -a "${LOGNAME}" -w "${entry}" -s "${keychain_entry}"
   fi
-  echo "Now call creds_get_local_secret(\"\$domain\",\"\$secret\") to get the secret."
+  echo "Now call \$\(creds_get_local_secret \"\$domain\" \"\$secret\"\) to get the secret."
 }
 
 # Get a secret from the keychain
