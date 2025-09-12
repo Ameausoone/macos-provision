@@ -4,6 +4,7 @@ homebrew_taps:
   - wagoodman/dive
   - instrumenta/instrumenta
   - hashicorp/tap
+  - ankitpokhrel/jira-cli
 
 homebrew_absent_packages:
   - asdf
@@ -58,6 +59,7 @@ homebrew_installed_packages:
   - hashicorp/tap/waypoint  # Waypoint is a tool for managing the lifecycle of applications
   - highlight               # Syntax highlighting for your terminal
   - htop                    # htop is an interactive process viewer
+  - jira-cli                # jira-cli is a command line interface for Jira
   - jq                      # jq is a lightweight and flexible command-line JSON processor
   - just                    # just is a command runner, a simpler alternative to make
   - k9s                     # k9s is a Kubernetes CLI
