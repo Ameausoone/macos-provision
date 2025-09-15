@@ -1,5 +1,7 @@
 # ASDF use ansible community version
 # https://docs.ansible.com/ansible/devel/reference_appendices/release_and_maintenance.html#ansible-community-changelogs
 [tools]
-ansible = "7.2.0"
+pipx = "latest"
+ansible = "latest"
 python = "3.13.1"
+java = "temurin-jre-24"
