@@ -3,4 +3,4 @@
 [tools]
 pipx = "latest"
 ansible = "latest"
-python = "3.13.1"
+python = "3.13.7"
