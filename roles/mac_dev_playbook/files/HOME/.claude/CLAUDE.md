@@ -14,7 +14,10 @@ Respect semantic release for commit messages and PR titles
 Do not specify "Generated with [Claude Code]" in pull request descriptions or commit messages
 
 # jira
-Privileged Jira MCP server
+Privileged Jira MCP server to interact with Jira server.
 
 # self-improvement
 If you make a mistake, or get an error and find the solution, propose a change in ~/CLAUDE.md to avoid making the same mistake again.
+
+# copilot-instructions.md
+If the file `.github/copilot-instructions.md` exists in a repository, read it and follow the instructions.

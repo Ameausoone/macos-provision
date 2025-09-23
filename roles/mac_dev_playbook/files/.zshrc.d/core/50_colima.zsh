@@ -14,7 +14,8 @@ function colima_start_async() {
 }
 
 # Auto-start colima asynchronously on shell init
-colima_start_async
+# colima_start_async
+# replaced by brew services start colima in mac_dev_playbook
 
 # Start colima if not started
 # alias docker="colima_up docker"

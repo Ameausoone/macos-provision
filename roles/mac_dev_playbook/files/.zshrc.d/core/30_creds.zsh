@@ -17,22 +17,18 @@ function check_cli_requirements () {
 }
 
 # Create or update a secret in the keychain
-# Usage: creds_upsert_local_secret <domain> <secret> [entry]
+# Usage: creds_upsert_local_secret <domain> <secret>
 # Returns: 0 on success, 1 on failure
 function creds_upsert_local_secret(){
-  if [[ "$#" -lt 2 ]]; then
-    echo "Usage : creds_upsert_local_secret <domain> <secret> [entry], will create or update a secret in the keychain"
-    echo "⛈️ ERROR ⛈️: creds_upsert_local_secret requires at least 2 arguments, got $#"
+  if [[ "$#" -ne 2 ]]; then
+    echo "Usage : creds_upsert_local_secret <domain> <secret>, will create or update a secret in the keychain"
+    echo "⛈️ ERROR ⛈️: creds_upsert_local_secret requires exactly 2 arguments, got $#"
     return 1
   fi
   local domain=$1
   local secret=$2
-  if [[ "$#" -eq 3 ]]; then
-    local entry="$3"
-  else
-    echo "  ~> Specify secret for $domain.$secret"
-    read -r entry
-  fi
+  echo "  ~> Specify secret for $domain.$secret"
+  read -r entry
 
   # Validate that the secret is not empty
   if [[ -z "$entry" ]]; then
