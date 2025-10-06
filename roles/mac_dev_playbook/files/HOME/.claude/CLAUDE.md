@@ -21,3 +21,6 @@ If you make a mistake, or get an error and find the solution, propose a change i
 
 # copilot-instructions.md
 If the file `.github/copilot-instructions.md` exists in a repository, read it and follow the instructions.
+
+# documentation
+When writing documentation, write it by default in English, unless specified otherwise.

@@ -102,7 +102,7 @@ npm_installed_packages:
   - editorconfig            # editorconfig is a plugin for your code editor that helps enforce consistent coding styles
   - "@devcontainers/cli"      # devcontainers is a command line tool for managing devcontainers
   - "@anthropic-ai/claude-code" # Anthropic AI's Claude Code CLI for interacting with their AI models
-
+  - "@github/copilot"      # GitHub Copilot CLI for AI-powered code completions
 pip_packages:
   - aiven-client
   - cookiecutter
