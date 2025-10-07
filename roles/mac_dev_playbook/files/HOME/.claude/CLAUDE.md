@@ -12,6 +12,7 @@ respect this rules when write markdown files:
 # pull-request-template
 Respect semantic release for commit messages and PR titles
 Do not specify "Generated with [Claude Code]" in pull request descriptions or commit messages
+Be concise and clear in descriptions, go right to the point
 
 # jira
 Privileged Jira MCP server to interact with Jira server.
