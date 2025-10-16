@@ -103,6 +103,8 @@ npm_installed_packages:
   - "@devcontainers/cli"      # devcontainers is a command line tool for managing devcontainers
   - "@anthropic-ai/claude-code" # Anthropic AI's Claude Code CLI for interacting with their AI models
   - "@github/copilot"      # GitHub Copilot CLI for AI-powered code completions
+  - "@google/gemini-cli@latest" # Google Gemini CLI for interacting with Gemini AI models
+
 pip_packages:
   - aiven-client
   - cookiecutter
