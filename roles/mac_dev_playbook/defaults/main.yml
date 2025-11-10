@@ -115,4 +115,4 @@ gh_cli_extensions:
   - github/gh-copilot       # GitHub CLI extension for Copilot
   - mislav/gh-branch        # GitHub CLI extension for managing branches
   - dlvhdr/gh-dash          # GitHub CLI extension for dashboards
-  - ahmadnassri/gh-notify   # GitHub CLI extension for notifications
+  - meiji163/gh-notify      # GitHub CLI extension for notifications
