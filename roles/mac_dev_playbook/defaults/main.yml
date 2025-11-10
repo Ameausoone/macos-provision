@@ -31,6 +31,7 @@ homebrew_installed_packages:
   - bat                     # cat with wings
   - bats                    # Bats is a Batch Test Suite
   - bitwarden-cli           # Bitwarden is a password manager
+  - chatgpt-atlas           # OpenAI's official browser with ChatGPT built in
   - colima                  # colima is a lightweight VM for running Kubernetes on macOS
   - dive                    # Tools to explore docker layers with an UI
   # FIXME install docker manually
@@ -52,6 +53,7 @@ homebrew_installed_packages:
   - gnupg                   # gnupg is a tool for managing GnuPG keys
   # FIXME Install it manually
   # - gpg-suite-no-mail       # For signing commits
+  - granola                 # AI-powered notepad for meetings
   - graphviz                # Graphviz is a graph visualization tool
   - grc                     # Generic Colouriser is a tool for colorizing the output of commands
   - hashicorp/tap/hcp       # HCP is a HashiCorp Cloud Platform
@@ -97,19 +99,20 @@ homebrew_installed_packages:
   - vlc                     # VLC is a free and open source cross-platform multimedia player and framework
 
 npm_installed_packages:
-  - tldr                    # tldr is a community driven documentation for the command line
-  - yarn                    # yarn is a package manager for JavaScript
-  - editorconfig            # editorconfig is a plugin for your code editor that helps enforce consistent coding styles
-  - "@devcontainers/cli"      # devcontainers is a command line tool for managing devcontainers
+  - tldr                        # tldr is a community driven documentation for the command line
+  - yarn                        # yarn is a package manager for JavaScript
+  - editorconfig                # editorconfig is a plugin for your code editor that helps enforce consistent coding styles
+  - "@devcontainers/cli"        # devcontainers is a command line tool for managing devcontainers
   - "@anthropic-ai/claude-code" # Anthropic AI's Claude Code CLI for interacting with their AI models
-  - "@github/copilot"      # GitHub Copilot CLI for AI-powered code completions
+  - "@github/copilot"           # GitHub Copilot CLI for AI-powered code completions
   - "@google/gemini-cli@latest" # Google Gemini CLI for interacting with Gemini AI models
 
 pip_packages:
-  - aiven-client
-  - cookiecutter
-  - howdoi
+  - aiven-client            # Aiven CLI client
+  - cookiecutter            # Cookiecutter is a command-line utility that creates projects from project templates
 
 gh_cli_extensions:
-  - github/gh-copilot
-  - mislav/gh-branch
+  - github/gh-copilot       # GitHub CLI extension for Copilot
+  - mislav/gh-branch        # GitHub CLI extension for managing branches
+  - dlvhdr/gh-dash          # GitHub CLI extension for dashboards
+  - ahmadnassri/gh-notify   # GitHub CLI extension for notifications
