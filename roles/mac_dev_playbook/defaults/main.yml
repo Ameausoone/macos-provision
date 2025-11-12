@@ -103,7 +103,6 @@ npm_installed_packages:
   - yarn                        # yarn is a package manager for JavaScript
   - editorconfig                # editorconfig is a plugin for your code editor that helps enforce consistent coding styles
   - "@devcontainers/cli"        # devcontainers is a command line tool for managing devcontainers
-  - "@anthropic-ai/claude-code" # Anthropic AI's Claude Code CLI for interacting with their AI models
   - "@github/copilot"           # GitHub Copilot CLI for AI-powered code completions
   - "@google/gemini-cli@latest" # Google Gemini CLI for interacting with Gemini AI models
 
