@@ -31,11 +31,8 @@ homebrew_installed_packages:
   - bat                     # cat with wings
   - bats                    # Bats is a Batch Test Suite
   - bitwarden-cli           # Bitwarden is a password manager
-  - chatgpt-atlas           # OpenAI's official browser with ChatGPT built in
-  - colima                  # colima is a lightweight VM for running Kubernetes on macOS
-  - dive                    # Tools to explore docker layers with an UI
-  # FIXME install docker manually
-  # - docker                  # Docker is a tool designed to make it easier to create, deploy, and run applications by using containers
+  - chatgpt-atlas           # OpenAI's official browser with ChatGPT built in on macOS
+  - dive                    # Tools to explore docker layers with an UI create, deploy, and run applications by using containers
   - docker-buildx           # Docker Buildx is a CLI plugin that extends the docker command
                             # with the full support of the features provided by Moby BuildKit builder toolkit
   - docker-compose          # Docker Compose is a tool for defining and running multi-container Docker applications
@@ -66,14 +63,10 @@ homebrew_installed_packages:
   - just                    # just is a command runner, a simpler alternative to make
   - k9s                     # k9s is a Kubernetes CLI
   - lf                      # lf is a terminal file manager
-  - lima                    # Lima is a lightweight VM for running containers and Kubernetes on macOS, works with colima
-  - lima-additional-guestagents # Lima guest agents for additional VM support, necessary for colima
   - markdownlint-cli        # markdownlint-cli is a Node.js style checker and lint tool for Markdown/CommonMark files
   - markdownlint-cli2       # is a slightly unconventional command-line interface for markdownlint.
   - mise                    # mise is a tool to manage application versioning
-  # - npm                    # npm is a package manager for JavaScript
   - node                    # Node.js is a JavaScript runtime
-  # - nvm                     # Node Version Manager
   - openssl                 # OpenSSL is a toolkit for implementing SSL/TLS
   - parallel                # GNU parallel is a shell tool for executing jobs in parallel
   - pigz                    # gzip with parallel support
@@ -81,7 +74,7 @@ homebrew_installed_packages:
   - powerlevel10k           # famous theme
   - pygments                # Pygments is a generic syntax highlighter
   - python-yq               # CPE Team use python-yq
-  - qemu                    # QEMU is a generic and open source machine emulator and virtualizer, used for running containers with colima
+  - rancher                 # Rancher is a container management platform
   - rust                    # Rust is a systems programming language
   - slides                  # Slides is a terminal based presentation tool
   - tree                    # tree is a directory listing utility
