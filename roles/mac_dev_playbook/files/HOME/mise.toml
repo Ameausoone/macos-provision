@@ -8,7 +8,7 @@ enter = "mise install"
 [tools]
 claude-code = "latest"      # Claude Code CLI tool
 flux2 = "2"                 # GitOps continuous delivery for Kubernetes
-gcloud = "517"              # Google Cloud CLI
+gcloud = "548"              # Google Cloud CLI
 golang = "1"                # Go programming language
 helm = "3"                  # Kubernetes package manager
 hugo = "0"                  # Static site generator
