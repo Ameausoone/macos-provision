@@ -142,4 +142,3 @@ defaults write com.apple.finder "FXEnableExtensionChangeWarning" -bool "false"
 killall Finder
 
 #set +x
-
