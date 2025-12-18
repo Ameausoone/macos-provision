@@ -25,3 +25,10 @@ If the file `.github/copilot-instructions.md` exists in a repository, read it an
 
 # documentation
 When writing documentation, write it by default in English, unless specified otherwise.
+
+# simplicity
+Keep code and documentation simple and straightforward:
+* Write tight, simple scripts without excessive formatting
+* Avoid colored output in error messages unless specifically requested
+* READMEs should be minimal and straight to the point - only essential setup and usage info
+* No verbose explanations or examples unless needed

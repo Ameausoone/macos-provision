@@ -33,8 +33,14 @@ function gitandans() {
 # commit, push,
 # and it will run the ansible playbook
 function push() {
+  local commit_msg="${1}"
+
+  if [[ -z "${commit_msg}" ]]; then
+    commit_msg=$(copilot --allow-tool 'shell(git:*)' --prompt "Write a commit msg from the git diff, #conventional commit, output exclusively the result" --silent)
+  fi
+
   cd "${MACOS_SETUP_DIR}/macos-provision" && \
-  gitandans "${1}"
+  gitandans "${commit_msg}"
 }
 
 alias cd..="cd .."
