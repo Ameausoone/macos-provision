@@ -32,6 +32,7 @@ homebrew_installed_packages:
   - bats                    # Bats is a Batch Test Suite
   - bitwarden-cli           # Bitwarden is a password manager
   - chatgpt-atlas           # OpenAI's official browser with ChatGPT built in on macOS
+  - copilot-cli             # GitHub Copilot CLI
   - dive                    # Tools to explore docker layers with an UI create, deploy, and run applications by using containers
   - docker-buildx           # Docker Buildx is a CLI plugin that extends the docker command
                             # with the full support of the features provided by Moby BuildKit builder toolkit
@@ -96,7 +97,6 @@ npm_installed_packages:
   - yarn                        # yarn is a package manager for JavaScript
   - editorconfig                # editorconfig is a plugin for your code editor that helps enforce consistent coding styles
   - "@devcontainers/cli"        # devcontainers is a command line tool for managing devcontainers
-  - "@github/copilot"           # GitHub Copilot CLI for AI-powered code completions
   - "@google/gemini-cli@latest" # Google Gemini CLI for interacting with Gemini AI models
 
 pip_packages:
@@ -104,7 +104,6 @@ pip_packages:
   - cookiecutter            # Cookiecutter is a command-line utility that creates projects from project templates
 
 gh_cli_extensions:
-  - github/gh-copilot       # GitHub CLI extension for Copilot
   - mislav/gh-branch        # GitHub CLI extension for managing branches
   - dlvhdr/gh-dash          # GitHub CLI extension for dashboards
   - meiji163/gh-notify      # GitHub CLI extension for notifications

@@ -1,11 +1,5 @@
 #!/usr/bin/env zsh
 
-# TODO gh extension install :
-# https://github.com/davidraviv/gh-clean-branches
-
-# enable github copilot cli
-#eval "$(github-copilot-cli alias -- "$0")"
-
 eval "$(gh completion --shell zsh)"
 
 function gh_copy_issue(){
@@ -67,38 +61,12 @@ function git_cherry_pick_commit(){
   echo -e "- Copy of #${pr_number} \n - fixes #${issue_number} \n\n $(gh pr view ${pr_number} --json 'body' --jq '.body')" | gh pr create --title "${pr_title}" --base "${current_branch}" --web --body-file=-
 }
 
-# {
-  #  "statusCheckRollup": [
-  #    {
-  #      "__typename": "CheckRun",
-  #      "completedAt": "2023-03-09T09:36:47Z",
-  #      "conclusion": "SUCCESS",
-  #      "detailsUrl": "https://github.com/dktunited/cpe-application-provisioning-system/actions/runs/4373034207/jobs/7650690202",
-  #      "name": "Triage",
-  #      "startedAt": "2023-03-09T09:36:39Z",
-  #      "status": "COMPLETED",
-  #      "workflowName": "Triage"
-  #    },
-  #     {
-  #      "__typename": "CheckRun",
-  #      "completedAt": "0001-01-01T00:00:00Z",
-  #      "conclusion": "",
-  #      "detailsUrl": "https://github.com/dktunited/cpe-application-provisioning-system/actions/runs/4373034255/jobs/7651166836",
-  #      "name": "full / Full integration",
-  #      "startedAt": "2023-03-09T10:02:45Z",
-  #      "status": "IN_PROGRESS",
-  #      "workflowName": "All In One"
-  #    },
 function gh_checks_status(){
   gh pr view --json 'statusCheckRollup' --jq '.statusCheckRollup[] | select(.status == "IN_PROGRESS") | .name' | xargs -I {} echo "gh run watch {}"
   # gh pr view --json 'state'
 
 }
 
-# example
-# {
-  #  "state": "OPEN"
-  #}
 function gh_is_pr_merged_with_icon(){
   gh pr view && gh pr view --json 'state' --template '{{if eq .state "OPEN"}}⛏{{else }}✅{{end}}'
 }
