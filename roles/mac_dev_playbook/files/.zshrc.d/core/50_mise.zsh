@@ -1,3 +1,4 @@
 #!/usr/bin/env zsh
 
-#launchctl setenv PATH "$(mise where pre-commit)/bin/:${PATH}"
+# Enable Mise https://github.com/jdx/mise
+eval "$(mise activate zsh)"
