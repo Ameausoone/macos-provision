@@ -27,3 +27,4 @@ terragrunt = "0"            # Terraform wrapper for DRY configurations
 tf-summarize = "v0"         # Tool to summarize Terraform plans
 tflint = "0"                # Terraform linter
 uv = "0"                    # Fast Python package installer
+watchexec= "latest"         # Run commands when files change

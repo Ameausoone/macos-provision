@@ -31,6 +31,8 @@ homebrew_installed_packages:
   - bat                     # cat with wings
   - bats                    # Bats is a Batch Test Suite
   - bitwarden-cli           # Bitwarden is a password manager
+  - bruno                   # Bruno is a tool to manage Bruno workspaces and projects
+  - bruno-cli               # Bruno CLI is a tool to manage Bruno workspaces and projects
   - chatgpt-atlas           # OpenAI's official browser with ChatGPT built in on macOS
   - copilot-cli             # GitHub Copilot CLI
   - dive                    # Tools to explore docker layers with an UI create, deploy, and run applications by using containers
