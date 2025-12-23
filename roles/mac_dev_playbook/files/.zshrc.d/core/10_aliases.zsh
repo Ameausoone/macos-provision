@@ -47,8 +47,6 @@ function push() {
 alias cd..="cd .."
 alias ..="cd .."
 
-alias uwk="cd ~/Projects/wk_perso/"
-
 alias config="idea ${MACOS_SETUP_DIR}"
 
 function cheat(){
