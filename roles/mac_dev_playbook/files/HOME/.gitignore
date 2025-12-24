@@ -38,5 +38,4 @@ vendor/
 **/credentials
 
 # Claude
-**/.claude
 **/CLAUDE.md

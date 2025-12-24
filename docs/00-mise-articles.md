@@ -131,3 +131,11 @@ Limites rencontrées, résistances, cas où `mise` n’était pas la meilleure s
 
 ### 4. Recommandations
 Conseils clairs et actionnables : pour quels contextes `mise` est pertinent, et dans quelles conditions il apporte le plus de valeur.
+
+
+## Linkedin
+
+
+Suite à un article de [Siegfried Ehret](https://sieg.fr/ied/avent-2025/04-mise/), puis de [Julien Wittouck](https://codeka.io/2025/12/19/adieu-direnv-bonjour-mise/) à propos de mise. J'ai découvert que, malgré mon usage régulier, j'avais loupé pas mal de choses sur cet outil prometteur. C'est donc l'occasion de creuser un peu plus cet excellent outil qu'est [mise]()
+
+J'ai utilisé [asdf](https://asdf-vm.com/) pendant années pour gérer les versions de divers outils dans mon environnement de développement, avant que mon collègue [Jean-Yves Lenhoff](https://www.linkedin.com/in/jean-yves-lenhof-980b401/) me fasse découvrir mise.
