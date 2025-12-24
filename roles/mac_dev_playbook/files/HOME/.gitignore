@@ -1,41 +1,69 @@
-# MacOS
+# OS
 *.DS_Store
 *.LSOverride
 Thumbs.db
+.Trash-*
 .bundle
 
-# IntelliJ
+# Editors
+*.swp
+*.swo
+*~
+
+# IDEs
 .idea/
 *.iml
-
-# VsCode
 .vscode/
 
-# Build Number Maven Plugin
-buildNumber.properties
+# Python
+__pycache__/
+*.pyc
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
 
-# Kubeconfig
-.kube/
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
 
-# Dumb files
-zz_*
-generated/*
+# Java
+*.class
+target/
 
 # Golang
 *.exe
 vendor/
 
-# autoenv
+# Infrastructure
+.kube/
+.mise.local.toml
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# Environment & Secrets
 **/.env
 **/.env.leave
-
-# credentials
-# vault
 **/.vault-token
-# GCP
 **/credentials.json
-# AWS
 **/credentials
+*.pem
+*.key
+*.cert
+*.p12
+*.pfx
 
-# Claude
+# AI Tools
 **/CLAUDE.md
+
+# Logs
+*.log
+logs/
+
+# Temporary
+zz_*
+generated/*
