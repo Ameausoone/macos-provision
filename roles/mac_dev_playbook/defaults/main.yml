@@ -53,7 +53,6 @@ homebrew_installed_packages:
   - gnupg                   # gnupg is a tool for managing GnuPG keys
   # FIXME Install it manually
   # - gpg-suite-no-mail       # For signing commits
-  - granola                 # AI-powered notepad for meetings
   - graphviz                # Graphviz is a graph visualization tool
   - grc                     # Generic Colouriser is a tool for colorizing the output of commands
   - hashicorp/tap/hcp       # HCP is a HashiCorp Cloud Platform
