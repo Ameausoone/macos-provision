@@ -131,9 +131,3 @@ mise run plan
 ## 4. À retenir
 - **Bonne pratique :** versionner `mise.toml` et garder un exemple **minimal** (versions + 2–3 tasks clés).
 - **Limite / piège :** ne pas transformer `mise` en “fourre-tout” ; garder les responsabilités (build Java / infra Terraform) dans les outils dédiés.
-
----
-
-## Annexes (optionnel)
-- Ajouter une section “Migration depuis asdf” en 5 lignes max (si utile).
-- Ajouter un snippet CI (GitHub Actions) dans l’article CI (Structure 2), pas ici.

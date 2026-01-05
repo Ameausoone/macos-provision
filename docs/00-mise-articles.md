@@ -139,3 +139,8 @@ Conseils clairs et actionnables : pour quels contextes `mise` est pertinent, et 
 Suite à un article de [Siegfried Ehret](https://sieg.fr/ied/avent-2025/04-mise/), puis de [Julien Wittouck](https://codeka.io/2025/12/19/adieu-direnv-bonjour-mise/) à propos de mise. J'ai découvert que, malgré mon usage régulier, j'avais loupé pas mal de choses sur cet outil prometteur. C'est donc l'occasion de creuser un peu plus cet excellent outil qu'est [mise]()
 
 J'ai utilisé [asdf](https://asdf-vm.com/) pendant années pour gérer les versions de divers outils dans mon environnement de développement, avant que mon collègue [Jean-Yves Lenhoff](https://www.linkedin.com/in/jean-yves-lenhof-980b401/) me fasse découvrir mise.
+
+
+## Annexes (optionnel)
+- Ajouter une section “Migration depuis asdf” en 5 lignes max (si utile).
+- Ajouter un snippet CI (GitHub Actions) dans l’article CI (Structure 2), pas ici.
