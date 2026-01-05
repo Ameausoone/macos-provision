@@ -16,12 +16,5 @@ source "$(mise where gcloud)/path.zsh.inc"
 # The next line enables zsh completion for gcloud.
 source "$(mise where gcloud)/completion.zsh.inc"
 
-# Add hpc toolkit to path
-export PATH="${HOME}/hpc-toolkit:${PATH}"
-
-# WARNING: ghpc binary was built from a different commit (main/8bac6ec) than the current git branch in /Users/ANTOINE/hpc-toolkit (main/f7abfbe). You can rebuild the binary by running 'make'
-# enable hpc autocompletion
-eval "$(ghpc completion zsh 2> /dev/null)"
-
 # cf https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke?hl=en
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
