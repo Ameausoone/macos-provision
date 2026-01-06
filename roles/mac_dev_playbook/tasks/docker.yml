@@ -4,14 +4,14 @@
 
 - name: Create directory for docker plugins
   ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.docker/cli-plugins"
+    path: "{{ ansible_facts.env.HOME }}/.docker/cli-plugins"
     mode: '0777'
     state: directory
 
 - name: Create symbolic links for docker plugins
   ansible.builtin.file:
     src: "{{ item }}"
-    dest: "{{ ansible_env.HOME }}/.docker/cli-plugins/{{ item | basename }}"
+    dest: "{{ ansible_facts.env.HOME }}/.docker/cli-plugins/{{ item | basename }}"
     state: link
   with_fileglob:
     - /usr/local/opt/docker-buildx/bin/docker-buildx

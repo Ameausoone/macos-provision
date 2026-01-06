@@ -2,7 +2,7 @@
 - name: "Clone or update oh-my-zsh"
   ansible.builtin.git:
     repo: "https://github.com/ohmyzsh/ohmyzsh"
-    dest: "{{ ansible_env.HOME }}/.oh-my-zsh"
+    dest: "{{ ansible_facts.env.HOME }}/.oh-my-zsh"
     single_branch: true
     version: master
     depth: 1

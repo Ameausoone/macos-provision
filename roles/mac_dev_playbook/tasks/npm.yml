@@ -2,5 +2,5 @@
   community.general.npm:
     name: "{{ item }}"
     global: true
-    path: "{{ ansible_env.HOME }}/.npm-packages/bin"
+    path: "{{ ansible_facts.env.HOME }}/.npm-packages/bin"
   with_items: "{{ npm_installed_packages }}"

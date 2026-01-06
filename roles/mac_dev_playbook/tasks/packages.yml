@@ -3,7 +3,7 @@
 - name: Install pip packages
   ansible.builtin.pip:
     # FIXME
-    executable: "{{ ansible_env.HOME }}/.asdf/shims/pip"
+    executable: "{{ ansible_facts.env.HOME }}/.asdf/shims/pip"
     name: "{{ item }}"
     state: present
   loop: "{{ pip_packages }}"
