@@ -108,17 +108,6 @@ java = "temurin-21"
 
 # Terraform — exemple
 terraform = "1.9.8"
-
-[tasks.fmt]
-description = "Format Java + Terraform"
-run = [
-  "./gradlew spotlessApply",
-  "terraform fmt -recursive"
-]
-
-[tasks.plan]
-description = "Terraform plan"
-run = "terraform plan"
 ```
 
 **Commandes à connaître :**
