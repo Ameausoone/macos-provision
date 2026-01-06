@@ -8,16 +8,16 @@
     mode: "0755"
   # become: true
   with_items:
-    - "{{ ansible_env.HOME }}/.ansible"
-    - "{{ ansible_env.HOME }}/.zshrc.d"
-    - "{{ ansible_env.HOME }}/.terraform.d/plugin-cache"
-    - "{{ ansible_env.HOME }}/.config"
-    - "{{ ansible_env.HOME }}/.zshrc.d/core"
+    - "{{ ansible_facts.env.HOME }}/.ansible"
+    - "{{ ansible_facts.env.HOME }}/.zshrc.d"
+    - "{{ ansible_facts.env.HOME }}/.terraform.d/plugin-cache"
+    - "{{ ansible_facts.env.HOME }}/.config"
+    - "{{ ansible_facts.env.HOME }}/.zshrc.d/core"
 
 - name: Copy recursively files in HOME directory to $HOME
   ansible.builtin.copy:
     src: "HOME/"
-    dest: "{{ ansible_env.HOME }}/"
+    dest: "{{ ansible_facts.env.HOME }}/"
     mode: preserve
   tags:
     - dotfiles
@@ -25,7 +25,7 @@
 - name: Copy zsh files
   ansible.posix.synchronize:
     src: ".zshrc.d/core/"
-    dest: "{{ ansible_env.HOME }}/.zshrc.d/core/"
+    dest: "{{ ansible_facts.env.HOME }}/.zshrc.d/core/"
     delete: true
   tags:
     - dotfiles
@@ -40,7 +40,7 @@
 
 - name: Add line in autoenv_authorized
   ansible.builtin.lineinfile:
-    path: "{{ ansible_env.HOME }}/.autoenv_authorized"
-    line: "{{ ansible_env.HOME }}/.env:{{ autoenv_sha1sum.stat.checksum }}"
+    path: "{{ ansible_facts.env.HOME }}/.autoenv_authorized"
+    line: "{{ ansible_facts.env.HOME }}/.env:{{ autoenv_sha1sum.stat.checksum }}"
     state: present
-    regexp: '{{ ansible_env.HOME }}/\.env:.*'
+    regexp: '{{ ansible_facts.env.HOME }}/\.env:.*'
