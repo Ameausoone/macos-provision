@@ -2,7 +2,7 @@
 
 `mise` est un outil en ligne de commande qui permet de gérer et standardiser l’outillage d’un projet directement depuis le repository. Il permet de définir les versions exactes des outils nécessaires (langages, CLIs, runtimes), de les installer automatiquement et de garantir que tous les développeurs — ainsi que la CI — travaillent avec le même environnement.
 
-**TL;DR — `mise` var permettre de :**
+**TL;DR — `mise` va permettre de :**
 - standardiser les versions des outils au sein d’un projet,
 - installer et utiliser ces outils simplement,
 - changer automatiquement de version selon le répertoire courant,
@@ -10,7 +10,7 @@
 
 ## Avant mise : le casse-tête des versions d’outils
 
-Dans un projet, on utilise plusieurs outils avec des versions spécifiques, ans outil de gestion des versions, on finit vite avec :
+Dans un projet, on utilise plusieurs outils avec des versions spécifiques, sans outil de gestion des versions, on finit vite avec :
 - des versions différentes de **Java** (JDK) selon les machines,
 - des versions différentes de **Terraform** selon les devs / la CI,
 - des scripts `bash` ou des notes “comment faire” qui dérivent,
@@ -30,9 +30,9 @@ Ce que `mise` ne fait pas :
 
 ```bash
 # macOS avec Homebrew
-brew install mise/mise
+brew install mise
 
-# Linux (via script d’installation)
+# Linux (via script d'installation)
 curl -sSL https://get.mise.dev | bash
 
 # Windows (via Scoop)
@@ -42,10 +42,13 @@ scoop install mise
 Une fois installé, il est recommandé de "l'activer" dans le shell (ajouter dans `.bashrc`, `.zshrc`, etc.) :
 
 ```bash
-# avec brew (macOS)
+# macOS avec zsh (par défaut)
+echo 'eval "$(mise activate zsh)"' >> ~/.zshrc
+
+# macOS avec bash
 echo 'eval "$(mise activate bash)"' >> ~/.bashrc
 
-# avec Windows (PowerShell)
+# Windows (PowerShell)
 $shimPath = "$env:USERPROFILE\AppData\Local\mise\shims"
 $currentPath = [Environment]::GetEnvironmentVariable('Path', 'User')
 $newPath = $currentPath + ";" + $shimPath
@@ -56,7 +59,8 @@ Cette étape permet à `mise` de gérer automatiquement les versions des outils 
 
 ## Mise "en œuvre"
 
-On va commencer par une installation simple de java par exemple avec :
+**Installation locale (projet) :** on va commencer par une installation simple de java par exemple avec :
+
 ```bash
 $ mise use java
 mise java@25.0.1       download openjdk-25.0.1_macos-aarch64_bin.tar.gz    104.75 MiB/205.43 MiB (33s) [####################################] 100%
@@ -71,16 +75,21 @@ OpenJDK 64-Bit Server VM (build 25.0.1+8-27, mixed mode, sharing)
 mise ~/Projects/wk_perso/macos-setup/macos-provision/mise.toml tools: java@25.0.1
 ```
 
-# Où est installé Java 25.0.1
+Vérifier l'installation :
+
+```bash
+# Où est installé Java
 $ mise which java
-# Puis on peut vérifier la version active
+
+# Vérifier la version active
 $ java -version
 
-# Vérifier
-mise ls
+# Lister les outils installés
+$ mise ls
 ```
 
-**Installation globale (machine)**
+**Installation globale (machine) :** pour installer des outils disponibles dans tous les projets, utiliser le flag `-g` :
+
 ```bash
 # Installer un outil globalement (tous les projets)
 mise use -g node@20
@@ -90,8 +99,7 @@ mise use -g python@3.12
 mise ls -g
 ```
 
-### 3.2 Exemple minimal de `mise.toml`
-> À adapter : versions et outils exacts selon ton contexte.
+**Exemple minimal de `mise.toml` :** à adapter selon les versions et outils de votre contexte.
 
 ```toml
 [tools]
@@ -113,12 +121,13 @@ description = "Terraform plan"
 run = "terraform plan"
 ```
 
-### 3.3 Commandes à connaître
+**Commandes à connaître :**
+
 ```bash
 # Installer les outils déclarés
 mise install
 
-# Vérifier l’environnement
+# Vérifier l'environnement
 mise doctor
 
 # Lancer une task projet
@@ -126,8 +135,6 @@ mise run fmt
 mise run plan
 ```
 
----
-
-## 4. À retenir
+## À retenir
 - **Bonne pratique :** versionner `mise.toml` et garder un exemple **minimal** (versions + 2–3 tasks clés).
 - **Limite / piège :** ne pas transformer `mise` en “fourre-tout” ; garder les responsabilités (build Java / infra Terraform) dans les outils dédiés.
