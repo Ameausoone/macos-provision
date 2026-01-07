@@ -7,5 +7,4 @@ export GO111MODULE=on
 
 alias got="go test"
 alias gotv="go test -cover"
-alias golang="howdoi golang"
 alias goolang="goo golang"

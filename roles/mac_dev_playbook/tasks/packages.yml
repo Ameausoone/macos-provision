@@ -6,4 +6,4 @@
     executable: "{{ ansible_facts.env.HOME }}/.asdf/shims/pip"
     name: "{{ item }}"
     state: present
-  loop: "{{ pip_packages }}"
+  loop: "{{ mac_dev_playbook_pip_packages }}"

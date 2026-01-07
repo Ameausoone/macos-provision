@@ -4,17 +4,17 @@
   community.general.homebrew_tap:
     name: "{{ item }}"
     state: present
-  with_items: "{{ homebrew_taps }}"
+  with_items: "{{ mac_dev_playbook_homebrew_taps }}"
 
 - name: Uninstall homebrew package
   community.general.homebrew:
-    name: "{{ homebrew_absent_packages }}"
+    name: "{{ mac_dev_playbook_homebrew_absent_packages }}"
     state: absent
 
 - name: Install homebrew package
   # failed_when: false
   community.general.homebrew:
-    name: "{{ homebrew_installed_packages }}"
+    name: "{{ mac_dev_playbook_homebrew_installed_packages }}"
     state: present
     upgrade_all: true
 

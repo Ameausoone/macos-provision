@@ -25,7 +25,7 @@ J'ai commencé à provisionner mon poste pour plusieurs raisons:
 J'ai commencé par un playbook assez simple, j'ai listé déjà les outils que j'utilisais et que j'installais avec `brew`.
 
 ```yaml
-homebrew_installed_packages:
+mac_dev_playbook_homebrew_installed_packages:
   - adr-tools         # adr-tools is a command line tool for working with Architecture Decision Records
   - autoenv           # autoenv execute .env file when you cd into a directory
   - autojump          # autojump is a faster way to navigate your filesystem
@@ -43,7 +43,7 @@ Que j'installe avec la tâche suivante :
 - name: Install homebrew package
   failed_when: false
   community.general.homebrew:
-    name: "{{ homebrew_installed_packages }}"
+    name: "{{ mac_dev_playbook_homebrew_installed_packages }}"
     state: present
     upgrade_all: true
 ```

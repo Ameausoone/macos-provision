@@ -3,4 +3,4 @@
     name: "{{ item }}"
     global: true
     path: "{{ ansible_facts.env.HOME }}/.npm-packages/bin"
-  with_items: "{{ npm_installed_packages }}"
+  with_items: "{{ mac_dev_playbook_npm_installed_packages }}"

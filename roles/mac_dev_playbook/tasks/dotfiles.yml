@@ -36,11 +36,11 @@
     path: "{{ role_path }}/files/HOME/.env"
     checksum_algorithm: sha1
     get_checksum: true
-  register: autoenv_sha1sum
+  register: mac_dev_playbook_autoenv_sha1sum
 
 - name: Add line in autoenv_authorized
   ansible.builtin.lineinfile:
     path: "{{ ansible_facts.env.HOME }}/.autoenv_authorized"
-    line: "{{ ansible_facts.env.HOME }}/.env:{{ autoenv_sha1sum.stat.checksum }}"
+    line: "{{ ansible_facts.env.HOME }}/.env:{{ mac_dev_playbook_autoenv_sha1sum.stat.checksum }}"
     state: present
     regexp: '{{ ansible_facts.env.HOME }}/\.env:.*'

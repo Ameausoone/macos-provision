@@ -1,12 +1,12 @@
 ---
 
-homebrew_taps:
+mac_dev_playbook_homebrew_taps:
   - wagoodman/dive
   - instrumenta/instrumenta
   - hashicorp/tap
   - ankitpokhrel/jira-cli
 
-homebrew_absent_packages:
+mac_dev_playbook_homebrew_absent_packages:
   - asdf
   - tfenv
   - kubernetes-cli
@@ -16,7 +16,7 @@ homebrew_absent_packages:
   - pre-commit              # pre-commit is a git pre-commit hook framework, install it from mise instead
   - yq              # use python-yq instead
 
-homebrew_installed_packages:
+mac_dev_playbook_homebrew_installed_packages:
   # - ansible # Installed via Pip.
   - adr-tools               # adr-tools is a command line tool for working with Architecture Decision Records
   - agg                     # Asciicast to GIF converter
@@ -68,6 +68,7 @@ homebrew_installed_packages:
   - mise                    # mise is a tool to manage application versioning
   - node                    # Node.js is a JavaScript runtime
   - openssl                 # OpenSSL is a toolkit for implementing SSL/TLS
+  - opencode                # OpenCode
   - parallel                # GNU parallel is a shell tool for executing jobs in parallel
   - pigz                    # gzip with parallel support
   - pinentry-mac            # pinentry-mac is a pinentry for GPG on Mac
@@ -91,18 +92,18 @@ homebrew_installed_packages:
   - visual-studio-code      # Visual Studio Code is a code editor
   - vlc                     # VLC is a free and open source cross-platform multimedia player and framework
 
-npm_installed_packages:
+mac_dev_playbook_npm_installed_packages:
   - tldr                        # tldr is a community driven documentation for the command line
   - yarn                        # yarn is a package manager for JavaScript
   - editorconfig                # editorconfig is a plugin for your code editor that helps enforce consistent coding styles
   - "@devcontainers/cli"        # devcontainers is a command line tool for managing devcontainers
   - "@google/gemini-cli@latest" # Google Gemini CLI for interacting with Gemini AI models
 
-pip_packages:
+mac_dev_playbook_pip_packages:
   - aiven-client            # Aiven CLI client
   - cookiecutter            # Cookiecutter is a command-line utility that creates projects from project templates
 
-gh_cli_extensions:
+mac_dev_playbook_gh_cli_extensions:
   - mislav/gh-branch        # GitHub CLI extension for managing branches
   - dlvhdr/gh-dash          # GitHub CLI extension for dashboards
   - meiji163/gh-notify      # GitHub CLI extension for notifications
