@@ -5,7 +5,7 @@ pipx = "latest"
 ansible = "latest"
 python = "3.13.1"
 ls-lint = "latest"
-java = "temurin-25"
+java = "temurin-25.0.1+8.0.LTS"
 
 [tasks.compare-dotfiles]
 description = "Compare provisioned files with actual home directory"
