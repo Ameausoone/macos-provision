@@ -59,6 +59,7 @@ vendor/
 
 # AI Tools
 **/CLAUDE.md
+**/.claude/
 
 # Logs
 *.log
@@ -67,3 +68,6 @@ logs/
 # Temporary
 zz_*
 generated/*
+
+# Cloud
+credentials.json
