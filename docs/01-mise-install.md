@@ -1,129 +1,166 @@
-# `mise` au quotidien : standardiser les versions de vos outils
+# Standardiser les versions de vos outils avec mise
 
-`mise` est un outil en ligne de commande qui permet de gérer et standardiser l’outillage d’un projet directement depuis le repository. Il permet de définir les versions exactes des outils nécessaires (langages, CLIs, runtimes), de les installer automatiquement et de garantir que tous les développeurs — ainsi que la CI — travaillent avec le même environnement.
+À la fin de cet article, vous saurez installer et configurer `mise` pour gérer les versions d'outils dans vos projets et garantir la cohérence entre développeurs et CI.
 
-**TL;DR — `mise` va permettre de :**
-- standardiser les versions des outils au sein d’un projet,
-- installer et utiliser ces outils simplement,
-- changer automatiquement de version selon le répertoire courant,
-- garantir que toute l’équipe travaille avec le même environnement.
+**Public** : Développeurs, DevOps, SRE (débutant à intermédiaire)
 
-## Avant mise : le casse-tête des versions d’outils
+## Le problème des versions qui dérivent
 
-Dans un projet, on utilise plusieurs outils avec des versions spécifiques, sans outil de gestion des versions, on finit vite avec :
-- des versions différentes de **Java** (JDK) selon les machines,
-- des versions différentes de **Terraform** selon les devs / la CI,
-- des scripts `bash` ou des notes “comment faire” qui dérivent,
+Dans un projet typique, chaque développeur installe ses outils indépendamment. Un dev utilise Java 17, un autre Java 21. La CI utilise Terraform 1.5, alors que l'équipe a migré en local vers 1.9.
 
-## `mise` en place
+Résultat : des bugs inexplicables, des "ça marche chez moi", et des heures perdues à débugger des incompatibilités de versions. Les scripts d'installation manuels (`install-java.sh`, `setup-terraform.md`) dérivent, l'onboarding des nouveaux développeurs devient long et fastidieux.
 
-`mise` permet de :
-- **déclarer** les versions d’outils attendues *dans le repo*,
-- **installer/sélectionner** ces versions automatiquement,
-- **standardiser** les commandes projet via des **tasks** (ex : `mise run fmt`, `mise run plan`).
+## Ce qu'on va construire
 
-Ce que `mise` ne fait pas :
-- il ne remplace pas Terraform, ni Gradle/Maven,
-- il ne “déploie” pas : il structure l’outillage et l’exécution.
+À la fin de ce tutoriel, vous aurez `mise` installé et activé sur votre machine, un fichier `mise.toml` versionnant les outils du projet, et une installation automatique des bonnes versions selon le répertoire courant.
 
-## Première étape : installer `mise` (oui, nous allons installer un package manager avec un package manager 😉)
+**Pré-requis** : Un terminal avec droits d'installation et un gestionnaire de paquets (Homebrew sur macOS, apt/yum sur Linux, ou Scoop sur Windows).
+
+## Les concepts clés
+
+**Déclaratif** : `mise` permet de déclarer dans un fichier `mise.toml` les versions exactes des outils nécessaires. Ce fichier est versionné avec le code.
+
+**Activation automatique** : Lorsque vous entrez dans un répertoire contenant un `mise.toml`, `mise` active automatiquement les bonnes versions. Changez de projet, changez de versions automatiquement.
+
+**Environnement reproductible** : Développeurs et CI utilisent le même `mise.toml`, garantissant un environnement strictement identique pour tous.
+
+## Installation de `mise`
+
+Commencez par installer l'outil sur votre machine :
 
 ```bash
 # macOS avec Homebrew
 brew install mise
 
-# Linux (via script d'installation)
+# Linux
 curl -sSL https://get.mise.dev | bash
 
-# Windows (via Scoop)
+# Windows avec Scoop
 scoop install mise
 ```
 
-Une fois installé, il est recommandé de "l'activer" dans le shell (ajouter dans `.bashrc`, `.zshrc`, etc.) :
+Vérifiez que tout fonctionne avec `mise --version`.
+
+## Activation dans le shell
+
+Pour que `mise` gère automatiquement les versions selon le répertoire, activez-le dans votre shell :
 
 ```bash
-# macOS avec zsh (par défaut)
+# macOS avec zsh
 echo 'eval "$(mise activate zsh)"' >> ~/.zshrc
+source ~/.zshrc
 
-# macOS avec bash
+# Linux avec bash
 echo 'eval "$(mise activate bash)"' >> ~/.bashrc
+source ~/.bashrc
+```
 
-# Windows (PowerShell)
+Sur **Windows (PowerShell)** :
+
+```powershell
 $shimPath = "$env:USERPROFILE\AppData\Local\mise\shims"
 $currentPath = [Environment]::GetEnvironmentVariable('Path', 'User')
 $newPath = $currentPath + ";" + $shimPath
 [Environment]::SetEnvironmentVariable('Path', $newPath, 'User')
 ```
 
-Cette étape permet à `mise` de gérer automatiquement les versions des outils selon le répertoire courant.
+Le shell charge maintenant `mise` automatiquement.
 
-## Mise "en œuvre"
+## Premier outil : installer Java localement
 
-**Installation locale (projet) :** on va commencer par une installation simple de java par exemple avec :
-
-```bash
-$ mise use java
-mise java@25.0.1       download openjdk-25.0.1_macos-aarch64_bin.tar.gz    104.75 MiB/205.43 MiB (33s) [####################################] 100%
-
-mise To enable macOS integration, run the following commands:
-sudo mkdir /Library/Java/JavaVirtualMachines/25.0.1.jdk
-sudo ln -s /Users/mac-Z16AMEAU/.local/share/mise/installs/java/25.0.1/Contents /Library/Java/JavaVirtualMachines/25.0.1.jdk/Contents
-
-openjdk version "25.0.1" 2025-10-21
-OpenJDK Runtime Environment (build 25.0.1+8-27)
-OpenJDK 64-Bit Server VM (build 25.0.1+8-27, mixed mode, sharing)
-mise ~/Projects/wk_perso/macos-setup/macos-provision/mise.toml tools: java@25.0.1
-```
-
-Vérifier l'installation :
+Placez-vous dans votre projet et déclarez Java :
 
 ```bash
-# Où est installé Java
-$ mise which java
-
-# Vérifier la version active
-$ java -version
-
-# Lister les outils installés
-$ mise ls
+cd mon-projet
+mise use java@21
 ```
 
-**Installation globale (machine) :** pour installer des outils disponibles dans tous les projets, utiliser le flag `-g` :
+Cette commande crée un fichier `mise.toml` dans le projet et installe Java 21. Vérifiez avec :
 
 ```bash
-# Installer un outil globalement (tous les projets)
-mise use -g node@20
-mise use -g python@3.12
-
-# Vérifier
-mise ls -g
+mise which java
+java -version
 ```
 
-**Exemple minimal de `mise.toml` :** à adapter selon les versions et outils de votre contexte.
+Java 21 est actif uniquement dans ce répertoire. Sortez du projet, et vous retrouvez votre version système (ou aucune si Java n'était pas installé).
+
+## Créer un fichier `mise.toml`
+
+Plutôt que d'utiliser la commande `use` pour chaque outil, éditez directement `mise.toml` à la racine du projet :
 
 ```toml
 [tools]
-# Java (JDK) — exemple
-java = "temurin-21"
-
-# Terraform — exemple
+java = "21.0.1"
 terraform = "1.9.8"
+node = "20.11.0"
 ```
 
-**Commandes à connaître :**
+Installez tous les outils d'un coup :
 
 ```bash
-# Installer les outils déclarés
 mise install
-
-# Vérifier l'environnement
-mise doctor
-
-# Lancer une task projet
-mise run fmt
-mise run plan
 ```
 
-## À retenir
-- **Bonne pratique :** versionner `mise.toml` et garder un exemple **minimal** (versions + 2–3 tasks clés).
-- **Limite / piège :** ne pas transformer `mise` en “fourre-tout” ; garder les responsabilités (build Java / infra Terraform) dans les outils dédiés.
+Tous les outils déclarés sont téléchargés et configurés. Les autres membres de l'équipe peuvent cloner le projet et lancer `mise install` pour obtenir exactement le même environnement.
+
+## Outils globaux
+
+Pour installer des outils disponibles dans tous vos projets (pas seulement le projet courant), utilisez le flag `-g` :
+
+```bash
+mise use -g node@20
+mise use -g python@3.12
+```
+
+Ces versions sont actives partout, sauf si un projet définit une version spécifique dans son `mise.toml`.
+
+Listez vos outils globaux avec :
+
+```bash
+$ mise ls -g
+NAME     VERSION  LOCATION
+node     20.11.0  global
+python   3.12.0   global
+```
+
+## Commandes utiles
+
+```bash
+# Lister tous les outils installés (locaux et globaux)
+mise ls
+
+# Vérifier la santé de mise
+mise doctor
+
+# Voir quelle version est active pour un outil
+mise current java
+
+# Voir quel binaire est utilisé
+mise which terraform
+```
+
+## Personnalisation avancée
+
+`mise` supporte des options avancées comme spécifier une version "glissante" d'un outil. Par exemple, vous pouvez spécifier `terraform = "1.12"` pour toujours utiliser la dernière version mineure de Terraform 1.12.x.
+
+Pour Java, il existe une multitude de distributions (OpenJDK, Zulu, Liberica, etc.). Vous pouvez choisir une distribution spécifique dans `mise.toml`, par exemple :
+- `java = "latest"` pour la dernière version stable (par défaut OpenJDK).
+- `java ="temurin-21"` pour installer la dernière version d'Eclipse Temurin 21.
+- `java ="zulu-17.0.8"` pour installer précisément Zulu 17.0.8.
+
+## Récap
+
+`mise` simplifie radicalement la gestion des versions d'outils. En quelques minutes, vous passez d'un environnement fragmenté à une configuration standardisée et reproductible.
+
+Installez `mise`, créez un `mise.toml` versionnant les outils du projet, et utilisez `mise install` pour installer automatiquement les dépendances.
+
+**Next steps** : Versionnez `mise.toml` dans votre repository, configurez mise dans votre CI/CD, et explorez les variables d'environnement pour configurer vos projets.
+
+Dans le prochain article, nous verrons comment `mise` retrouve et installe les outils via les backends.
+
+## Ressources
+
+- [Documentation officielle mise](https://mise.jdx.dev/)
+- [GitHub mise - Code source](https://github.com/jdx/mise)
+- [Comparaison avec asdf](https://mise.jdx.dev/comparison-to-asdf.html)
+- [Liste des outils supportés](https://mise.jdx.dev/registry.html)
