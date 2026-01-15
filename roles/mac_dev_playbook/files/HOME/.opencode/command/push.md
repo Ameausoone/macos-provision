@@ -1,0 +1,13 @@
+---
+description: Read the current git diff to create a branch, commit, push, and open a pull request with appropriate names and messages.
+agent: build
+#model:
+---
+
+Read the current git diff to understand what changes were made, then create an appropriately named branch based on the actual changes, commit with a descriptive message that reflects the specific modifications, push the branch to remote, and open a pull request with a relevant title and detailed description of what was changed.
+
+Stay concise and clear in both commit message and PR description, going right to the point.
+
+- **Config changes**: `feat/add-github-java-workflows-testbed` → "feat: add github-java-project-workflows-testbed repository"
+- **Bug fixes**: `fix/resolve-auth-timeout` → "fix: resolve authentication timeout in login flow"
+- **Documentation**: `docs/update-api-examples` → "docs: update API usage examples with new endpoints"

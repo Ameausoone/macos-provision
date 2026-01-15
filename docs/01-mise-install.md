@@ -68,10 +68,31 @@ Le shell charge maintenant `mise` automatiquement.
 
 ## Premier outil : installer Java localement
 
+Pour installer java, vous pouvez utiliser la commande `install`:
+
+```bash
+$ mise install java
+[...]
+Installing java 21.0.1...
+Java 21.0.1 installed successfully.
+[...]
+```
+
+Que se passe-t-il ? `mise` télécharge et installe Java 21 dans son répertoire de gestion des outils (généralement `~/.mise/tools/java/21.0.1`). Vous pouvez vérifier.
+
+```bash
+$ tree ~/.mise/tools/`
+~/.mise/tools/
+└── java
+    └── 21.0.1
+        ├── bin
+        ├── lib
+        └── ...
+```
+
 Placez-vous dans votre projet et déclarez Java :
 
 ```bash
-cd mon-projet
 mise use java@21
 ```
 
@@ -154,7 +175,7 @@ Pour Java, il existe une multitude de distributions (OpenJDK, Zulu, Liberica, et
 
 Installez `mise`, créez un `mise.toml` versionnant les outils du projet, et utilisez `mise install` pour installer automatiquement les dépendances.
 
-**Next steps** : Versionnez `mise.toml` dans votre repository, configurez mise dans votre CI/CD, et explorez les variables d'environnement pour configurer vos projets.
+**Next steps** : Versionnez `mise.toml` dans votre repository, configurez `mise` dans votre CI/CD, et explorez les variables d'environnement pour configurer vos projets.
 
 Dans le prochain article, nous verrons comment `mise` retrouve et installe les outils via les backends.
 
