@@ -3,23 +3,23 @@
 # View all options: ghostty +show-config --default --docs
 
 # Links
-link-url = true
-link-previews = true
+link-url = true                      # Enable clickable URLs
+link-previews = true                 # Show URL previews on hover
 
 # Clipboard
-copy-on-select = clipboard
-clipboard-paste-protection = true
+copy-on-select = clipboard           # Auto-copy selection to clipboard
+clipboard-paste-protection = true    # Warn on multi-line paste
 clipboard-trim-trailing-spaces = true
 
 # Shell integration
-shell-integration = detect
-shell-integration-features = cursor,title
+shell-integration = detect           # Auto-detect shell and inject integration
+shell-integration-features = cursor,title  # Track cursor position and update window title
 
 # macOS
-macos-non-native-fullscreen = true
-macos-titlebar-style = transparent
-macos-option-as-alt = true
+macos-non-native-fullscreen = true   # Use faster non-native fullscreen
+macos-titlebar-style = transparent   # Seamless titlebar with background
+macos-option-as-alt = true          # Use option key as alt for keybindings
 
 # Window
-window-inherit-working-directory = true
-window-inherit-font-size = true
+window-inherit-working-directory = true  # New tabs inherit current directory
+window-inherit-font-size = true          # New tabs inherit font size
