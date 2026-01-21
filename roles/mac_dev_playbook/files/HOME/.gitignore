@@ -31,6 +31,9 @@ Thumbs.db
 .vscode/
 out/
 
+# Local
+*.local.*
+
 # Python
 __pycache__/
 *.pyc
