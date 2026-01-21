@@ -1,9 +1,23 @@
-# OS
-*.DS_Store
-*.LSOverride
+# Reminder : Use **/ when you want to be explicit about matching at any depth, but it's usually redundant unless you're contrasting with a root-only pattern (/pattern).
+
+# OS - macOS
+.DS_Store
+.LSOverride
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+
+# OS - Windows
 Thumbs.db
+
+# OS - Linux
 .Trash-*
-.bundle
 
 # Editors
 *.swp
@@ -12,8 +26,10 @@ Thumbs.db
 
 # IDEs
 .idea/
+.idea_modules/
 *.iml
 .vscode/
+out/
 
 # Python
 __pycache__/
@@ -22,11 +38,19 @@ __pycache__/
 .pytest_cache/
 .coverage
 htmlcov/
+*.egg-info/
+.eggs/
+dist/
+build/
 
 # Node.js
 node_modules/
 npm-debug.log
 yarn-error.log
+.yarn/
+.pnpm-store/
+package-lock.json.backup
+pnpm-lock.yaml.backup
 
 # Java
 *.class
@@ -36,9 +60,20 @@ target/
 *.exe
 vendor/
 
-# Infrastructure
+# Rust
+Cargo.lock
+.cargo/
+
+# Infrastructure & Tools
 .kube/
 .mise.local.toml
+.cache/
+.local/
+.terraform.d/
+.gcloud/
+.gsutil/
+.gh-copilot/
+.bundle
 
 # Terraform
 .terraform/
@@ -46,28 +81,30 @@ vendor/
 *.tfstate.backup
 
 # Environment & Secrets
-**/.env
-**/.env.leave
-**/.vault-token
-**/credentials.json
-**/credentials
+.env
+.env.*
+!.env.example
+.vault-token
+credentials.json
+credentials
 *.pem
 *.key
 *.cert
 *.p12
 *.pfx
+application-secret*.*
 
 # AI Tools
-**/CLAUDE.md
-**/.claude/
+CLAUDE.local.md
 
 # Logs
 *.log
 logs/
 
-# Temporary
+# Temporary & Backups
 zz_*
 generated/*
-
-# Cloud
-credentials.json
+*.bak
+*.backup
+*.old
+*.orig
