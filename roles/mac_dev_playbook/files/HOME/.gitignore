@@ -87,11 +87,17 @@ Cargo.lock
 .vault-token
 credentials.json
 credentials
+.aws/credentials
+.aws/config
+
+# Keys & certs
 *.pem
 *.key
 *.cert
 *.p12
 *.pfx
+
+# App-specific secrets
 application-secret*.*
 
 # AI Tools
