@@ -6,3 +6,6 @@ eval "$(mise activate zsh)"
 
 # Enable auto-completion for Mise
 source <(mise completion zsh)
+
+# Load mise.dev.toml configuration file
+export MISE_ENV=dev
