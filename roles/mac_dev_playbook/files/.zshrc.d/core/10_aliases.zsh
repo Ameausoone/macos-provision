@@ -61,7 +61,7 @@ function push() {
   cd "${MACOS_SETUP_DIR}/macos-provision"
 
   if [[ -z "${commit_msg}" ]]; then
-    commit_msg=$(copilot --allow-tool 'shell(git:*)' --prompt "Write a commit msg from the git diff, #conventional commit, output exclusively the result starting the first line with feat|fix|chore" --silent)
+    commit_msg=$(copilot --model "gpt-5-mini" --allow-tool 'shell(git:*)' --prompt "Write a commit msg from the git diff, #conventional commit, output exclusively the result starting the first line with feat|fix|chore" --silent)
     if [[ -z "${commit_msg}" ]]; then
       echo "Error: failed to generate commit message"
       return 1
