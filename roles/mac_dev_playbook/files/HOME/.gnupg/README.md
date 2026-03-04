@@ -34,7 +34,6 @@ Configuration files and scripts for setting up GPG on macOS, tailored for Intell
 
 Run ~/.gnupg/pinentry-ide.sh directly to debug pinentry issues.
 
-
 ## Notes
 
 * Ensure `pinentry-program` in `gpg-agent.conf` points to `pinentry-ide.sh`.

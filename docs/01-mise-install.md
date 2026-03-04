@@ -1,8 +1,10 @@
 # Standardiser les versions de vos outils avec mise
 
+> Chaque développeur installe ses outils à sa façon. Résultat : des "ça marche chez moi" à n'en plus finir. `mise` règle ce problème en un fichier versionné — et quelques commandes.
+
 À la fin de cet article, vous saurez installer et configurer `mise` pour gérer les versions d'outils dans vos projets et garantir la cohérence entre développeurs et CI.
 
-**Public** : Développeurs, DevOps, SRE (débutant à intermédiaire)
+**Public** : Développeurs, DevOps, SRE
 
 ## Le problème des versions qui dérivent
 
@@ -13,8 +15,6 @@ Résultat : des bugs inexplicables, des "ça marche chez moi", et des heures per
 ## Ce qu'on va construire
 
 À la fin de ce tutoriel, vous aurez `mise` installé et activé sur votre machine, un fichier `mise.toml` versionnant les outils du projet, et une installation automatique des bonnes versions selon le répertoire courant.
-
-**Pré-requis** : Un terminal avec droits d'installation et un gestionnaire de paquets (Homebrew sur macOS, apt/yum sur Linux, ou Scoop sur Windows).
 
 ## Les concepts clés
 
@@ -33,7 +33,7 @@ Commencez par installer l'outil sur votre machine :
 brew install mise
 
 # Linux
-curl -sSL https://get.mise.dev | bash
+curl https://mise.run | sh
 
 # Windows avec Scoop
 scoop install mise
@@ -55,7 +55,7 @@ echo 'eval "$(mise activate bash)"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-Sur **Windows (PowerShell)** :
+### Windows avec PowerShell
 
 ```powershell
 $shimPath = "$env:USERPROFILE\AppData\Local\mise\shims"
@@ -68,42 +68,78 @@ Le shell charge maintenant `mise` automatiquement.
 
 ## Premier outil : installer Java localement
 
-Pour installer java, vous pouvez utiliser la commande `install`:
+Pour installer java, vous pouvez utiliser la commande `mise install` ou `mise i`:
 
 ```bash
-$ mise install java
+$ mise install java@21
+mise java@21.0.2       download openjdk-21.0.2_macos-aarch64_bin.tar.gz
+openjdk version "21.0.2" 2024-01-16
+OpenJDK Runtime Environment (build 21.0.2+13-58)
+OpenJDK 64-Bit Server VM (build 21.0.2+13-58, mixed mode, sharing)
 [...]
-Installing java 21.0.1...
-Java 21.0.1 installed successfully.
+```
+
+Que se passe-t-il ? `mise` télécharge et installe Java 21 dans son répertoire de gestion des outils (généralement `~/.local/share/mise/installs/java/21.0.2`). Vous pouvez vérifier.
+
+```bash
+$ tree -d -L 1 ~/.local/share/mise/installs/java/
+~/.local/share/mise/installs/java/
+├── 21 -> ./21.0.2
+├── 21.0 -> ./21.0.2
+├── 21.0.2
+└── latest -> ./21.0.2
+```
+
+Vous pouvez voir ici que `mise` gère les versions de manière intelligente : `java@21` pointe vers la dernière version 21.x, et `latest` pointe vers la dernière version stable (installée sur votre machine).
+
+Vous pouvez aussi utiliser la commande `mise use` pour activer une version localement dans un projet :
+
+```bash
+$ mise use java@21
+mise config files in ~/Projects/wk_perso/macos-setup are not trusted. Trust them? Yes
+mise ~/Projects/wk_perso/macos-setup/mise.toml tools: java@21.0.2
+
+$ cat mise.toml
+[tools]
+java = "21"
+```
+
+Que se passe-t-il ? Si mise trouve un `mise.toml` dans le répertoire courant (ou dans un parent), il active les versions d'outils déclarées. Sinon, `mise` créait le fichier `mise.toml` avec la configuration demandée.
+
+Vérifiez que Java 21 est actif :
+
+```bash
+$ which java
+/Users/mac-Z16AMEAU/.local/share/mise/installs/java/21.0.2/bin/java
+$ java -version
+openjdk 21.0.2 2024-01-16
+OpenJDK Runtime Environment (build 21.0.2+13-58)
+OpenJDK 64-Bit Server VM (build 21.0.2+13-58, mixed mode, sharing)
+```
+
+Java 21 est actif uniquement dans ce répertoire. Sortez du projet, et vous retrouvez votre version système.
+
+## Installer différents outils
+
+`mise` supporte une large gamme d'outils : Java, Node.js, Python, Terraform, Docker, kubectl, et bien d'autres. Lancez `mise use` sans argument pour ouvrir une interface interactive (TUI) et parcourir tous les outils disponibles :
+
+```bash
+$ mise use
+Tools
+Select a tool to install
+❯ 1password           Password manager developed by AgileBits Inc
+  aapt2               Android Asset Packaging Tool (aapt)
+  act                 Run your GitHub Actions locally
+  action-validator    Tool to validate GitHub Action and Workflow YAML files
+  actionlint          :octocat: Static checker for GitHub Actions workflow files
+  adr-tools           Command-line tools for working with Architecture Decision Records
+  ag                  The Silver Searcher: A code searching tool similar to ack, with a focus on speed
+  age                 A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability
+  age-plugin-yubikey  age-plugin-yubikey is a plugin for age clients like age and rage, which enables files to be encrypted to age identities stored on YubiKeys
 [...]
 ```
 
-Que se passe-t-il ? `mise` télécharge et installe Java 21 dans son répertoire de gestion des outils (généralement `~/.mise/tools/java/21.0.1`). Vous pouvez vérifier.
-
-```bash
-$ tree ~/.mise/tools/`
-~/.mise/tools/
-└── java
-    └── 21.0.1
-        ├── bin
-        ├── lib
-        └── ...
-```
-
-Placez-vous dans votre projet et déclarez Java :
-
-```bash
-mise use java@21
-```
-
-Cette commande crée un fichier `mise.toml` dans le projet et installe Java 21. Vérifiez avec :
-
-```bash
-mise which java
-java -version
-```
-
-Java 21 est actif uniquement dans ce répertoire. Sortez du projet, et vous retrouvez votre version système (ou aucune si Java n'était pas installé).
+Avec `mise use`, vous avez toute la liste des outils disponibles avec `mise`. Vous pouvez rechercher, installer et activer n'importe quel outil avec une seule commande.
 
 ## Créer un fichier `mise.toml`
 
@@ -116,33 +152,27 @@ terraform = "1.9.8"
 node = "20.11.0"
 ```
 
-Installez tous les outils d'un coup :
+Et installez tous les outils d'un coup :
 
 ```bash
-mise install
+$ mise install
+mise java@21.0.1       download openjdk-21.0.1_macos-aarch64_bin.tar.gz
+mise terraform@1.9.8   download terraform_1.9.8_darwin_arm64.zip
+mise node@20.11.0     download node-v20.11.0-darwin-arm64.tar.gz
 ```
 
-Tous les outils déclarés sont téléchargés et configurés. Les autres membres de l'équipe peuvent cloner le projet et lancer `mise install` pour obtenir exactement le même environnement.
+Tous les outils déclarés sont téléchargés et configurés.
 
 ## Outils globaux
 
-Pour installer des outils disponibles dans tous vos projets (pas seulement le projet courant), utilisez le flag `-g` :
+Pour installer des outils disponibles dans tous vos projets (pas seulement le projet courant), utilisez le flag `--global` ou `-g` :
 
 ```bash
-mise use -g node@20
-mise use -g python@3.12
+mise use --global node@20
+mise use --global python@3.12
 ```
 
-Ces versions sont actives partout, sauf si un projet définit une version spécifique dans son `mise.toml`.
-
-Listez vos outils globaux avec :
-
-```bash
-$ mise ls -g
-NAME     VERSION  LOCATION
-node     20.11.0  global
-python   3.12.0   global
-```
+`mise` mets à jour votre configuration globale (`~/.config/mise/config.toml`) et installe les outils.
 
 ## Commandes utiles
 
@@ -164,10 +194,17 @@ mise which terraform
 
 `mise` supporte des options avancées comme spécifier une version "glissante" d'un outil. Par exemple, vous pouvez spécifier `terraform = "1.12"` pour toujours utiliser la dernière version mineure de Terraform 1.12.x.
 
-Pour Java, il existe une multitude de distributions (OpenJDK, Zulu, Liberica, etc.). Vous pouvez choisir une distribution spécifique dans `mise.toml`, par exemple :
-- `java = "latest"` pour la dernière version stable (par défaut OpenJDK).
-- `java ="temurin-21"` pour installer la dernière version d'Eclipse Temurin 21.
-- `java ="zulu-17.0.8"` pour installer précisément Zulu 17.0.8.
+Pour Java, il existe une multitude de distributions (OpenJDK, Zulu, Liberica, etc.). Choisissez une distribution spécifique directement dans `mise.toml` :
+
+```toml
+[tools]
+# OpenJDK par défaut
+java = "latest"
+# Eclipse Temurin 21 (LTS)
+java = "temurin-21"
+# Zulu précis
+java = "zulu-17.0.8"
+```
 
 ## Récap
 
@@ -177,7 +214,6 @@ Installez `mise`, créez un `mise.toml` versionnant les outils du projet, et uti
 
 **Next steps** : Versionnez `mise.toml` dans votre repository, configurez `mise` dans votre CI/CD, et explorez les variables d'environnement pour configurer vos projets.
 
-Dans le prochain article, nous verrons comment `mise` retrouve et installe les outils via les backends.
 
 ## Ressources
 

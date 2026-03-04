@@ -65,12 +65,16 @@ At your own risk, this playbook doesn't aim to be used by someone else, it's jus
   mise install
   ```
 
-### Set up GPG commit signing
+### Renew GPG keys
 
-- Generate a GPG key
+- To Renew GPG keys, use this script:
   ```shell
-  gpg --full-generate-key
+  gpg-generate-key.sh
   ```
+
+More GPG commands see [gpg-cheatsheet.md](docs/gpg-cheatsheet.md).
+
+### Understand GPG commit signing
 
 - Look at the excellent article here by https://github.com/Thomgrus: https://www.sfeir.dev/securite/securite-signer-ses-commits/
 
