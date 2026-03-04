@@ -5,7 +5,7 @@ pipx = "latest"
 ansible = "latest"
 python = "3.13.1"
 ls-lint = "latest"
-java = "21"
+java = "21.0.10+7.0.LTS"
 
 [tasks.compare-dotfiles]
 description = "Compare provisioned files with actual home directory"
