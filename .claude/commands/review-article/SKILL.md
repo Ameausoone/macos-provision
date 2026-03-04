@@ -42,6 +42,8 @@ Tu es reviewer technique d'articles SFEIR.
 - Suivent-ils les bonnes pratiques du langage/outil concerné ?
 - Sont-ils suffisamment commentés (sans excès) ?
 - Un lecteur peut-il les reproduire sans contexte supplémentaire ?
+- Les chemins et identifiants sont-ils **génériques** ? (pas de `/Users/prénom/`, `~/Projects/mon-projet-perso/`, noms de machine, etc. — utiliser `username`, `my-project`, etc.)
+- Chaque bloc de code a-t-il un **commentaire HTML** (`<!-- description -->`) placé immédiatement après la fermeture du bloc ? Ce commentaire sert d'alt text pour l'accessibilité dans Ghost. Il doit être court et décrire ce que le bloc illustre.
 
 ### 4. Vérification des affirmations
 
@@ -52,13 +54,20 @@ C'est l'étape la plus importante. Pour chaque affirmation factuelle (chiffre, c
 3. **Signale** les affirmations incorrectes, obsolètes ou non sourcées
 4. **Propose** une correction avec la source
 
-### 5. Cohérence
+### 5. Liens & maillage
+
+- L'outil ou la technologie principale a-t-il un **lien vers sa page officielle** (site, doc, GitHub) dès la première mention ou dans les ressources ?
+- Y a-t-il au moins **2–3 liens internes sfeir.dev** vers des articles connexes, intégrés naturellement dans le texte (pas seulement en "Pour aller plus loin") ?
+- Les liens sont-ils **descriptifs** (texte d'ancre explicite, pas "cliquez ici" ou "ici") ?
+
+### 6. Cohérence
 
 - Le niveau technique est-il constant ? (pas de sauts débutant ↔ expert)
 - Les termes techniques sont-ils utilisés de manière cohérente ?
 - Le vouvoiement est-il respecté partout ?
 - Le fil rouge est-il clair du début à la fin ?
 - Les sections s'enchaînent-elles logiquement ?
+- La structure correspond-elle au bon template (Usage/How-to, Vision/Architecture, REX) ? (cf. references/article-structures.md)
 
 ## Format de sortie
 
@@ -80,6 +89,9 @@ Structure ta review dans le plan avec :
 | # | Affirmation | Source | Verdict |
 |---|-------------|--------|---------|
 | 1 | "..." | [lien] | ✅ / ⚠️ / ❌ |
+
+### Liens & maillage
+[tes observations]
 
 ### Cohérence
 [tes observations]

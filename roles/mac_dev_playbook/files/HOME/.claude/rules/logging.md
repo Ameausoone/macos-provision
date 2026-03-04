@@ -1,3 +1,8 @@
+---
+paths:
+  - "**/*.{py,ts,go,java,js}"
+---
+
 # Logging (from https://loggingsucks.com/)
 
 ## Goal
