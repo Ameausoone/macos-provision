@@ -2,10 +2,6 @@
 experimental = true
 idiomatic_version_file_enable_tools = []
 
-[hooks]
-cd = "mise install"
-enter = "mise install"
-
 [tools]
 claude-code = "latest"      # Claude Code CLI tool
 flux2 = "2"                 # GitOps continuous delivery for Kubernetes
