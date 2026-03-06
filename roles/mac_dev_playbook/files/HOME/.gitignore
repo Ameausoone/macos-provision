@@ -117,3 +117,7 @@ generated/*
 *.backup
 *.old
 *.orig
+
+# Postgres
+.pgpass
+pgdata/
