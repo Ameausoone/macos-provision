@@ -20,6 +20,7 @@
     patterns: ".managed-by-ansible"
     recurse: true
     file_type: file
+    hidden: true
   register: mac_dev_playbook_managed_markers
   tags:
     - dotfiles

@@ -1,4 +1,0 @@
-[warnings]
-export = false
-[virtualenvs]
-prefer-active-python = true
