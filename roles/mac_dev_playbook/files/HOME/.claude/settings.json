@@ -1,6 +1,6 @@
 {
   "statusLine": {
     "type": "command",
-    "command": "bash /Users/mac-Z16AMEAU/.claude/statusline-command.sh"
+    "command": "python3 /Users/mac-Z16AMEAU/.claude/statusline-command.py"
   }
 }

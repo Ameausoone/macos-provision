@@ -16,8 +16,8 @@ Make logs **queryable, high-signal, and diagnostic** by logging **structured, co
   - The event should be usable for dashboards + troubleshooting without needing other logs.
 
 - **Structured logging only**
-  - Output JSON (or equivalent) with **stable field names**.
-  - Avoid free-form strings as the main payload (keep a short `message` only as a human hint).
+  - Output JSON (or equivalent) with **stable field names**, no field prefixes (`ctx_`, `extra_`, etc.).
+  - `message` is the **only field visible in log list views** (Cloud Logging, Datadog, etc.) without expanding — make it scannable: include key dimensions inline, e.g. `"webhook MESSAGE ok"` not just `"webhook"`.
 
 - **Always include execution context (required fields)**
   - Correlation: `trace_id`, `span_id` (if available), `request_id`
@@ -39,6 +39,12 @@ Make logs **queryable, high-signal, and diagnostic** by logging **structured, co
   - Keep **100% of errors** and **slow paths** (above a latency threshold).
   - Sample the "happy path" (e.g., 1–10%) to control cost/volume.
   - If possible, sample *after* you know the outcome (tail sampling).
+
+## GCP Cloud Logging
+
+- Use `severity` (not `level`) — maps to log severity icons/filters. Values: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`.
+- Write JSON logs to **stdout**, not stderr. Cloud Logging only parses `jsonPayload` from stdout — stderr logs appear as fragmented `textPayload`. In Python: `logging.StreamHandler(sys.stdout)`.
+- Disable framework access logs to avoid plaintext duplication (e.g. `--no-access-log` for uvicorn). The wide event covers request/response.
 
 ## Don'ts
 
