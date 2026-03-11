@@ -14,6 +14,38 @@
     - "{{ ansible_facts.env.HOME }}/.config"
     - "{{ ansible_facts.env.HOME }}/.zshrc.d/core"
 
+- name: Find managed directories
+  ansible.builtin.find:
+    paths: "{{ role_path }}/files/HOME"
+    patterns: ".managed-by-ansible"
+    recurse: true
+    file_type: file
+  register: mac_dev_playbook_managed_markers
+  tags:
+    - dotfiles
+
+- name: Set managed directories list
+  ansible.builtin.set_fact:
+    mac_dev_playbook_managed_dirs: >-
+      {{ mac_dev_playbook_managed_markers.files
+         | map(attribute='path')
+         | map('dirname')
+         | map('regex_replace', '^' + role_path + '/files/HOME/', '')
+         | list }}
+  tags:
+    - dotfiles
+
+- name: Sync managed directories
+  ansible.posix.synchronize:
+    src: "HOME/{{ item }}/"
+    dest: "{{ ansible_facts.env.HOME }}/{{ item }}/"
+    delete: true
+    rsync_opts:
+      - "--exclude=.managed-by-ansible"
+  loop: "{{ mac_dev_playbook_managed_dirs }}"
+  tags:
+    - dotfiles
+
 - name: Copy recursively files in HOME directory to $HOME
   ansible.builtin.copy:
     src: "HOME/"
