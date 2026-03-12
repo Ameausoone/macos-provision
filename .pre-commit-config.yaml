@@ -5,7 +5,7 @@ repos:
     hooks:
       - id: make-zshrc-scripts-executable
         name: Make .zshrc.d scripts executable
-        entry: find roles/mac_dev_playbook/files/.zshrc.d -type f -name "*.zsh" -exec chmod +x {} +
+        entry: find roles/mac_dev_playbook/files/HOME/.zshrc.d -type f -name "*.zsh" -exec chmod +x {} +
         language: system
         pass_filenames: false
   - repo: https://github.com/pre-commit/pre-commit-hooks
