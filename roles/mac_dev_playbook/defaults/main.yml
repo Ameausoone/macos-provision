@@ -40,7 +40,6 @@ mac_dev_playbook_homebrew_installed_packages:
   - docker-compose          # Docker Compose is a tool for defining and running multi-container Docker applications
   - docker-credential-helper # Docker Credential Helper
   - dos2unix                # Convert files from DOS to Unix format
-  - font-meslo-for-powerlevel10k # Meslo Nerd Font patched for Powerlevel10k
   - fzf                     # fzf is a command-line fuzzy finder
   - ghostty                 # GhostTy is a fast and lightweight terminal emulator
   - git                     # Git is a version control system
@@ -72,7 +71,7 @@ mac_dev_playbook_homebrew_installed_packages:
   - parallel                # GNU parallel is a shell tool for executing jobs in parallel
   - pigz                    # gzip with parallel support
   - pinentry-mac            # pinentry-mac is a pinentry for GPG on Mac
-  - powerlevel10k           # famous theme
+  - starship                    # cross-shell prompt (replaces powerlevel10k)
   - pygments                # Pygments is a generic syntax highlighter
   - python-yq               # CPE Team use python-yq
   - rancher                 # Rancher is a container management platform

@@ -1,0 +1,76 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$directory$git_branch$git_status
+$character"""
+
+right_format = """
+$status$cmd_duration$jobs$python$golang$kubernetes$terraform$gcloud$battery"""
+
+[directory]
+truncation_length = 4
+truncate_to_repo = true
+style = "bold blue"
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+style = "bold purple"
+truncation_length = 32
+truncation_symbol = "…"
+
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+style = "bold yellow"
+ahead = ">"
+behind = "<"
+diverged = "<>"
+untracked = "?"
+stashed = "*"
+modified = "!"
+staged = "+"
+renamed = "»"
+deleted = "✘"
+
+[character]
+success_symbol = "[>](bold green)"
+error_symbol = "[>](bold red)"
+vimcmd_symbol = "[<](bold green)"
+
+[status]
+disabled = false
+format = "[$status]($style) "
+
+[cmd_duration]
+min_time = 3_000
+format = "[$duration]($style) "
+
+[jobs]
+format = "[$number]($style) "
+
+[python]
+format = '[$virtualenv]($style) '
+style = "bold yellow"
+
+[golang]
+format = "[$version]($style) "
+style = "bold cyan"
+
+[kubernetes]
+disabled = false
+format = "[$context]($style) "
+style = "bold blue"
+
+[terraform]
+format = "[$workspace]($style) "
+style = "bold purple"
+
+[gcloud]
+format = "[$account@$domain/$project]($style) "
+style = "bold blue"
+
+[battery]
+disabled = false
+
+[[battery.display]]
+threshold = 30
+style = "bold red"
