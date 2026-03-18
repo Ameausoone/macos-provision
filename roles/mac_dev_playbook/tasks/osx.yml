@@ -1,0 +1,8 @@
+---
+- name: Apply macOS system defaults
+  ansible.builtin.script:
+    cmd: "files/osx/.osx"
+    executable: /usr/bin/env bash
+  changed_when: true
+  tags:
+    - osx

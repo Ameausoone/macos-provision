@@ -15,3 +15,8 @@
 
 - name: Install Github stuff
   ansible.builtin.import_tasks: github.yml
+
+- name: Configure macOS defaults
+  ansible.builtin.import_tasks: osx.yml
+  tags:
+    - osx
