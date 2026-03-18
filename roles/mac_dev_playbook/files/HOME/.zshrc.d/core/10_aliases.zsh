@@ -61,7 +61,7 @@ function push() {
   cd "${MACOS_SETUP_DIR}/macos-provision"
 
   if [[ -z "${commit_msg}" ]]; then
-    commit_msg=$(copilot --model "gpt-5-mini" --allow-tool 'shell(git:*)' --prompt "Output ONLY a single conventional commit message from the staged git diff. Format: <type>(<scope>): <description> — where type is feat, fix, chore, refactor, docs, style, test, or ci. No explanation, no markdown, no prefix, no quotes. First character must be the commit type." --silent)
+    commit_msg=$(copilot --model "gpt-5-mini" --allow-tool 'shell(git:*)' --prompt "Your response must contain exactly one line and nothing else: a conventional commit message for the staged git diff. Format: <type>(<scope>): <description> where type is feat, fix, chore, refactor, docs, style, test, or ci. No explanation, no preamble, no markdown, no quotes. Any output other than the commit message line is forbidden." --silent | grep -oE '^(feat|fix|chore|refactor|docs|style|test|ci)(\([^)]+\))?: .+')
     if [[ -z "${commit_msg}" ]]; then
       echo "Error: failed to generate commit message"
       return 1
