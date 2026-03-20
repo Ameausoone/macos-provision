@@ -1,29 +1,32 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# Left prompt: directory + git info
 format = """
 $directory$git_branch$git_status
 $character"""
 
+# Right prompt: runtime context (non-intrusive, right-aligned)
 right_format = """
 $status$cmd_duration$jobs$python$golang$kubernetes$terraform$gcloud$battery"""
 
 [directory]
-truncation_length = 4
-truncate_to_repo = true
+truncation_length = 4      # max path segments to show
+truncate_to_repo = true    # truncate to repo root when inside a git repo
 style = "bold blue"
 
 [git_branch]
 format = "[$symbol$branch]($style) "
 style = "bold purple"
-truncation_length = 32
+truncation_length = 32     # truncate long branch names
 truncation_symbol = "…"
 
 [git_status]
 format = '([$all_status$ahead_behind]($style) )'
 style = "bold yellow"
-ahead = ">"
-behind = "<"
-diverged = "<>"
+ahead = ">"        # local is ahead of remote
+behind = "<"       # local is behind remote
+diverged = "<>"    # diverged from remote
+conflicted = "~"   # merge conflicts present
 untracked = "?"
 stashed = "*"
 modified = "!"
@@ -32,26 +35,29 @@ renamed = "»"
 deleted = "✘"
 
 [character]
-success_symbol = "[>](bold green)"
-error_symbol = "[>](bold red)"
-vimcmd_symbol = "[<](bold green)"
+success_symbol = "[>](bold green)"   # prompt char on success
+error_symbol = "[>](bold red)"       # prompt char on error
+vimcmd_symbol = "[<](bold green)"    # prompt char in vim normal mode
 
 [status]
 disabled = false
 format = "[$status]($style) "
+style = "bold red"    # make non-zero exit codes visually prominent
 
 [cmd_duration]
-min_time = 3_000
+min_time = 3_000      # only show duration for commands taking 3s+
 format = "[$duration]($style) "
 
 [jobs]
-format = "[$number]($style) "
+format = "[$number]($style) "   # show count of background jobs
 
 [python]
-format = '[$virtualenv]($style) '
+# show version + virtualenv name when active, version only otherwise
+format = '[$version( \($virtualenv\))]($style) '
 style = "bold yellow"
 
 [golang]
+# only shown inside Go projects (detected via go.mod, *.go, etc.)
 format = "[$version]($style) "
 style = "bold cyan"
 
@@ -59,18 +65,22 @@ style = "bold cyan"
 disabled = false
 format = "[$context]($style) "
 style = "bold blue"
+# shorten well-known context names to avoid cluttering the prompt
+context_aliases = { ".*prod.*" = "prod", ".*staging.*" = "stg" }
 
 [terraform]
+# shows current workspace (default = "default")
 format = "[$workspace]($style) "
 style = "bold purple"
 
 [gcloud]
-format = "[$account@$domain/$project]($style) "
+# only show project to keep it short (account/domain are usually implicit)
+format = "[$project]($style) "
 style = "bold blue"
 
 [battery]
 disabled = false
 
 [[battery.display]]
-threshold = 30
+threshold = 30     # only show battery when below 30%
 style = "bold red"

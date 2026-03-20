@@ -49,6 +49,7 @@ mac_dev_playbook_homebrew_installed_packages:
   # rm '/usr/local/bin/gpg'
   # brew link gnupg
   - gnupg                   # gnupg is a tool for managing GnuPG keys
+  - googleworkspace-cli        # Google Workspace CLI for managing Google Workspace resources
   # FIXME Install it manually
   # - gpg-suite-no-mail       # For signing commits
   - graphviz                # Graphviz is a graph visualization tool
@@ -77,6 +78,8 @@ mac_dev_playbook_homebrew_installed_packages:
   - rancher                 # Rancher is a container management platform
   - rust                    # Rust is a systems programming language
   - slides                  # Slides is a terminal based presentation tool
+  - task                    # TaskWarrior is a command-line task manager
+  - timewarrior             # Timewarrior is a time tracking tool
   - tree                    # tree is a directory listing utility
   - hashicorp/tap/vault     # Vault is a tool for managing secrets
   - via                     # via is an application to manage keyboard mappings

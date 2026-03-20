@@ -26,8 +26,6 @@ shell-integration-features = cursor,title
 macos-non-native-fullscreen = true
 # Seamless titlebar with background
 macos-titlebar-style = transparent
-# Use option key as alt for keybindings
-macos-option-as-alt = true
 
 # Window
 # New tabs inherit current directory
