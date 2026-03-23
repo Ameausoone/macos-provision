@@ -7,7 +7,7 @@ $character"""
 
 # Right prompt: runtime context (non-intrusive, right-aligned)
 right_format = """
-$status$cmd_duration$jobs$python$golang$kubernetes$terraform$gcloud$battery"""
+$custom$status$cmd_duration$jobs$python$golang$kubernetes$terraform$gcloud$battery"""
 
 [directory]
 truncation_length = 4      # max path segments to show
@@ -84,3 +84,9 @@ disabled = false
 [[battery.display]]
 threshold = 30     # only show battery when below 30%
 style = "bold red"
+
+[custom.task]
+command = "task rc.verbose=nothing status:active project:decathlon limit:1 2>/dev/null | tail -1 | sed 's/^ *[0-9]* *//' | cut -c1-30"
+when = "command -v task"
+format = "[$output]($style) "
+style = "bold yellow"
