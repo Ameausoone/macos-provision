@@ -6,8 +6,10 @@
 
 ```sh
 jira sprint list --current                                                    # sprint actif
-jira issue list --project CPDE --type Epic --status "Action en cours"        # epics en cours
-jira issue list --project CPDE --assignee$(jira me) --status "Action en cours"  # mes tâches
+# À faire: 14187
+# Action en cours: 10588
+jira issue list --project CPDE --type Epic --status 14187       # epics en cours
+jira issue list --project CPDE --assignee$(jira me) --status 14187  # mes tâches
 jira issue view CPDE-1234
 jira open CPDE-1234
 ```
