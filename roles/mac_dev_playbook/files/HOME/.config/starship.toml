@@ -6,8 +6,7 @@ $directory$git_branch$git_status
 $character"""
 
 # Right prompt: runtime context (non-intrusive, right-aligned)
-right_format = """
-$custom$status$cmd_duration$jobs$python$golang$kubernetes$terraform$gcloud$battery"""
+right_format = """$custom$status$cmd_duration$jobs$python$golang$kubernetes$terraform$gcloud$battery"""
 
 [directory]
 truncation_length = 4      # max path segments to show
@@ -79,14 +78,14 @@ format = "[$project]($style) "
 style = "bold blue"
 
 [battery]
-disabled = false
+disabled = true
 
 [[battery.display]]
 threshold = 30     # only show battery when below 30%
 style = "bold red"
 
 [custom.task]
-command = "task rc.verbose=nothing rc.report.next.columns=description rc.report.next.labels=X next project:decathlon limit:1 2>/dev/null | cut -c1-40"
+command = "(task rc.verbose=nothing rc.report.next.columns=description rc.report.next.labels=X +ACTIVE project:decathlon limit:1 2>/dev/null || task rc.verbose=nothing rc.report.next.columns=description rc.report.next.labels=X next project:decathlon limit:1 2>/dev/null) | cut -c1-40"
 when = "command -v task"
-format = "[⚡ $output]($style) "
+format = "[$output]($style) "
 style = "bold yellow"
