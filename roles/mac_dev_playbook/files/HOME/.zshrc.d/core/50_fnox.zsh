@@ -3,6 +3,8 @@
 # Enable fnox shell integration
 # fnox is a tool to load secrets automatically, integrated with mise
 # https://fnox.jdx.dev/
+
+# Disable the default fnox activation because fnox use hardcoded version path, and we want to be able to update fnox without updating this file
 #eval "$(fnox activate zsh)"
 
 export FNOX_SHELL=zsh
