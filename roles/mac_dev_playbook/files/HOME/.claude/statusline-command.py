@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import json, sys, subprocess, re, os
+from concurrent.futures import ThreadPoolExecutor
 
 data = json.load(sys.stdin)
 model = data["model"]["display_name"]
@@ -10,26 +11,37 @@ duration_ms = data.get("cost", {}).get("total_duration_ms", 0) or 0
 
 CYAN, YELLOW, GREEN, RED, RESET = "\033[36m", "\033[33m", "\033[32m", "\033[31m", "\033[0m"
 
-# Git branch
-try:
-    branch = subprocess.check_output(
-        ["git", "-C", cwd, "--no-optional-locks", "rev-parse", "--abbrev-ref", "HEAD"],
-        stderr=subprocess.DEVNULL, text=True
-    ).strip()
-except Exception:
-    branch = ""
+def get_branch():
+    try:
+        return subprocess.check_output(
+            ["git", "-C", cwd, "--no-optional-locks", "rev-parse", "--abbrev-ref", "HEAD"],
+            stderr=subprocess.DEVNULL, text=True, timeout=2
+        ).strip()
+    except Exception:
+        return ""
+
+def get_remote():
+    try:
+        return subprocess.check_output(
+            ["git", "-C", cwd, "--no-optional-locks", "remote", "get-url", "origin"],
+            stderr=subprocess.DEVNULL, text=True, timeout=2
+        ).strip()
+    except Exception:
+        return ""
+
+with ThreadPoolExecutor(max_workers=2) as ex:
+    f_branch = ex.submit(get_branch)
+    f_remote = ex.submit(get_remote)
+    branch = f_branch.result()
+    raw_remote = f_remote.result()
 
 # Clickable repo link via OSC 8
-try:
-    remote = subprocess.check_output(
-        ["git", "-C", cwd, "remote", "get-url", "origin"],
-        stderr=subprocess.DEVNULL, text=True
-    ).strip()
-    remote = re.sub(r"^git@github\.com:", "https://github.com/", remote)
+if raw_remote:
+    remote = re.sub(r"^git@github\.com:", "https://github.com/", raw_remote)
     remote = re.sub(r"\.git$", "", remote)
     repo_name = remote.split("/")[-1]
     project = f"\033]8;;{remote}\a{repo_name}\033]8;;\a"
-except Exception:
+else:
     project = os.path.basename(cwd) if cwd else ""
 
 # Context bar

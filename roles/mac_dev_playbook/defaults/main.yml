@@ -43,6 +43,7 @@ mac_dev_playbook_homebrew_installed_packages:
   - fzf                     # fzf is a command-line fuzzy finder
   - ghostty                 # GhostTy is a fast and lightweight terminal emulator
   - git                     # Git is a version control system
+  - git-lfs                 # Git LFS is a Git extension for versioning large files
   - gh            # GitHub CLI
   - gnu-sed                 # GNU version of sed
   # Need to remove original gpg once installed
