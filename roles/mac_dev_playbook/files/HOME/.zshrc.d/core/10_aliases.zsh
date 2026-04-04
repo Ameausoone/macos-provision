@@ -129,6 +129,7 @@ alias good-readme="open https://github.com/othneildrew/Best-README-Template"
 # Tool Aliases
 # ==============================================================================
 
+alias upgrade="brew upgrade && mise upgrade"
 alias goo="google"
 alias hdi="howdoi -c -n 2"
 alias diff="grc diff"

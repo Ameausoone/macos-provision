@@ -4,25 +4,16 @@
 
 ## Introduction
 
-Lorsque vous installez un outil avec `mise use java`, `mise` doit savoir *où* et *comment* récupérer cet outil. C'est le rôle des **backends** : ce sont les sources d'installation que `mise` interroge pour télécharger, compiler ou gérer les différentes versions de vos outils.
+Lorsque vous installez un outil avec `mise use java`, [`mise`](https://mise.jdx.dev/) doit savoir *où* et *comment* récupérer cet outil. C'est le rôle des **backends** : ce sont les sources d'installation que `mise` interroge pour télécharger, compiler ou gérer les différentes versions de vos outils.
 
 Comprendre les backends permet de :
 - **choisir la source la plus adaptée** à chaque outil (rapidité, maintenabilité, sécurité),
 - **éviter les conflits** entre gestionnaires de paquets,
 - **affiner ses configurations** pour des besoins spécifiques (miroirs internes, builds personnalisés).
 
-Dans cet article :
-- Les 4 principaux backends (`core`, `asdf`, `aqua`, `pipx`)
-- Quand et comment les utiliser
+`mise` dispose d'une [vingtaine de backends](https://mise.jdx.dev/dev-tools/backends/) (`cargo`, `npm`, `go`, `ubi`, `vfox`…). Cet article se concentre sur les 4 principaux :
+- `core`, `asdf`, `aqua`, `pipx` — quand et comment les utiliser
 - Comment spécifier explicitement un backend dans `mise.toml`
-
-## En bref
-
-- `mise` délègue l'installation des outils à des **backends** (sources d'installation)
-- Le backend **`core`** est maintenu par l'équipe `mise` et couvre les outils les plus courants (Node, Python, Java, Terraform…)
-- Le backend **`asdf`** permet d'utiliser les plugins `asdf` existants pour des outils non couverts par `core`
-- **`aqua`** et **`pipx`** sont des backends spécialisés pour des outils distribués via ces gestionnaires
-- On peut **spécifier explicitement le backend** dans `mise.toml` pour éviter l'ambiguïté ou forcer une source
 
 ## Les backends disponibles
 
@@ -31,9 +22,7 @@ Dans cet article :
 Le backend **`core`** est développé et maintenu directement par l'équipe `mise`. Il couvre les outils les plus utilisés dans les environnements de développement moderne.
 
 **Outils couverts :**
-- langages : `node`, `python`, `java`, `go`, `ruby`, `rust`, `bun`, `deno`
-- outils cloud et infra : `terraform`, `kubectl`, `helm`, `awscli`, `gcloud`
-- outils système : `direnv`, `jq`, `yq`, `fd`, `rg`
+- `node`, `python`, `java`, `go`, `ruby`, `rust`, `bun`, `deno`, `elixir`, `erlang`, `zig`, `swift`
 
 **Avantages :**
 - **rapide** : optimisé pour `mise`, pas de dépendance externe
@@ -47,6 +36,8 @@ Si l'outil est disponible dans `core`, **privilégiez ce backend**. C'est le cho
 # Installe Node via le backend core
 mise use node@20
 ```
+
+<!-- Installation de Node 20 via le backend core de mise -->
 
 ### Le backend `asdf`
 
@@ -66,9 +57,11 @@ Le backend **`asdf`** permet d'utiliser les plugins existants de l'écosystème 
 Uniquement si l'outil n'existe **pas dans `core`** ou si vous avez besoin d'un comportement spécifique d'un plugin `asdf`.
 
 ```bash
-# Installe Elixir via un plugin asdf
-mise use asdf:elixir@1.16
+# Installe hashicorp-vault via un plugin asdf
+mise use asdf:hashicorp-vault@1.15
 ```
+
+<!-- Installation de hashicorp-vault via le backend asdf -->
 
 ### Le backend `aqua`
 
@@ -91,6 +84,8 @@ Pour des outils CLI spécifiques non couverts par `core` ou pour bénéficier de
 mise use aqua:hadolint/hadolint@2.12.0
 ```
 
+<!-- Installation de hadolint via le backend aqua -->
+
 ### Le backend `pipx`
 
 **`pipx`** installe des outils Python en isolation (chaque outil dans son propre virtualenv).
@@ -111,6 +106,8 @@ Pour installer des **outils CLI Python** (`black`, `ruff`, `ansible`, `poetry`) 
 mise use pipx:poetry@1.7.1
 ```
 
+<!-- Installation de poetry via le backend pipx -->
+
 ## Spécifier un backend dans `mise.toml`
 
 Par défaut, `mise` détecte automatiquement le backend à utiliser. Mais vous pouvez **forcer explicitement** un backend dans votre `mise.toml`.
@@ -123,10 +120,12 @@ Par défaut, `mise` détecte automatiquement le backend à utiliser. Mais vous p
 node = "20"
 
 # Backend explicite
-"asdf:elixir" = "1.16"
+"asdf:hashicorp-vault" = "1.15"
 "aqua:hadolint/hadolint" = "2.12.0"
 "pipx:poetry" = "1.7.1"
 ```
+
+<!-- Syntaxe mise.toml : backend automatique vs backend explicite -->
 
 ### Cas d'usage : forcer un backend spécifique
 
@@ -137,6 +136,8 @@ Imaginons que vous vouliez utiliser un plugin `asdf` pour Java au lieu du backen
 # Force l'usage du plugin asdf pour Java
 "asdf:java" = "temurin-21"
 ```
+
+<!-- Forcer le backend asdf pour Java au lieu du backend core -->
 
 ### Cas d'usage : combiner plusieurs backends
 
@@ -149,7 +150,7 @@ node = "20"
 python = "3.12"
 
 # Outil spécifique via asdf
-"asdf:erlang" = "26.2"
+"asdf:hashicorp-vault" = "1.15"
 
 # CLI via aqua
 "aqua:hadolint/hadolint" = "2.12.0"
@@ -157,6 +158,8 @@ python = "3.12"
 # Outils Python via pipx
 "pipx:ansible" = "9.0.1"
 ```
+
+<!-- Exemple mise.toml combinant backends core, asdf, aqua et pipx -->
 
 ## Bonnes pratiques
 
@@ -177,15 +180,19 @@ python = "3.12"
 
 **Erreur :**
 ```
-Error: asdf plugin elixir not found
+Error: asdf plugin hashicorp-vault not found
 ```
+
+<!-- Erreur typique : plugin asdf manquant -->
 
 **Solution :**
 `mise` télécharge automatiquement les plugins `asdf`, mais parfois il faut forcer :
 
 ```bash
-mise plugins install asdf:elixir
+mise plugin install hashicorp-vault
 ```
+
+<!-- Commande pour installer manuellement un plugin asdf -->
 
 ### Conflits de versions entre backends
 
@@ -196,6 +203,8 @@ Si vous installez `python` via `core` et `ansible` via `pipx`, assurez-vous que 
 mise which python
 ```
 
+<!-- Vérification que pipx utilise le bon Python géré par mise -->
+
 ### Backend non disponible
 
 Certains outils n'existent que dans un backend. Si vous tentez :
@@ -204,16 +213,18 @@ Certains outils n'existent que dans un backend. Si vous tentez :
 mise use pipx:terraform
 ```
 
+<!-- Erreur : Terraform n'est pas un paquet PyPI, le backend pipx ne convient pas -->
+
 Vous aurez une erreur : Terraform n'est pas un paquet PyPI. Utilisez `core` ou `aqua`.
 
 ## Check-list opérationnelle
 
 Avant d'ajouter un outil dans `mise.toml` :
 
-- [ ] L'outil existe-t-il dans le backend `core` ? → `mise ls-remote <outil>`
-- [ ] Si non, existe-t-il un plugin `asdf` fiable ? → https://github.com/asdf-vm/asdf-plugins
-- [ ] Si c'est un CLI distribué en binaire, existe-t-il dans `aqua` ? → https://aquaproj.github.io/
-- [ ] Si c'est un outil Python, `pipx` est-il plus adapté ? → https://pypi.org/
+- [ ] L'outil existe-t-il dans le backend `core` ? → `mise registry` pour lister les outils, `mise ls-remote <outil>` pour ses versions
+- [ ] Si non, existe-t-il un plugin `asdf` fiable ? → [registre asdf](https://github.com/asdf-vm/asdf-plugins)
+- [ ] Si c'est un CLI distribué en binaire, existe-t-il dans `aqua` ? → [registre aqua](https://aquaproj.github.io/)
+- [ ] Si c'est un outil Python, `pipx` est-il plus adapté ? → [PyPI](https://pypi.org/)
 - [ ] Ai-je spécifié une version exacte ?
 - [ ] Ai-je testé l'installation avec `mise install` ?
 
@@ -237,22 +248,22 @@ flowchart TD
 **Récap :**
 - `mise` utilise des backends pour installer les outils : `core`, `asdf`, `aqua`, `pipx`
 - **Privilégiez `core`** : plus rapide, plus stable, maintenu par l'équipe `mise`
-- **Spécifiez explicitement le backend** dans `mise.toml` si nécessaire : `"asdf:elixir" = "1.16"`
+- **Spécifiez explicitement le backend** dans `mise.toml` si nécessaire : `"asdf:hashicorp-vault" = "1.15"`
 
 **Next steps :**
-- Lister les outils disponibles dans `core` : `mise ls-remote`
+- Lister les outils disponibles : `mise registry`
 - Migrer un ancien projet `asdf` : remplacer progressivement les plugins par `core`
-- Tester `aqua` pour les outils CLI non couverts : https://aquaproj.github.io/
+- Tester [`aqua`](https://aquaproj.github.io/) pour les outils CLI non couverts
 - Explorer les variables d'environnement et la gestion des secrets avec `mise`
 
 ## Pour aller plus loin
 
 **Liens externes :**
-- Documentation officielle des backends : https://mise.jdx.dev/dev-tools/backends/
-- Liste des outils `core` : https://mise.jdx.dev/dev-tools/
-- Registre des plugins `asdf` : https://github.com/asdf-vm/asdf-plugins
-- Site officiel `aqua` : https://aquaproj.github.io/
-- Documentation `pipx` : https://pipx.pypa.io/
+- [Documentation officielle des backends](https://mise.jdx.dev/dev-tools/backends/)
+- [Liste des outils core](https://mise.jdx.dev/dev-tools/)
+- [Registre des plugins asdf](https://github.com/asdf-vm/asdf-plugins)
+- [Site officiel aqua](https://aquaproj.github.io/)
+- [Documentation pipx](https://pipx.pypa.io/)
 
 **Liens internes sfeir.dev :**
 - *`mise` au quotidien : standardiser les versions de vos outils* (article précédent)
