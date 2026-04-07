@@ -25,7 +25,7 @@
 
 - name: Ensure Taskwarrior hooks directory exists.
   ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.task/hooks"
+    path: "{{ ansible_facts.env.HOME }}/.task/hooks"
     state: directory
     mode: "0755"
 
@@ -37,5 +37,5 @@
 - name: Link Timewarrior hook for Taskwarrior integration.
   ansible.builtin.file:
     src: /opt/homebrew/share/doc/timew/ext/on-modify.timewarrior
-    dest: "{{ ansible_env.HOME }}/.task/hooks/on-modify.timewarrior"
+    dest: "{{ ansible_facts.env.HOME }}/.task/hooks/on-modify.timewarrior"
     state: link
