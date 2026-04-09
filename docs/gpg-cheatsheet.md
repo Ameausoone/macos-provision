@@ -7,9 +7,6 @@
 - **`gpg --batch --generate-key gpg-key-params.txt`**
   Génère une clé automatiquement avec un fichier de configuration batch.
 
-- **`Expire-Date: 45d`**
-  À inclure dans le fichier batch pour définir une expiration de 45 jours.
-
 ---
 
 ## Vérification et gestion des clés
@@ -21,6 +18,9 @@
 
 - **`gpg --edit-key <KEY_ID>`**
   Permet d’éditer une clé spécifique pour vérifier ou modifier ses propriétés.
+
+- **`echo "test" | gpg --clearsign`**
+  Teste la signature avec la clé par défaut. Utile pour déverrouiller `gpg-agent` sans faire de commit.
 
 - **`echo "test" | gpg -u <KEY_ID> --clearsign`**
   Teste la signature avec une clé spécifique.
