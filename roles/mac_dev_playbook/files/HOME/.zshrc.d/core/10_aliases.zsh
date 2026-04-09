@@ -90,7 +90,7 @@ alias m="make"
 # ==============================================================================
 
 function cheat() {
-  local sheets=(~/*-cheat-sheet.md(N))
+  local sheets=(~/.docs/*-cheat-sheet.md(N))
 
   if [[ $# -eq 0 ]]; then
     print "available cheat sheets:"
@@ -115,7 +115,7 @@ function cheat() {
 
 function _cheat() {
   local -a sheets
-  sheets=(~/*-cheat-sheet.md(N))
+  sheets=(~/.docs/*-cheat-sheet.md(N))
   sheets=(${sheets:t:s/-cheat-sheet.md//})
   compadd $sheets
 }

@@ -72,7 +72,7 @@ At your own risk, this playbook doesn't aim to be used by someone else, it's jus
   gpg-generate-key.sh
   ```
 
-More GPG commands see [gpg-cheatsheet.md](docs/gpg-cheatsheet.md).
+More GPG commands see [gpg-cheatsheet.md](roles/mac_dev_playbook/files/HOME/gpg-cheatsheet.md).
 
 ### Understand GPG commit signing
 
