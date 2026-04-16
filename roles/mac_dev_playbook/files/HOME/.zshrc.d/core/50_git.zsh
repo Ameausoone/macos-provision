@@ -18,8 +18,8 @@ function gcamp() {
 alias last='git log --oneline -5'
 alias status='git status && echo "---" && git log --oneline -3'
 alias changes='git diff HEAD~1'
-# To pull floating tags
-alias glf='git pull origin $(git rev-parse --abbrev-ref HEAD) --force'
+# To pull floating tags (fetch + reset avoids "rebase onto multiple branches" with pull.rebase=true)
+alias glf='git fetch origin $(git rev-parse --abbrev-ref HEAD) && git reset --hard FETCH_HEAD'
 # Quick branch management
 alias main="gcm && glf"
 alias newbranch='git checkout -b'

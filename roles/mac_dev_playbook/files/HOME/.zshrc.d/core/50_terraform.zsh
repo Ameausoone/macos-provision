@@ -24,7 +24,7 @@ alias tfvq="tf validate -no-color"
 
 alias tfd="terraform destroy"
 alias tfdrf="terraform destroy -refresh=false"
-
+alias tfsl="tf state list | fzf --preview 'terraform state show {}'"
 alias tf_state_rm="tf state list | fzf --preview 'terraform state show {}' | xargs terraform state rm"
 
 alias tf_workspace_select="tf workspace list| cut -c3- | fzf | xargs terraform workspace select"
