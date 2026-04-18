@@ -17,6 +17,9 @@ It will :
 * install ansible : `brew install ansible`
 * checkout project in `~/Projects/wk_perso/macos-setup/macos-provision`.
 * copy `roles/mac-dev-playbook/files/ansible/ansible.cfg` in ~/.ansible.cfg
+  ```shell
+  curl -fsSL https://github.com/Ameausoone/macos-provision/raw/refs/heads/main/roles/mac_dev_playbook/files/HOME/ansible.cfg -o ~/ansible.cfg
+  ```
 * init file `inventory` file in `~/.ansible/inventory` e.g.
 
 ```text

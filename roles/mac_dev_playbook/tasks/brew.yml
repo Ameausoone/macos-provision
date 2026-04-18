@@ -31,11 +31,11 @@
 
 - name: Ensure Timewarrior hook script is executable.
   ansible.builtin.file:
-    path: /opt/homebrew/share/doc/timew/ext/on-modify.timewarrior
+    path: "{{ lookup('pipe', 'brew --prefix') }}/share/doc/timew/ext/on-modify.timewarrior"
     mode: "0755"
 
 - name: Link Timewarrior hook for Taskwarrior integration.
   ansible.builtin.file:
-    src: /opt/homebrew/share/doc/timew/ext/on-modify.timewarrior
+    src: "{{ lookup('pipe', 'brew --prefix') }}/share/doc/timew/ext/on-modify.timewarrior"
     dest: "{{ ansible_facts.env.HOME }}/.task/hooks/on-modify.timewarrior"
     state: link

@@ -63,6 +63,11 @@
     get_checksum: true
   register: mac_dev_playbook_autoenv_sha1sum
 
+- name: Create .autoenv_authorized if no
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.autoenv_authorized"
+    state: file
+
 - name: Add line in autoenv_authorized
   ansible.builtin.lineinfile:
     path: "{{ ansible_facts.env.HOME }}/.autoenv_authorized"
