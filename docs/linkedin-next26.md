@@ -2,7 +2,7 @@
 
 ---
 
-Google Cloud Next '26 approche et voici les sessions que j'attends le plus.
+Google Cloud Next '26, c'est à Las Vegas et voici les sessions que j'attends le plus.
 
 Parmi la centaine de talks au programme, quelques-uns ont retenu mon attention :
 
