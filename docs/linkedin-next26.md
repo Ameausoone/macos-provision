@@ -2,24 +2,20 @@
 
 ---
 
-Google Cloud Next '26, c'est à Las Vegas et voici les sessions que j'attends le plus.
+Direction Las Vegas pour Google Cloud Next '26. Merci Sfeir de me permettre d'y être en personne.
 
-Parmi la centaine de talks au programme, quelques-uns ont retenu mon attention :
+Quelques sessions déjà dans le viseur :
 
-**A peek into the future: How agents transform SRE**
-L'observabilité et la fiabilité des systèmes, c'est un domaine où les agents IA peuvent vraiment changer la donne. Détection d'anomalies, runbooks automatisés, triage d'incidents… J'espère voir des retours concrets plutôt que de la démo candy.
+Cloud Run d'abord — c'est mon runtime de référence sur la plupart de mes projets en ce moment. J'aimerais savoir où ça va : est-ce que Google continue d'élargir les cas d'usage, ou on arrive à un plateau ?
 
-**What's new in Cloud Run**
-Cloud Run s'est imposé comme la solution par défaut pour déployer une application sans se prendre la tête avec l'infra. Mais jusqu'où va aller la plateforme ? GPU, jobs, sidecar patterns… les prochaines fonctionnalités vont déterminer si Cloud Run reste un choix par défaut ou devient un choix stratégique.
+Les agents dans la SRE ensuite. Sur le papier c'est séduisant — détection d'anomalies, runbooks automatisés, triage d'incidents. Mais j'attends des REX concrets pour comprendre comment intégrer ça en prod sans créer un nouveau point de défaillance.
 
-**Building enterprise-grade customer portals with Gemini Enterprise, ADK & A2A**
-L'Agent Development Kit et le protocole A2A (Agent-to-Agent) sont encore jeunes, mais l'ambition est claire : orchestrer des agents spécialisés à l'échelle enterprise. Ce talk sera un bon indicateur de la maturité réelle de l'écosystème.
+Et deux autres dans mon agenda :
+- ADK & A2A pour les portails enterprise — ADK s'impose comme la référence, je veux creuser les cas d'usage possibles
+- GKE Day 2 operations — les upgrades de clusters en prod, c'est encore trop souvent une source de stress pour les équipes ops
 
-**Master GKE "Day 2" operations: Pain-free upgrades at scale**
-Gérer un cluster GKE sur la durée, c'est une autre histoire que de le créer. Les upgrades en prod, la gestion des node pools, les interruptions de workloads… si Google annonce des améliorations concrètes sur ce sujet, ça va faire du bien à beaucoup d'équipes ops.
-
-Et vous, quels sont les talks que vous avez mis en favoris ?
+Vous serez sur place ?
 
 ---
 
-#GoogleCloudNext #CloudRun #GKE #AIAgents #SRE #DevOps #GoogleCloud
+#GoogleCloudNext #CloudRun #GKE #AIAgents #SRE #GoogleCloud
