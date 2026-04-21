@@ -6,6 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 An Ansible playbook that provisions a macOS developer machine. It installs Homebrew packages, copies dotfiles to `$HOME`, configures zsh with oh-my-zsh/antigen, and sets up GitHub CLI extensions.
 
+## Articles and Linkedin posts
+
+For articles and Linkedin posts, look at @docs/CLAUDE.md
+
 ## Running the playbook
 
 ```bash
