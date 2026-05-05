@@ -1,9 +1,7 @@
 # Jira CLI
-
 > `ankitpokhrel/jira-cli`
 
 ## État courant
-
 ```sh
 jira sprint list --current                                                    # sprint actif
 # À faire: 14187

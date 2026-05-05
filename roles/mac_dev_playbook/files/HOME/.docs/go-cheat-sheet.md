@@ -1,7 +1,5 @@
 # Go
-
 ## Modules
-
 ```sh
 go mod init <module>
 go mod tidy                     # add missing, remove unused deps
@@ -10,7 +8,6 @@ go get <pkg>@latest
 ```
 
 ## Build & run
-
 ```sh
 go run .
 go build -o bin/app .
@@ -19,7 +16,6 @@ GOOS=linux GOARCH=amd64 go build -o app .   # cross-compile
 ```
 
 ## Test
-
 ```sh
 go test ./...
 go test -run TestFoo ./...
@@ -29,7 +25,6 @@ go test -race ./...             # race condition detector
 ```
 
 ## Common patterns
-
 ```go
 // error handling
 if err != nil {
@@ -50,7 +45,6 @@ defer cancel()
 ```
 
 ## Tools
-
 ```sh
 go vet ./...                    # static analysis
 gofmt -w .                      # format code
@@ -60,7 +54,6 @@ dlv debug                       # delve debugger
 ```
 
 ## Useful env vars
-
 ```sh
 GOPATH        # workspace root (~/.go by default)
 GOBIN         # where go install puts binaries

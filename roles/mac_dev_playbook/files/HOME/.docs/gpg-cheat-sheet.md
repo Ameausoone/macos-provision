@@ -1,5 +1,4 @@
 # Résumé des commandes GPG
-
 ## Génération de clés
 - **`gpg --full-generate-key`**
   Permet de générer une clé GPG en mode interactif.

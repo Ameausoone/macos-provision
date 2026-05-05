@@ -1,9 +1,6 @@
 # TaskWarrior + Timewarrior
-
 ## TaskWarrior — task management
-
 ### Add & modify
-
 ```sh
 task add "Fix login bug" project:backend due:friday +urgent
 task <id> modify due:monday priority:H
@@ -13,7 +10,6 @@ task <id> delete
 ```
 
 ### Attributes
-
 | Attribute     | Purpose                               |
 |---------------|---------------------------------------|
 | `due:`        | hard deadline                         |
@@ -25,7 +21,6 @@ task <id> delete
 | `+tag`        | free label                            |
 
 ### Filter & view
-
 ```sh
 task list
 task project:backend list
@@ -36,7 +31,6 @@ task next                              # smart prioritized view
 ```
 
 ### Recurrence
-
 ```sh
 task add "Weekly sync" recur:weekly due:friday
 task add "Monthly backup" recur:monthly due:1st
@@ -45,7 +39,6 @@ task add "Monthly backup" recur:monthly due:1st
 ---
 
 ## Timewarrior — time tracking
-
 ```sh
 timew start backend api               # start timer with tags
 timew stop                            # stop current timer
@@ -59,7 +52,6 @@ timew report day                      # day view
 ---
 
 ## Integration (TaskWarrior → Timewarrior)
-
 ```sh
 # install hook (run once)
 cp /usr/local/share/doc/task/hooks/on-modify.timewarrior ~/.task/hooks/

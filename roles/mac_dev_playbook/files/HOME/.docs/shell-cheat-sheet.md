@@ -1,9 +1,7 @@
 # How to start a shell script
-
 ```shell
 #!/usr/bin/env bash
 # see https://github.com/kvz/bash3boilerplate
-
 # Exit on error. Append "|| true" if you expect an error.
 set -o errexit
 # Exit on error inside any functions or subshells.
@@ -14,7 +12,6 @@ set -o nounset
 set -o pipefail
 # Turn on traces, useful while debugging but commented out by default
 # set -o xtrace
-
 # Set magic variables for current file, directory, os, etc.
 __dir="$(cd "$(dirname "${BASH_SOURCE[${__b3bp_tmp_source_idx:-0}]}")" && pwd)"
 __file="${__dir}/$(basename "${BASH_SOURCE[${__b3bp_tmp_source_idx:-0}]}")"
