@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+# disable waiting to look after the sudoers issue is resolved.
+# mise: To enable macOS integration for Java (requires one-time sudo access)
+JAVA_VERSION=$(mise current java 2>/dev/null) || return
+JDK_DIR="/Library/Java/JavaVirtualMachines/${JAVA_VERSION}.jdk"
+
+if [[ ! -d "$JDK_DIR" ]]; then
+    if sudo -n mkdir -p "$JDK_DIR" 2>/dev/null; then
+        echo "Created JDK directory at $JDK_DIR for mise/MacOs Java integration."
+    else
+        echo "⚠️  Java macOS integration: cannot create $JDK_DIR (no sudo). Run once as admin." >&2
+        return
+    fi
+fi
+
+if [[ ! -L "$JDK_DIR/Contents" ]]; then
+    if sudo -n ln -sf "$(mise where java)/Contents" "$JDK_DIR/Contents" 2>/dev/null; then
+        echo "Linked $(mise where java)/Contents to $JDK_DIR/Contents for mise/MacOs Java integration."
+    else
+        echo "⚠️  Java macOS integration: cannot symlink $JDK_DIR/Contents (no sudo). Run once as admin." >&2
+    fi
+fi
