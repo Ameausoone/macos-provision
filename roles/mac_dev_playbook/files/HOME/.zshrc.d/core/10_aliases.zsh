@@ -82,7 +82,35 @@ No explanation, no preamble, no quotes, no markdown. One line only." \
 # Development Helpers
 # ==============================================================================
 
-alias config="idea ${MACOS_SETUP_DIR}"
+# config — open the macos-setup project, or delegate a natural-language request to
+# Copilot CLI and auto-deploy:
+#   config                          → open project in IntelliJ IDEA
+#   config 'add alias for docker'   → Copilot edits the repo, then push provisions the machine
+function config() {
+  if [[ $# -eq 0 ]]; then
+    idea "${MACOS_SETUP_DIR}"
+    return
+  fi
+
+  local request="$*"
+
+  if [[ ! -d "${MACOS_SETUP_DIR}/macos-provision" ]]; then
+    print -P "%F{red}Error: ${MACOS_SETUP_DIR}/macos-provision not found%f" >&2
+    return 1
+  fi
+
+  cd "${MACOS_SETUP_DIR}/macos-provision"
+  print -P "%F{cyan}Launching Copilot for: ${request}%f"
+  copilot "$request"
+
+  local exit_code=$?
+  if [[ $exit_code -ne 0 ]]; then
+    print -P "%F{red}Copilot exited with error (code ${exit_code}) — skipping push%f" >&2
+    return $exit_code
+  fi
+
+  push
+}
 alias m="make"
 
 # ==============================================================================
