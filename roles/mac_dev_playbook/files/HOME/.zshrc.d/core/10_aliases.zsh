@@ -111,6 +111,7 @@ function config() {
 
   push
 }
+alias notes="idea ${MACOS_SETUP_DIR}/notes"
 alias m="make"
 
 # ==============================================================================
