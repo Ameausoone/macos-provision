@@ -61,7 +61,7 @@ function push() {
   cd "${MACOS_SETUP_DIR}/macos-provision"
 
   if [[ -z "${commit_msg}" ]]; then
-    commit_msg=$(git diff --cached | copilot -p \
+    commit_msg=$(git diff --cached | copilot --model 'claude-haiku-4.5' --prompt \
       "Output exactly one conventional commit message for this staged diff.
 Format: <type>(<scope>): <description>
 Allowed types: feat, fix, chore, refactor, docs, style, test, ci.
