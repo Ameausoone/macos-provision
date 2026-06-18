@@ -87,7 +87,7 @@ mac_dev_playbook_homebrew_installed_packages:
   - warp                    # warp is a modern terminal
   - watch                   # watch is a command that runs a program periodically, showing output fullscreen
   - wget                    # wget is a command line downloader
-  - zen                     # zen is a browser based on Firefox with Arc features
+  # - zen                     # zen is a browser based on Firefox with Arc features
   - zsh                     # zsh is a shell interpreter for interactive programs and scripts
   - zsh-autosuggestions     # fish-like autosuggestions for zsh (replaces antigen bundle)
   - zsh-completions         # additional completion definitions for zsh (replaces antigen bundle)
