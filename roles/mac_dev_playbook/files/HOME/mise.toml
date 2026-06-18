@@ -25,3 +25,7 @@ tf-summarize = "latest"         # Tool to summarize Terraform plans
 tflint = "0"                # Terraform linter
 uv = "0"                    # Fast Python package installer
 watchexec= "latest"         # Run commands when files change
+
+[daemon]
+enabled = true
+idle_timeout = "72h"
