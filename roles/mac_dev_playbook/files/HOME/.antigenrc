@@ -1,7 +1,0 @@
-
-antigen bundles <<EOBUNDLES
-zsh-users/zsh-completions
-zsh-users/zsh-autosuggestions
-zsh-users/zsh-syntax-highlighting
-djui/alias-tips
-EOBUNDLES

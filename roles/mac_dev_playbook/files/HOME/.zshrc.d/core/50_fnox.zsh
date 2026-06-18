@@ -43,3 +43,6 @@ typeset -ag chpwd_functions
 if [[ -z "${chpwd_functions[(r)_fnox_hook]+1}" ]]; then
   chpwd_functions=( _fnox_hook ${chpwd_functions[@]} )
 fi
+
+#
+source <(~/.local/share/mise/installs/fnox/latest/fnox completion zsh)

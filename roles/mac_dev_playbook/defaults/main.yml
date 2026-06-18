@@ -13,6 +13,7 @@ mac_dev_playbook_homebrew_absent_packages:
   - conftest
   - hub
   - krew
+  - antigen                 # replaced by brew zsh-* plugins + oh-my-zsh
   - pre-commit              # pre-commit is a git pre-commit hook framework, install it from mise instead
   - yq              # use python-yq instead
 
@@ -21,7 +22,6 @@ mac_dev_playbook_homebrew_installed_packages:
   - adr-tools               # adr-tools is a command line tool for working with Architecture Decision Records
   - agg                     # Asciicast to GIF converter
   - autoenv                 # autoenv execute .env file when you cd into a directory
-  - antigen                 # package manager for zsh
   - asciinema               # asciinema is a terminal session recorder
   - atuin                   # atuin is a modern history command
   - awscli                  # awscli is a command-line interface for AWS
@@ -89,6 +89,9 @@ mac_dev_playbook_homebrew_installed_packages:
   - wget                    # wget is a command line downloader
   - zen                     # zen is a browser based on Firefox with Arc features
   - zsh                     # zsh is a shell interpreter for interactive programs and scripts
+  - zsh-autosuggestions     # fish-like autosuggestions for zsh (replaces antigen bundle)
+  - zsh-completions         # additional completion definitions for zsh (replaces antigen bundle)
+  - zsh-syntax-highlighting # fish-like syntax highlighting for zsh (replaces antigen bundle)
   - iterm2                  # iTerm2 is a terminal replacement
   - intellij-idea           # IntelliJ IDEA is a Java IDE
   - keystore-explorer       # Keystore Explorer is a tool for managing Java keystores
