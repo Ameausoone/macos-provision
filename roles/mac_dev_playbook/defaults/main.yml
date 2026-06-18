@@ -16,8 +16,6 @@ mac_dev_playbook_homebrew_absent_packages:
   - antigen                 # replaced by brew zsh-* plugins + oh-my-zsh
   - pre-commit              # pre-commit is a git pre-commit hook framework, install it from mise instead
   - yq              # use python-yq instead
-  - zen
-  - bruno
 
 mac_dev_playbook_homebrew_installed_packages:
   # - ansible # Installed via Pip.
