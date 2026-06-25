@@ -13,18 +13,15 @@ plugins=(
     docker-compose
     gcloud                  # add gcloud autocomplete
     git                     # Git aliases and auto-completion
-    gh                      # Github cli tool
+    gh                      # GitHub cli tool
     git-auto-fetch          # Automatically fetch git remotes
     gpg-agent               # enable GPG agent if not already enabled
     helm                    # Helm aliases and auto-completion
     iterm2
     macos
     mise                    # Mise en place (asdf alternative)
-    poetry-env              # Poetry env load venv automatically
-    poetry                  # Poetry aliases and auto-completion
     terraform               # Terraform aliases and auto-completion
     virtualenv              # Virtualenv aliases and auto-completion
-    web-search
     zsh-interactive-cd
     zsh-navigation-tools
 )

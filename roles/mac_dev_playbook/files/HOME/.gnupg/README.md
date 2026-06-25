@@ -40,3 +40,12 @@ Run ~/.gnupg/pinentry-ide.sh directly to debug pinentry issues.
 * `PINENTRY_USER_DATA` determines IntelliJ integration.
 
 * References: [GPG Commit Signing](https://www.jetbrains.com/help/idea/set-up-GPG-commit-signing.html#1732b909), [GPG Guide](https://gist.github.com/Ruben-E/9306a0666a1d9c3a3ffe710383551112)
+
+
+## TODO
+
+* Renew also SSH key
+* See
+  * https://gurjeet.singh.im/blog/passwordstore+gnupg+touchid pour le pinentry-touchid liée au pinentry-mac (la partie pass, je ne l'utilise pas)
+  * https://alexnorell.com/post/set-up-gpg/#create-ssh-key pour utiliser une subkey GPG pour les connexion ssh
+  * https://superuser.com/questions/879977/how-to-have-a-different-pass-phrase-for-a-gpg-subkey sur le fait d'avoir un mot de passe différent pour chaque sous-clé.... oui je suis un peu violent 😅
