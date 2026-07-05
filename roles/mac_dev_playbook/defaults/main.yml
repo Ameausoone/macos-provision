@@ -73,6 +73,7 @@ mac_dev_playbook_homebrew_installed_packages:
   - openssl                 # OpenSSL is a toolkit for implementing SSL/TLS
   - opencode                # OpenCode
   - parallel                # GNU parallel is a shell tool for executing jobs in parallel
+  - pandoc                  # pandoc is a universal document converter
   - pigz                    # gzip with parallel support
   - pinentry-mac            # pinentry-mac is a pinentry for GPG on Mac
   - starship                    # cross-shell prompt (replaces powerlevel10k)

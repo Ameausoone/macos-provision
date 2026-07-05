@@ -5,4 +5,4 @@ max-cache-ttl 604800
 # Script provided by Intellij to use for password prompts on macOS
 # It will backup to default pinentry program if not executed through Intellij
 # Execute this script directly to debug it if GPG signature verification fails
-pinentry-program /Users/mac-Z16AMEAU/.gnupg/pinentry-ide.sh
+pinentry-program {{ ansible_env.HOME }}/.gnupg/pinentry-ide.sh

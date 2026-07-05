@@ -55,6 +55,14 @@
   tags:
     - dotfiles
 
+- name: Template gpg-agent.conf with the resolved $HOME path
+  ansible.builtin.template:
+    src: dotfiles/gpg-agent.conf.j2
+    dest: "{{ ansible_facts.env.HOME }}/.gnupg/gpg-agent.conf"
+    mode: "0600"
+  tags:
+    - dotfiles
+
 - name: Calculate sha1sum of .env file
   ansible.builtin.stat:
     # Get file in roles directory

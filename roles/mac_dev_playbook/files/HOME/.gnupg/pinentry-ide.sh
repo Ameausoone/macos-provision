@@ -8,4 +8,4 @@ if [ -n "$PINENTRY_USER_DATA" ]; then
     ;;
   esac
 fi
-exec /opt/homebrew/bin/pinentry-mac "$@"
+exec "$(command -v pinentry-mac)" "$@"
