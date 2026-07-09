@@ -6,6 +6,12 @@ if [ -n "$PINENTRY_USER_DATA" ]; then
       "/Applications/IntelliJ IDEA.app/Contents/jbr/Contents/Home/bin/java" -cp "/Applications/IntelliJ IDEA.app/Contents/plugins/vcs-git/lib/git4idea-rt.jar:/Applications/IntelliJ IDEA.app/Contents/lib/externalProcess-rt.jar" git4idea.gpg.PinentryApp
       exit $?
     ;;
+    IJ_PINENTRY_ENTRYPOINT=*)
+      EXTERNAL_CLI_ENTRYPOINT=${PINENTRY_USER_DATA#IJ_PINENTRY_ENTRYPOINT=}
+      EXTERNAL_CLI_ENTRYPOINT=${EXTERNAL_CLI_ENTRYPOINT%%:*}
+      $EXTERNAL_CLI_ENTRYPOINT
+      exit $?
+    ;;
   esac
 fi
 exec "$(command -v pinentry-mac)" "$@"
