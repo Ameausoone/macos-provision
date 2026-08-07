@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
-eval "$(gh completion --shell zsh)"
+# gh completion is loaded via the static _gh file in $(brew --prefix)/share/zsh/site-functions
+# (see 00_zsh-plugins.zsh)
 
 alias ghprv="gh pr view --web"
 

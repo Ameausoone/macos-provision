@@ -1,6 +1,9 @@
 #!/usr/bin/env zsh
 
-# zsh-completions: extend fpath before oh-my-zsh runs compinit (01_oh-my-zsh-plugins.zsh)
-fpath=("$(brew --prefix)/share/zsh-completions" $fpath)
+# zsh-completions + Homebrew formula completions: extend fpath before oh-my-zsh
+# runs compinit (01_oh-my-zsh-plugins.zsh), so formulae's static _<tool> files
+# (gh, git, jira, mise, starship, copilot, k9s, atuin...) get picked up without
+# each of them needing its own `source <(tool completion zsh)` line.
+fpath=("$(brew --prefix)/share/zsh-completions" "$(brew --prefix)/share/zsh/site-functions" $fpath)
 
 source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
