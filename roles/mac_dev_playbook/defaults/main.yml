@@ -2,7 +2,6 @@
 
 mac_dev_playbook_homebrew_taps:
   - wagoodman/dive
-  - instrumenta/instrumenta
   - hashicorp/tap
   - ankitpokhrel/jira-cli
 
@@ -15,91 +14,125 @@ mac_dev_playbook_homebrew_absent_packages:
   - krew
   - antigen                 # replaced by brew zsh-* plugins + oh-my-zsh
   - pre-commit              # pre-commit is a git pre-commit hook framework, install it from mise instead
-  - yq              # use python-yq instead
 
-mac_dev_playbook_homebrew_installed_packages:
+# Formulae installed on every OS (macOS + Ubuntu via Linuxbrew).
+mac_dev_playbook_homebrew_installed_packages_common:
   # - ansible # Installed via Pip.
-  - adr-tools               # adr-tools is a command line tool for working with Architecture Decision Records
+  - adr-tools                # adr-tools is a command line tool for working with Architecture Decision Records
   - agg                     # Asciicast to GIF converter
-  - autoenv                 # autoenv execute .env file when you cd into a directory
-  - asciinema               # asciinema is a terminal session recorder
   - atuin                   # atuin is a modern history command
   - awscli                  # awscli is a command-line interface for AWS
   - bash                    # bash is a shell
-  - bash-completion         # bash-completion is a collection of bash completion scripts
   - bat                     # cat with wings
-  - bats                    # Bats is a Batch Test Suite
-  - bitwarden-cli           # Bitwarden is a password manager
-#  - bruno                   # Bruno is a tool to manage Bruno workspaces and projects
-  - bruno-cli               # Bruno CLI is a tool to manage Bruno workspaces and projects
-  - cargo                   # cargo is a package manager for Rust
   - cargo-dist              # cargo-dist is a tool to build and distribute Rust binaries
-#  - chatgpt-atlas           # OpenAI's official browser with ChatGPT built in on macOS
   - copilot-cli             # GitHub Copilot CLI
+  - btop                    # btop is a modern resource monitor (replaces htop)
   - dive                    # Tools to explore docker layers with an UI create, deploy, and run applications by using containers
   - docker-buildx           # Docker Buildx is a CLI plugin that extends the docker command
                             # with the full support of the features provided by Moby BuildKit builder toolkit
   - docker-compose          # Docker Compose is a tool for defining and running multi-container Docker applications
   - docker-credential-helper # Docker Credential Helper
-  - dos2unix                # Convert files from DOS to Unix format
+  - fd                      # fd is a modern find replacement
   - fzf                     # fzf is a command-line fuzzy finder
-  - ghostty                 # GhostTy is a fast and lightweight terminal emulator
   - git                     # Git is a version control system
   - git-lfs                 # Git LFS is a Git extension for versioning large files
   - gh            # GitHub CLI
-  - gnu-sed                 # GNU version of sed
-  # Need to remove original gpg once installed
-  # rm '/usr/local/bin/gpg'
-  # brew link gnupg
-  - gnupg                   # gnupg is a tool for managing GnuPG keys
-  - googleworkspace-cli        # Google Workspace CLI for managing Google Workspace resources
-  # FIXME Install it manually
-  # - gpg-suite-no-mail       # For signing commits
-  - graphviz                # Graphviz is a graph visualization tool
-  - grc                     # Generic Colouriser is a tool for colorizing the output of commands
-  - hashicorp/tap/hcp       # HCP is a HashiCorp Cloud Platform
-  - hashicorp/tap/terraform-ls # terraform-ls is a terraform plugin for vscode
-  - hashicorp/tap/waypoint  # Waypoint is a tool for managing the lifecycle of applications
   - highlight               # Syntax highlighting for your terminal
-  - htop                    # htop is an interactive process viewer
+  - hashicorp/tap/vault     # Vault is a tool for managing secrets
   - jira-cli                # jira-cli is a command line interface for Jira
   - jq                      # jq is a lightweight and flexible command-line JSON processor
   - k9s                     # k9s is a Kubernetes CLI
+  - lazygit                 # lazygit is a terminal UI for git commands
   - lf                      # lf is a terminal file manager
-  - markdownlint-cli        # markdownlint-cli is a Node.js style checker and lint tool for Markdown/CommonMark files
   - markdownlint-cli2       # is a slightly unconventional command-line interface for markdownlint.
   - mise                    # mise is a tool to manage application versioning
+  - neovim                  # neovim is a modern vim-based text editor, used for quick edits
   - node                    # Node.js is a JavaScript runtime
   - openssl                 # OpenSSL is a toolkit for implementing SSL/TLS
-  - opencode                # OpenCode
   - parallel                # GNU parallel is a shell tool for executing jobs in parallel
   - pandoc                  # pandoc is a universal document converter
   - pigz                    # gzip with parallel support
-  - pinentry-mac            # pinentry-mac is a pinentry for GPG on Mac
-  - starship                    # cross-shell prompt (replaces powerlevel10k)
+  - starship                # cross-shell prompt (replaces powerlevel10k)
   - pygments                # Pygments is a generic syntax highlighter
-  - python-yq               # CPE Team use python-yq
-  - rancher                 # Rancher is a container management platform
+  - ripgrep                 # ripgrep (rg) is a fast recursive grep replacement
   - rust                    # Rust is a systems programming language
-  - slides                  # Slides is a terminal based presentation tool
-  - task                    # TaskWarrior is a command-line task manager
-  - timewarrior             # Timewarrior is a time tracking tool
   - tree                    # tree is a directory listing utility
-  - hashicorp/tap/vault     # Vault is a tool for managing secrets
-  - via                     # via is an application to manage keyboard mappings
-  - warp                    # warp is a modern terminal
+  - hashicorp/tap/terraform-ls # terraform-ls is a terraform plugin for vscode
   - watch                   # watch is a command that runs a program periodically, showing output fullscreen
   - wget                    # wget is a command line downloader
-  # - zen                     # zen is a browser based on Firefox with Arc features
+  - yq                      # yq is a lightweight and flexible command-line YAML/JSON/XML processor
   - zsh                     # zsh is a shell interpreter for interactive programs and scripts
   - zsh-autosuggestions     # fish-like autosuggestions for zsh (replaces antigen bundle)
   - zsh-completions         # additional completion definitions for zsh (replaces antigen bundle)
   - zsh-syntax-highlighting # fish-like syntax highlighting for zsh (replaces antigen bundle)
+
+# Formulae/casks only installed on macOS (no sane Linuxbrew/apt equivalent, or
+# specifically a macOS integration).
+mac_dev_playbook_homebrew_installed_packages_darwin_only:
+  - gnu-sed                 # GNU version of sed (Linux ships GNU sed natively)
+  - ghostty                 # Ghostty is a fast, lightweight terminal emulator. Homebrew-core only
+                            # provides it as a macOS cask; no Linux formula, and Ghostty isn't on
+                            # Flathub either. On Ubuntu it's installed instead via the
+                            # mac_dev_playbook_apt_ppa_packages PPA below (see apt.yml).
   - iterm2                  # iTerm2 is a terminal replacement
-  - intellij-idea           # IntelliJ IDEA is a Java IDE
-  - keystore-explorer       # Keystore Explorer is a tool for managing Java keystores
-  - visual-studio-code      # Visual Studio Code is a code editor
-  - vlc                     # VLC is a free and open source cross-platform multimedia player and framework
+  - keystore-explorer       # Keystore Explorer is a tool for managing Java keystores (installed via Flatpak on Ubuntu)
+  - intellij-idea           # IntelliJ IDEA is a Java IDE (installed via Flatpak on Ubuntu)
+  - visual-studio-code      # Visual Studio Code is a code editor (installed via apt on Ubuntu)
+
+mac_dev_playbook_homebrew_installed_packages: >-
+  {{ mac_dev_playbook_homebrew_installed_packages_common
+     + (mac_dev_playbook_homebrew_installed_packages_darwin_only if ansible_facts.os_family == 'Darwin' else []) }}
+
+# apt packages, only installed on Ubuntu/Debian.
+mac_dev_playbook_apt_packages:
+  - build-essential         # C compiler/toolchain, needed by mise tools built from source (e.g. postgres)
+  - flatpak                 # required by the community.general.flatpak module, see flatpak.yml
+  - flameshot               # screenshot + annotation tool (macOS has this built in)
+  - copyq                   # clipboard history manager (macOS has this built in)
+  - gnome-tweaks            # GNOME desktop customization
+  - gnome-shell-extension-manager # install/manage GNOME Shell extensions
+
+# Nerd Font installed on Ubuntu so Starship's icons/symbols render in Ghostty
+# (macOS installs are expected to already have one from a previous cask/manual setup).
+mac_dev_playbook_nerd_font_name: JetBrainsMono
+
+# apt-repository-backed installs (own GPG key + repo) on Ubuntu/Debian.
+# signed_by accepts a URL directly: deb822_repository fetches and manages the
+# keyring itself, no separate get_url/gpg dearmor step needed.
+mac_dev_playbook_apt_repo_packages:
+  - name: code
+    description: Visual Studio Code
+    uris: https://packages.microsoft.com/repos/code
+    suites: stable
+    components:
+      - main
+    architectures:
+      - amd64
+      - arm64
+      - armhf
+    signed_by: https://packages.microsoft.com/keys/microsoft.asc
+  - name: rancher-desktop
+    description: Rancher Desktop
+    uris: https://download.opensuse.org/repositories/isv:/Rancher:/stable/deb/
+    suites: "./"                # flat repo, no components
+    signed_by: https://download.opensuse.org/repositories/isv:/Rancher:/stable/deb/Release.key
+  - name: ghostty
+    description: "Ghostty terminal (mkasberg/ghostty-ubuntu PPA)"
+    uris: https://ppa.launchpadcontent.net/mkasberg/ghostty-ubuntu/ubuntu/
+    suites: "{{ ansible_facts.distribution_release }}"
+    components:
+      - main
+    # HTTPS keyserver lookup instead of the legacy hkp:// protocol
+    # ansible.builtin.apt_repository's ppa: resolution uses (port 80/11371,
+    # often filtered/unreliable) -- same fingerprint, resolved via Launchpad's
+    # own API, just fetched over a transport that actually works.
+    signed_by: "https://keyserver.ubuntu.com/pks/lookup?op=get&options=mr&search=0x0721FDF5FECB88DC6920361657C8EF455CEAE491"
+
+# Flatpak (Flathub) installs, only on Ubuntu/Debian. IntelliJ IDEA is an
+# unofficial community package on Flathub (not published by JetBrains).
+mac_dev_playbook_flatpak_packages:
+  - com.jetbrains.IntelliJ-IDEA-Ultimate
+  - org.keystore_explorer.KeyStoreExplorer
 
 mac_dev_playbook_npm_installed_packages:
   - tldr                        # tldr is a community driven documentation for the command line

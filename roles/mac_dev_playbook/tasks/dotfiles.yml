@@ -12,7 +12,7 @@
     - "{{ ansible_facts.env.HOME }}/.zshrc.d"
     - "{{ ansible_facts.env.HOME }}/.terraform.d/plugin-cache"
     - "{{ ansible_facts.env.HOME }}/.config"
-    - "{{ ansible_facts.env.HOME }}/.zshrc.d/core"
+    - "{{ ansible_facts.env.HOME }}/.config/ghostty"
 
 - name: Find managed directories
   ansible.builtin.find:
@@ -47,7 +47,7 @@
   tags:
     - dotfiles
 
-- name: Copy recursively files in HOME directory to $HOME
+- name: Copy dotfiles to $HOME
   ansible.builtin.copy:
     src: "HOME/"
     dest: "{{ ansible_facts.env.HOME }}/"
@@ -55,30 +55,87 @@
   tags:
     - dotfiles
 
-- name: Template gpg-agent.conf with the resolved $HOME path
-  ansible.builtin.template:
-    src: dotfiles/gpg-agent.conf.j2
-    dest: "{{ ansible_facts.env.HOME }}/.gnupg/gpg-agent.conf"
-    mode: "0600"
+- name: Copy Ghostty config (macOS)
+  ansible.builtin.copy:
+    src: dotfiles/ghostty/config.darwin
+    dest: "{{ ansible_facts.env.HOME }}/Library/Application Support/com.mitchellh.ghostty/config"
+    mode: preserve
+  when: ansible_facts['os_family'] == 'Darwin'
   tags:
     - dotfiles
 
-- name: Calculate sha1sum of .env file
-  ansible.builtin.stat:
-    # Get file in roles directory
-    path: "{{ role_path }}/files/HOME/.env"
-    checksum_algorithm: sha1
-    get_checksum: true
-  register: mac_dev_playbook_autoenv_sha1sum
+- name: Copy Ghostty config (Ubuntu)
+  ansible.builtin.copy:
+    src: dotfiles/ghostty/config.linux
+    dest: "{{ ansible_facts.env.HOME }}/.config/ghostty/config"
+    mode: preserve
+  when: ansible_facts['os_family'] == 'Debian'
+  tags:
+    - dotfiles
 
-- name: Create .autoenv_authorized if no
-  ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.autoenv_authorized"
-    state: file
+- name: Copy OS-specific ssh config include (macOS)
+  ansible.builtin.copy:
+    src: dotfiles/ssh-config-os/darwin.sshconfig
+    dest: "{{ ansible_facts.env.HOME }}/.ssh/config.os"
+    mode: "0600"
+  when: ansible_facts['os_family'] == 'Darwin'
+  tags:
+    - dotfiles
 
-- name: Add line in autoenv_authorized
-  ansible.builtin.lineinfile:
-    path: "{{ ansible_facts.env.HOME }}/.autoenv_authorized"
-    line: "{{ ansible_facts.env.HOME }}/.env:{{ mac_dev_playbook_autoenv_sha1sum.stat.checksum }}"
-    state: present
-    regexp: '{{ ansible_facts.env.HOME }}/\.env:.*'
+- name: Copy OS-specific ssh config include (Ubuntu)
+  ansible.builtin.copy:
+    src: dotfiles/ssh-config-os/linux.sshconfig
+    dest: "{{ ansible_facts.env.HOME }}/.ssh/config.os"
+    mode: "0600"
+  when: ansible_facts['os_family'] == 'Debian'
+  tags:
+    - dotfiles
+
+- name: Copy OS-specific gitconfig include (macOS)
+  ansible.builtin.copy:
+    src: dotfiles/gitconfig-os/darwin.gitconfig
+    dest: "{{ ansible_facts.env.HOME }}/.gitconfig.os"
+    mode: preserve
+  when: ansible_facts['os_family'] == 'Darwin'
+  tags:
+    - dotfiles
+
+- name: Copy OS-specific gitconfig include (Ubuntu)
+  ansible.builtin.copy:
+    src: dotfiles/gitconfig-os/linux.gitconfig
+    dest: "{{ ansible_facts.env.HOME }}/.gitconfig.os"
+    mode: preserve
+  when: ansible_facts['os_family'] == 'Debian'
+  tags:
+    - dotfiles
+
+# Populates ~/.ssh/allowed_signers for `git log --show-signature` / SSH commit
+# signing verification. Soft-fails on a fresh machine where user.email or the
+# SSH key aren't set up yet -- re-run the playbook once they are.
+- name: Get git commit email
+  ansible.builtin.command: git config --global user.email
+  register: mac_dev_playbook_git_email
+  changed_when: false
+  failed_when: false
+  tags:
+    - dotfiles
+
+- name: Read SSH public key used for commit signing
+  ansible.builtin.slurp:
+    src: "{{ ansible_facts.env.HOME }}/.ssh/id_ed25519.pub"
+  register: mac_dev_playbook_ssh_pubkey
+  failed_when: false
+  tags:
+    - dotfiles
+
+- name: Populate allowed_signers for SSH commit signature verification
+  ansible.builtin.copy:
+    content: "{{ mac_dev_playbook_git_email.stdout }} {{ (mac_dev_playbook_ssh_pubkey.content | b64decode).strip() }}\n"
+    dest: "{{ ansible_facts.env.HOME }}/.ssh/allowed_signers"
+    mode: "0644"
+  when:
+    - mac_dev_playbook_git_email.rc == 0
+    - mac_dev_playbook_git_email.stdout | length > 0
+    - mac_dev_playbook_ssh_pubkey is succeeded
+  tags:
+    - dotfiles

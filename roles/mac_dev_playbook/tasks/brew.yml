@@ -1,41 +1,17 @@
 ---
-# Tap.
-- name: Ensure configured taps are tapped.
+- name: Tap Homebrew repositories
   community.general.homebrew_tap:
     name: "{{ item }}"
     state: present
   with_items: "{{ mac_dev_playbook_homebrew_taps }}"
 
-- name: Uninstall homebrew package
+- name: Uninstall unwanted Homebrew packages
   community.general.homebrew:
     name: "{{ mac_dev_playbook_homebrew_absent_packages }}"
     state: absent
 
-- name: Install homebrew package
-  failed_when: false
+- name: Install Homebrew packages
   community.general.homebrew:
     name: "{{ mac_dev_playbook_homebrew_installed_packages }}"
     state: present
     upgrade_all: true
-
-- name: Upgrade all homebrew packages (if configured).
-  failed_when: false
-  community.general.homebrew:
-    upgrade_all: true
-
-- name: Ensure Taskwarrior hooks directory exists.
-  ansible.builtin.file:
-    path: "{{ ansible_facts.env.HOME }}/.task/hooks"
-    state: directory
-    mode: "0755"
-
-- name: Ensure Timewarrior hook script is executable.
-  ansible.builtin.file:
-    path: "{{ lookup('pipe', 'brew --prefix') }}/share/doc/timew/ext/on-modify.timewarrior"
-    mode: "0755"
-
-- name: Link Timewarrior hook for Taskwarrior integration.
-  ansible.builtin.file:
-    src: "{{ lookup('pipe', 'brew --prefix') }}/share/doc/timew/ext/on-modify.timewarrior"
-    dest: "{{ ansible_facts.env.HOME }}/.task/hooks/on-modify.timewarrior"
-    state: link

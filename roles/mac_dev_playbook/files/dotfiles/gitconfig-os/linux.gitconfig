@@ -1,0 +1,8 @@
+# Credentials for github.com/gist.github.com are handled via the gh CLI
+# (equivalent to `gh auth setup-git`). Run `gh auth login` once so it can serve them.
+[credential "https://github.com"]
+  helper =
+  helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+  helper =
+  helper = !gh auth git-credential

@@ -1,4 +1,4 @@
-- name: Install gh cli extensions
+- name: Install gh CLI extensions
   ansible.builtin.command: gh extension install {{ item }}
   loop: "{{ mac_dev_playbook_gh_cli_extensions }}"
   args:

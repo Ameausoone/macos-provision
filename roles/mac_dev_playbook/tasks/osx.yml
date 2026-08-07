@@ -6,3 +6,4 @@
   changed_when: true
   tags:
     - osx
+  when: ansible_facts['os_family'] == 'Darwin'

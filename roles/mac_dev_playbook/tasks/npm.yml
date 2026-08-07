@@ -1,6 +1,17 @@
-- name: Install node.js packages.
+- name: Locate mise-managed npm
+  ansible.builtin.command: "{{ lookup('pipe', 'brew --prefix mise') }}/bin/mise which npm"
+  register: mac_dev_playbook_mise_npm
+  changed_when: false
+  # rc 1 = mise's "no npm provisioned yet" exit code, tolerated (fresh
+  # machine before `mise install`); anything else (e.g. mise itself missing)
+  # should fail loudly.
+  failed_when: mac_dev_playbook_mise_npm.rc not in [0, 1]
+
+- name: Install npm packages
   community.general.npm:
     name: "{{ item }}"
     global: true
     path: "{{ ansible_facts.env.HOME }}/.npm-packages/bin"
+    executable: "{{ mac_dev_playbook_mise_npm.stdout }}"
   with_items: "{{ mac_dev_playbook_npm_installed_packages }}"
+  when: mac_dev_playbook_mise_npm.rc == 0

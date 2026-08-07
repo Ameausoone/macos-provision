@@ -1,5 +1,7 @@
 [include]
   path = ~/.gitconfig.local          # Include a local configuration file.
+  path = ~/.gitconfig.os             # Include OS-specific settings (credential helper, etc).
+  path = ~/.gitconfig.priv           # Include private-repo-managed settings.
 [init]
   defaultBranch = main              # Set the default branch name to main.
   templateDir = ~/.git-template     # Use a custom template directory, (for configure pre-commit hooks).
@@ -10,15 +12,17 @@
   autocrlf = input                  # Convert CRLF to LF on commit, possible values: input, true, false.
 [column]
   ui = auto                         # Enable column display.
+[user]
+  signingkey = ~/.ssh/id_ed25519.pub # SSH public key used to sign commits/tags.
 [commit]
   template = ~/.gitmessage          # Conventional commit message template.
-  gpgsign = true                    # Sign commits using GPG.
+  gpgsign = true                    # Sign commits.
   verbose = true                    # Show the diff of the commit.
 [rerere]                            # Reuse recorded resolution of conflicted merges.
   enabled = true                    # Enable the reuse recorded resolution.
   autoupdate = true                 # Update the index with the resolution.
 [tag]
-  gpgsign = true                    # Sign tags using GPG.
+  gpgsign = true                    # Sign tags.
 [color]
   ui = true                         # Enable colored output.
 [branch]
@@ -27,10 +31,10 @@
   sort = version:refname            # Sort tags by version.
 [feature]
   experimental = true               # Enable experimental features.
-[credential]
-  helper = osxkeychain              # Use the OSX keychain to store credentials.
 [gpg]
-  program = gpg                     # Use GPG to sign commits.
+  format = ssh                      # Sign with an SSH key instead of GPG.
+[gpg "ssh"]
+  allowedSignersFile = ~/.ssh/allowed_signers # Maps emails to allowed signing keys (local verification).
 [push]
   default = simple                  # It will push the current branch to the same branch on the remote repository.
   autoSetupRemote = true            # When pushing a new branch, set it up to track the corresponding remote branch.

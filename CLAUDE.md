@@ -4,11 +4,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-An Ansible playbook that provisions a macOS developer machine. It installs Homebrew packages, copies dotfiles to `$HOME`, configures zsh with oh-my-zsh, and sets up GitHub CLI extensions.
-
-## Articles and Linkedin posts
-
-For articles and Linkedin posts, look at @docs/CLAUDE.md
+An Ansible playbook that provisions a developer machine, on both macOS and Ubuntu. It installs
+Homebrew packages (Linuxbrew on Ubuntu), copies dotfiles to `$HOME`, configures zsh with
+oh-my-zsh, sets up GitHub CLI extensions, and on Ubuntu also installs apt packages and
+Flatpak (Flathub) apps for the GUI tools that only exist as macOS casks.
 
 ## Running the playbook
 
@@ -28,6 +27,12 @@ Run only dotfile tasks:
 ansible-playbook main.yml --tags dotfiles
 ```
 
+Run only Ubuntu apt/flatpak tasks (no-op on macOS):
+
+```bash
+ansible-playbook main.yml --tags apt,flatpak --ask-become-pass
+```
+
 ## Mise tasks
 
 ```bash
@@ -41,16 +46,38 @@ mise run compare-dotfiles
 ## Architecture
 
 - `main.yml` — entry point, delegates to `roles/mac_dev_playbook`
-- `roles/mac_dev_playbook/tasks/main.yml` — task orchestration (oh-my-zsh → dotfiles → brew → docker → github)
-- `roles/mac_dev_playbook/defaults/main.yml` — all package lists (Homebrew taps, packages to install/remove, npm packages, gh CLI extensions)
+- `roles/mac_dev_playbook/tasks/main.yml` — task orchestration (oh-my-zsh → dotfiles → brew → apt/flatpak[Ubuntu only] → docker → github → shells → osx[macOS only])
+- `roles/mac_dev_playbook/tasks/apt.yml` / `flatpak.yml` — Ubuntu-only, imported when `ansible_facts.os_family == 'Debian'`
+- `roles/mac_dev_playbook/defaults/main.yml` — all package lists (Homebrew taps, common vs `*_darwin_only` packages, apt packages/repos, flatpak packages, npm packages, gh CLI extensions)
 - `roles/mac_dev_playbook/files/HOME/` — dotfiles copied recursively to `$HOME` on each playbook run
-- `roles/mac_dev_playbook/files/HOME/.zshrc.d/` — zsh config fragments, sourced alphabetically by `~/.zshrc`
+- `roles/mac_dev_playbook/files/HOME/.zshrc.d/` — zsh config fragments, sourced alphabetically by `~/.zshrc`; several fragments branch on `uname` to skip macOS-only setup (coreutils PATH shim, IntelliJ launcher, oh-my-zsh `iterm2`/`macos` plugins)
+- `roles/mac_dev_playbook/files/dotfiles/ghostty/` — OS-specific Ghostty configs (`config.darwin`, `config.linux`), placed by `dotfiles.yml` at the right XDG/macOS path
+- `roles/mac_dev_playbook/files/HOME/.gitconfig` — includes `~/.gitconfig.local` (untracked, machine-local overrides only — never repo-managed), `~/.gitconfig.os` (OS-specific, see `dotfiles/gitconfig-os/`), and `~/.gitconfig.priv` (content-free hook for the private companion repo to attach to — see its own CLAUDE.md)
 - `scripts/compare-dotfiles.sh` — diffs provisioned files against the live `$HOME`
-- `docs/` — articles and cheatsheets (mise, GPG, MCP, etc.)
+- `docs/` — articles and cheatsheets (mise, MCP, etc.)
 
 ## Key conventions
 
-- Add/remove packages in `roles/mac_dev_playbook/defaults/main.yml` (not in task files)
+- Add/remove packages in `roles/mac_dev_playbook/defaults/main.yml` (not in task files). Cross-platform
+  formulae go in `mac_dev_playbook_homebrew_installed_packages_common`; macOS-only ones in
+  `*_darwin_only`; Ubuntu-only GUI apps go in `mac_dev_playbook_apt_packages`,
+  `mac_dev_playbook_apt_repo_packages` (apt packages needing their own repo/GPG key), or
+  `mac_dev_playbook_flatpak_packages`.
+- `mac_dev_playbook_apt_repo_packages` also covers Launchpad PPAs (e.g. `ghostty` via
+  `ppa:mkasberg/ghostty-ubuntu`): use `uris: https://ppa.launchpadcontent.net/<user>/<ppa>/ubuntu/`,
+  `suites: "{{ ansible_facts.distribution_release }}"`, and `signed_by` pointing at an HTTPS
+  keyserver lookup (`https://keyserver.ubuntu.com/pks/lookup?op=get&options=mr&search=0x<fingerprint>`)
+  — not `ansible.builtin.apt_repository`'s `ppa:` shorthand, which is deprecated and fetches the key
+  over the legacy `hkp://` protocol (unreliable/often filtered). Get the fingerprint once from a
+  failed `apt_repository` attempt's error output, or from the PPA's Launchpad page.
 - Dotfiles go under `roles/mac_dev_playbook/files/HOME/` mirroring the `$HOME` structure
 - zsh scripts in `.zshrc.d/` are loaded alphabetically — use numeric prefixes (`00_`, `01_`) to control order
 - Ansible collections required: `community.general`, `ansible.posix` (install via `ansible-galaxy collection install -r requirements.yml`)
+- On Ubuntu, run with `--ask-become-pass` — the apt/flatpak/chsh tasks need sudo. Every privileged
+  Ubuntu task must have `become: true` explicitly — one that's missing it hits its own separate auth
+  prompt instead of Ansible's sudo (PAM for a bare `chsh`, a graphical polkit dialog for
+  `community.general.flatpak`, which defaults to system-wide installs). If sudo itself hangs/times
+  out (e.g. PAM fingerprint auth configured on the machine), that needs a `NOPASSWD` sudoers rule for
+  the user — a rule scoped to specific commands isn't practically achievable, since Ansible's
+  `become` wraps every module in a dynamically-named Python temp script under sudo, not a stable
+  binary path.

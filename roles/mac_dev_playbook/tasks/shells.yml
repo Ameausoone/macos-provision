@@ -1,5 +1,5 @@
 ---
-- name: Ensure /bin/zsh and /usr/local/bin/bash are present in /etc/shells on macOS in root mode
+- name: Register zsh and bash in /etc/shells (macOS)
   ansible.builtin.lineinfile:
     path: /etc/shells
     line: "{{ item }}"
@@ -8,10 +8,24 @@
   with_items:
     - "/bin/zsh"
     - "/usr/local/bin/bash"
-  when: ansible_os_family == 'Darwin'
+  when: ansible_facts['os_family'] == 'Darwin'
 
-- name: Setup zsh as defaults shell
+- name: Set zsh as default shell (macOS)
   ansible.builtin.command: chsh -s /bin/zsh
   become: true
   changed_when: false
-  when: ansible_os_family == 'Darwin'
+  when: ansible_facts['os_family'] == 'Darwin'
+
+- name: Register Linuxbrew zsh in /etc/shells (Ubuntu)
+  ansible.builtin.lineinfile:
+    path: /etc/shells
+    line: "{{ lookup('pipe', 'brew --prefix') }}/bin/zsh"
+    state: present
+  become: true
+  when: ansible_facts['os_family'] == 'Debian'
+
+- name: Set zsh as default shell (Ubuntu)
+  ansible.builtin.command: "chsh -s {{ lookup('pipe', 'brew --prefix') }}/bin/zsh {{ ansible_facts.env.USER }}"
+  become: true
+  changed_when: false
+  when: ansible_facts['os_family'] == 'Debian'

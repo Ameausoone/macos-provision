@@ -1,0 +1,14 @@
+---
+- name: Ensure Flathub remote is configured
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+  become: true
+
+- name: Install flatpak packages
+  community.general.flatpak:
+    name: "{{ item }}"
+    state: present
+  become: true
+  loop: "{{ mac_dev_playbook_flatpak_packages }}"

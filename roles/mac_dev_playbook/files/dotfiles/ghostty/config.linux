@@ -1,0 +1,28 @@
+# Ghostty terminal configuration
+# Docs: https://ghostty.org/docs/config
+# View all options: ghostty +show-config --default --docs
+
+# Links
+# Enable clickable URLs
+link-url = true
+# Show URL previews on hover
+link-previews = true
+
+# Clipboard
+# Auto-copy selection to clipboard
+copy-on-select = clipboard
+# Warn on multi-line paste
+clipboard-paste-protection = true
+clipboard-trim-trailing-spaces = true
+
+# Shell integration
+# Auto-detect shell and inject integration
+shell-integration = detect
+# Track cursor position and update window title
+shell-integration-features = cursor,title
+
+# Window
+# New tabs inherit current directory
+window-inherit-working-directory = true
+# New tabs inherit font size
+window-inherit-font-size = true

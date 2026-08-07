@@ -3,9 +3,8 @@
 [tools]
 pipx = "latest"
 ansible = "latest"
-python = "3.13.1"
+python = "3.13"
 ls-lint = "latest"
-java = "21"
 
 [tasks.compare-dotfiles]
 description = "Compare provisioned files with actual home directory"

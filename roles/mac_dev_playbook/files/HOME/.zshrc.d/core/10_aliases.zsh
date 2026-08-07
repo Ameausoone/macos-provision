@@ -4,17 +4,7 @@
 # Configuration
 # ==============================================================================
 
-MACOS_SETUP_DIR=~/Projects/wk_perso/macos-setup
-
-# ==============================================================================
-# File & Search Utilities
-# ==============================================================================
-
-# usage: f <pattern> <grep options> eg. f "foo" -i
-function f() { find . -iname "*$1*" ${@:2} }
-
-# usage: r <pattern> <grep options> eg. r "foo" -l
-function r() { grep "$1" ${@:2} -R . }
+MACOS_SETUP_DIR=~/projects/perso/provision
 
 # ==============================================================================
 # Directory Operations
@@ -112,7 +102,6 @@ function config() {
   push
 }
 alias notes="idea ${MACOS_SETUP_DIR}/notes"
-alias m="make"
 
 # ==============================================================================
 # Cheat Sheets
@@ -159,7 +148,5 @@ alias good-readme="open https://github.com/othneildrew/Best-README-Template"
 # ==============================================================================
 
 alias upgrade="brew upgrade && mise upgrade"
-alias goo="google"
-alias hdi="howdoi -c -n 2"
 alias diff="grc diff"
 alias yaml="highlight --force --syntax yaml"
