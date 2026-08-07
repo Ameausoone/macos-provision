@@ -15,16 +15,6 @@
   tags:
     - mise
 
-- name: Provision pip packages
-  ansible.builtin.import_tasks: packages.yml
-  tags:
-    - pip
-
-- name: Provision npm packages
-  ansible.builtin.import_tasks: npm.yml
-  tags:
-    - npm
-
 - name: Provision apt packages (Ubuntu)
   ansible.builtin.import_tasks: apt.yml
   tags:

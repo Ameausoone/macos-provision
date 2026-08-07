@@ -134,17 +134,6 @@ mac_dev_playbook_flatpak_packages:
   - com.jetbrains.IntelliJ-IDEA-Ultimate
   - org.keystore_explorer.KeyStoreExplorer
 
-mac_dev_playbook_npm_installed_packages:
-  - tldr                        # tldr is a community driven documentation for the command line
-  - yarn                        # yarn is a package manager for JavaScript
-  - editorconfig                # editorconfig is a plugin for your code editor that helps enforce consistent coding styles
-  - "@devcontainers/cli"        # devcontainers is a command line tool for managing devcontainers
-  - "@google/gemini-cli@latest" # Google Gemini CLI for interacting with Gemini AI models
-
-mac_dev_playbook_pip_packages:
-  - aiven-client            # Aiven CLI client
-  - cookiecutter            # Cookiecutter is a command-line utility that creates projects from project templates
-
 mac_dev_playbook_gh_cli_extensions:
   - mislav/gh-branch        # GitHub CLI extension for managing branches
   - dlvhdr/gh-dash          # GitHub CLI extension for dashboards

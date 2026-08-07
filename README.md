@@ -7,7 +7,7 @@ This an Ansible Playbook to provision my macOS and Ubuntu dev machines.
 It will :
 
 * create useful directories.
-* install packages (brew(and taps), npm, and on Ubuntu also apt/flatpak).
+* install packages (brew(and taps), mise-managed tools, and on Ubuntu also apt/flatpak).
 * copy dotfiles which configure various applications(Git, npm, terraform) in home.
 * copy some zsh script, mainly for configuration and some helper functions and aliases.
 
@@ -16,7 +16,11 @@ It will :
 ### macOS
 
 * install brew : [brew.sh/](https://brew.sh/)
-* install ansible : `brew install ansible`
+* install ansible and gh : `brew install ansible gh`
+* authenticate to GitHub (the playbook installs `gh` extensions, which needs this done first)
+  ```shell
+  gh auth login
+  ```
 * checkout project in `~/projects/perso/provision/macos-provision`.
 * copy `roles/mac_dev_playbook/files/HOME/.ansible.cfg` in ~/.ansible.cfg
   ```shell
@@ -29,14 +33,6 @@ It will :
 
 * then go to `~/projects/perso/provision/macos-provision`.
 * run `ansible-playbook main.yml --diff --verbose --inventory ~/.ansible/inventory --limit $(hostname)`.
-* authenticate to GitHub
-  ```shell
-  gh auth login
-  ```
-* change default shell
-  ```shell
-  chsh -s $(which zsh)
-  ```
 
 ### Ubuntu
 
@@ -45,10 +41,14 @@ It will :
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   eval "$($(brew --prefix)/bin/brew shellenv)"
   ```
-* install ansible and the collections it needs (`community.general`, `ansible.posix`) :
+* install ansible, gh, and the collections ansible needs (`community.general`, `ansible.posix`) :
   ```shell
-  brew install ansible
+  brew install ansible gh
   ansible-galaxy collection install -r requirements.yml
+  ```
+* authenticate to GitHub (the playbook installs `gh` extensions, which needs this done first)
+  ```shell
+  gh auth login
   ```
 * checkout project, e.g. in `~/projects/wk_perso/macos-setup/macos-provision`.
 * copy `roles/mac_dev_playbook/files/HOME/.ansible.cfg` in ~/.ansible.cfg (same as macOS above).
@@ -58,10 +58,6 @@ It will :
 * the apt tasks need `python3-apt` and `python3-debian` for the *system* Python
   (already present on Ubuntu Desktop by default; if missing:
   `sudo apt install python3-apt python3-debian`).
-* authenticate to GitHub
-  ```shell
-  gh auth login
-  ```
 
 Packages that only make sense on one OS are split in `roles/mac_dev_playbook/defaults/main.yml`
 (`*_darwin_only` for macOS-only Homebrew formulae, `mac_dev_playbook_apt_packages` /
@@ -70,7 +66,7 @@ Packages that only make sense on one OS are split in `roles/mac_dev_playbook/def
 ### First run walkthrough
 
 1. Dry run first, to see what would change: add `--check` to the `ansible-playbook` command above.
-2. Run it for real (see command above). Order: oh-my-zsh clone → dotfiles copy → brew →
+2. Run it for real (see command above). Order: oh-my-zsh clone → dotfiles copy → brew → mise install →
    apt/flatpak [Ubuntu only] → docker plugin symlinks → gh extensions → shells → macOS defaults [macOS only].
 3. On Ubuntu, `--ask-become-pass` prompts once for your sudo password (used by the apt/flatpak/chsh tasks).
 4. Open a new terminal (or `exec zsh`) to pick up the newly installed dotfiles/shell.
