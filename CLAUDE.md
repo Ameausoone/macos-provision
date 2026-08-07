@@ -33,6 +33,10 @@ Run only Ubuntu apt/flatpak tasks (no-op on macOS):
 ansible-playbook main.yml --tags apt,flatpak --ask-become-pass
 ```
 
+## Git workflow
+
+This is a solo personal repo — push commits directly to `main`, no feature branch/PR needed.
+
 ## Mise tasks
 
 ```bash
