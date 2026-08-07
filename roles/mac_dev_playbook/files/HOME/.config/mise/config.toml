@@ -2,11 +2,13 @@
 experimental = true
 idiomatic_version_file_enable_tools = []
 
+[settings.python]
+compile = false
+
 [tools]
 claude-code = "latest"      # Claude Code CLI tool
 cookiecutter = "latest"     # Cookiecutter is a command-line utility that creates projects from project templates
 devcontainer-cli = "latest" # devcontainers is a command line tool for managing devcontainers
-#flux2 = "2"                 # GitOps continuous delivery for Kubernetes
 fnox = "latest"             # Secret cli injector https://fnox.jdx.dev/
 #gcloud = "548"              # Google Cloud CLI
 #golang = "1"                # Go programming language
@@ -15,8 +17,6 @@ hugo = "0"                  # Static site generator
 java = "temurin-24"         # Eclipse Temurin JDK
 kubectl = "1"               # Kubernetes command-line tool
 maven = "3"                 # Java build automation tool
-#packer = "1"                # Tool for building machine images
-#postgres = "latest"         # PostgreSQL database
 pre-commit = "4"            # Git hooks framework
 shfmt = "3"                 # Shell formatter
 terraform = "1.15"          # Infrastructure as Code tool
