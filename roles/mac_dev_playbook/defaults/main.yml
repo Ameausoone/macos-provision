@@ -91,6 +91,7 @@ mac_dev_playbook_apt_packages:
   - copyq                   # clipboard history manager (macOS has this built in)
   - gnome-tweaks            # GNOME desktop customization
   - gnome-shell-extension-manager # install/manage GNOME Shell extensions
+  - seahorse                # GNOME keyring manager GUI, not installed by default on Ubuntu 26
 
 # Nerd Font installed on Ubuntu so Starship's icons/symbols render in Ghostty
 # (macOS installs are expected to already have one from a previous cask/manual setup).
