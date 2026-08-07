@@ -71,12 +71,12 @@ alias tf="terraform"
 Et ceux notamment que j'utilise encore tous les jours pour provisionner mon poste:
 
 ```shell
-# Ouvres le projet macos-provision dans IntelliJ
+# Ouvres le projet dev-provision dans IntelliJ
 alias macconfig="idea ${MACOS_SETUP_DIR}"
 
-# Ce script va dans le répertoire macos-provision, puis il lance git add, commit et push, puis il lance le playbook ansible, all-in-one
+# Ce script va dans le répertoire dev-provision, puis il lance git add, commit et push, puis il lance le playbook ansible, all-in-one
 function macans() {
-  cd ${MACOS_SETUP_DIR}/macos-provision && \
+  cd ${MACOS_SETUP_DIR}/dev-provision && \
   gitandans $1
 }
 ```
@@ -107,7 +107,7 @@ $ git checkout master --force
 
 A chaque fois que vous appuyez sur `<TAB>`, `zsh` va vous proposer les options possibles. Et si vous avez plusieurs options possibles, il va vous les proposer toutes. L'auto-completion ne se content pas de vous lister les options possibles, il peut exécuter des commandes pour avoir des infos live, comme par exemple les branches existantes sur le repo distant, ou les pods existants sur votre cluster Kubernetes avec `kubectl`. Un must-have !
 
-Vous avez beaucoup de plugins "out of the box" avec `oh-my-zsh` et vous pouvez en ajouter facilement. Quelques exemples dans mon fichier [01_oh-my-zsh-plugins.zsh](https://github.com/Ameausoone/macos-provision/blob/main/roles/mac_dev_playbook/files/.zshrc.d/core/01_oh-my-zsh-plugins.zsh#L6), et la liste exhaustive est disponible [ici](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins).
+Vous avez beaucoup de plugins "out of the box" avec `oh-my-zsh` et vous pouvez en ajouter facilement. Quelques exemples dans mon fichier [01_oh-my-zsh-plugins.zsh](https://github.com/Ameausoone/dev-provision/blob/main/roles/mac_dev_playbook/files/.zshrc.d/core/01_oh-my-zsh-plugins.zsh#L6), et la liste exhaustive est disponible [ici](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins).
 
 ### asdf
 

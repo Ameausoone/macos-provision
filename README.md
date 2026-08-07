@@ -21,17 +21,17 @@ It will :
   ```shell
   gh auth login
   ```
-* checkout project in `~/projects/perso/provision/macos-provision`.
+* checkout project in `~/projects/perso/provision/dev-provision`.
 * copy `roles/mac_dev_playbook/files/HOME/.ansible.cfg` in ~/.ansible.cfg
   ```shell
-  curl -fsSL https://github.com/Ameausoone/macos-provision/raw/refs/heads/main/roles/mac_dev_playbook/files/HOME/.ansible.cfg -o ~/.ansible.cfg
+  curl -fsSL https://github.com/Ameausoone/dev-provision/raw/refs/heads/main/roles/mac_dev_playbook/files/HOME/.ansible.cfg -o ~/.ansible.cfg
   ```
 * init the `~/.ansible/inventory` file
   ```shell
   mkdir -p ~/.ansible && printf '[localhost]\n%s\n' "$(hostname)" > ~/.ansible/inventory
   ```
 
-* then go to `~/projects/perso/provision/macos-provision`.
+* then go to `~/projects/perso/provision/dev-provision`.
 * run `ansible-playbook main.yml --diff --verbose --inventory ~/.ansible/inventory --limit $(hostname)`.
 
 ### Ubuntu
@@ -50,7 +50,7 @@ It will :
   ```shell
   gh auth login
   ```
-* checkout project, e.g. in `~/projects/wk_perso/macos-setup/macos-provision`.
+* checkout project, e.g. in `~/projects/perso/provision/dev-provision`.
 * copy `roles/mac_dev_playbook/files/HOME/.ansible.cfg` in ~/.ansible.cfg (same as macOS above).
 * init the `~/.ansible/inventory` file as above.
 * run `ansible-playbook main.yml --diff --verbose --inventory ~/.ansible/inventory --limit $(hostname) --ask-become-pass`

@@ -34,7 +34,7 @@ Les commandes contenant des secrets restent dans `~/.zsh_history`, sont accessib
 
 ## Solution : Trousseau de clé MacOS
 
-La cli `security` intégrée à macOS permet de gérer le Keychain, un stockage sécurisé et chiffré pour les secrets. Cependant, son usage direct est peu ergonomique. C'est pourquoi j'ai créé des fonctions shell pour simplifier l'interaction. Le fichier [`30_creds.zsh`](https://github.com/Ameausoone/macos-provision/blob/main/roles/mac_dev_playbook/files/.zshrc.d/core/30_creds.zsh) fournit une interface sécurisée pour le Keychain macOS. Ces fonctions encapsulent les commandes `security` système pour simplifier l'usage.
+La cli `security` intégrée à macOS permet de gérer le Keychain, un stockage sécurisé et chiffré pour les secrets. Cependant, son usage direct est peu ergonomique. C'est pourquoi j'ai créé des fonctions shell pour simplifier l'interaction. Le fichier [`30_creds.zsh`](https://github.com/Ameausoone/dev-provision/blob/main/roles/mac_dev_playbook/files/.zshrc.d/core/30_creds.zsh) fournit une interface sécurisée pour le Keychain macOS. Ces fonctions encapsulent les commandes `security` système pour simplifier l'usage.
 
 #### Ajout d'un secret
 

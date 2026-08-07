@@ -19,7 +19,7 @@ alias ..="cd .."
 # Git Workflow
 # ==============================================================================
 
-function lazygit() {
+function lazy-git() {
   if [[ -z "$1" ]]; then
     echo "Error: commit message required"
     return 1
@@ -43,12 +43,12 @@ function gitandans() {
 function push() {
   local commit_msg="${1}"
 
-  if [[ ! -d "${MACOS_SETUP_DIR}/macos-provision" ]]; then
-    echo "Error: ${MACOS_SETUP_DIR}/macos-provision not found"
+  if [[ ! -d "${MACOS_SETUP_DIR}/dev-provision" ]]; then
+    echo "Error: ${MACOS_SETUP_DIR}/dev-provision not found"
     return 1
   fi
 
-  cd "${MACOS_SETUP_DIR}/macos-provision"
+  cd "${MACOS_SETUP_DIR}/dev-provision"
 
   if [[ -z "${commit_msg}" ]]; then
     commit_msg=$(git diff --cached | copilot --model 'claude-haiku-4.5' --prompt \
@@ -72,7 +72,7 @@ No explanation, no preamble, no quotes, no markdown. One line only." \
 # Development Helpers
 # ==============================================================================
 
-# config — open the macos-setup project, or delegate a natural-language request to
+# config — open the dev-provision project, or delegate a natural-language request to
 # Copilot CLI and auto-deploy:
 #   config                          → open project in IntelliJ IDEA
 #   config 'add alias for docker'   → Copilot edits the repo, then push provisions the machine
@@ -84,12 +84,12 @@ function config() {
 
   local request="$*"
 
-  if [[ ! -d "${MACOS_SETUP_DIR}/macos-provision" ]]; then
-    print -P "%F{red}Error: ${MACOS_SETUP_DIR}/macos-provision not found%f" >&2
+  if [[ ! -d "${MACOS_SETUP_DIR}/dev-provision" ]]; then
+    print -P "%F{red}Error: ${MACOS_SETUP_DIR}/dev-provision not found%f" >&2
     return 1
   fi
 
-  cd "${MACOS_SETUP_DIR}/macos-provision"
+  cd "${MACOS_SETUP_DIR}/dev-provision"
   print -P "%F{cyan}Launching Copilot for: ${request}%f"
   copilot "$request"
 
