@@ -1,5 +1,11 @@
 #!/usr/bin/env zsh
 
+# terraform has no `completion` subcommand: it uses the go-plugin `complete -C`
+# protocol instead (same as vault, see 50_vault.zsh), registered for both the
+# real command and the tf alias.
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C "$(mise which terraform)" terraform tf
+
 alias tf="terraform"
 
 alias tfi="tf init"
